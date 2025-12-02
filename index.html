@@ -1,0 +1,1864 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>D&D Multiverse Digital - A Digital Creative Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- BOOTSTRAP & ICONS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg-space: #040511;
+      --bg-space-alt: #0a0f22;
+      --card-bg: #0f1528;
+      --card-border: #1f2937;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --primary-1: #7c3aed;
+      --primary-2: #2563eb;
+      --accent-cyan: #22d3ee;
+      --accent-pink: #ec4899;
+      --success: #22c55e;
+      --danger: #ef4444;
+      --nav-h: 70px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+        sans-serif;
+      background: radial-gradient(
+          circle at top left,
+          rgba(124, 58, 237, 0.35),
+          transparent 60%
+        ),
+        radial-gradient(
+          circle at bottom right,
+          rgba(34, 211, 238, 0.28),
+          transparent 60%
+        ),
+        var(--bg-space);
+      color: var(--text-main);
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* ===== GALAXY BACKGROUND: STARS & SHOOTING STAR ===== */
+
+    .stars,
+    .stars2,
+    .stars3 {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      background-repeat: repeat;
+      background-size: contain;
+      pointer-events: none;
+      opacity: 0.6;
+      z-index: -3;
+    }
+
+    .stars {
+      background-image: radial-gradient(2px 2px at 20px 30px, #ffffff 50%, transparent 51%),
+        radial-gradient(2px 2px at 140px 80px, #e5f2ff 50%, transparent 51%),
+        radial-gradient(2px 2px at 320px 150px, #c7f9ff 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 500px 40px, #fef3c7 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 760px 120px, #e0f2fe 50%, transparent 51%);
+      animation: moveStars 80s linear infinite;
+      opacity: 0.3;
+    }
+
+    .stars2 {
+      background-image: radial-gradient(2px 2px at 60px 200px, #ffffff 50%, transparent 51%),
+        radial-gradient(2px 2px at 260px 300px, #e5f2ff 50%, transparent 51%),
+        radial-gradient(2px 2px at 480px 260px, #c7f9ff 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 720px 350px, #fef3c7 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 960px 260px, #e0f2fe 50%, transparent 51%);
+      animation: moveStars2 120s linear infinite;
+      opacity: 0.2;
+    }
+
+    .stars3 {
+      background-image: radial-gradient(1.5px 1.5px at 140px 420px, #ffffff 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 440px 480px, #e5f2ff 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 760px 520px, #c7f9ff 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 1040px 600px, #fef3c7 50%, transparent 51%);
+      animation: moveStars3 160s linear infinite;
+      opacity: 0.15;
+    }
+
+    @keyframes moveStars {
+      from {
+        transform: translate3d(0, 0, 0);
+      }
+      to {
+        transform: translate3d(-200px, 200px, 0);
+      }
+    }
+
+    @keyframes moveStars2 {
+      from {
+        transform: translate3d(0, 0, 0);
+      }
+      to {
+        transform: translate3d(-300px, 260px, 0);
+      }
+    }
+
+    @keyframes moveStars3 {
+      from {
+        transform: translate3d(0, 0, 0);
+      }
+      to {
+        transform: translate3d(-360px, 300px, 0);
+      }
+    }
+
+    .shooting-star {
+      position: fixed;
+      top: -10%;
+      left: -10%;
+      width: 2px;
+      height: 140px;
+      background: linear-gradient(
+        to bottom,
+        rgba(34, 211, 238, 0.95),
+        rgba(34, 211, 238, 0)
+      );
+      opacity: 0;
+      transform: rotate(45deg);
+      pointer-events: none;
+      z-index: -2;
+      animation: shooting 12s linear infinite;
+    }
+
+    @keyframes shooting {
+      0% {
+        opacity: 0;
+        transform: translate3d(-10%, -10%, 0) rotate(45deg);
+      }
+      8% {
+        opacity: 1;
+      }
+      25% {
+        opacity: 0;
+        transform: translate3d(120vw, 120vh, 0) rotate(45deg);
+      }
+      100% {
+        opacity: 0;
+        transform: translate3d(120vw, 120vh, 0) rotate(45deg);
+      }
+    }
+
+    /* ===== NAVBAR ===== */
+
+    .navbar-glass {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(16px) saturate(1.4);
+      background: radial-gradient(
+          circle at top left,
+          rgba(124, 58, 237, 0.25),
+          transparent 60%
+        ),
+        rgba(4, 5, 17, 0.88);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .navbar-brand {
+      display: flex;
+      flex-direction: column;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      line-height: 1.2;
+    }
+
+    .brand-main {
+      background: linear-gradient(135deg, var(--primary-1), var(--accent-cyan));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-size: 1rem;
+    }
+
+    .brand-sub {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .nav-link {
+      color: #cbd5f5 !important;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 999px;
+      padding: 0.35rem 0.9rem !important;
+    }
+
+    .nav-link:hover {
+      color: #ffffff !important;
+      background: rgba(124, 58, 237, 0.18);
+    }
+
+    .nav-link.active {
+      background: linear-gradient(135deg, var(--primary-1), var(--primary-2));
+      color: #ffffff !important;
+    }
+
+    .nav-btn-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: radial-gradient(
+          circle at top left,
+          rgba(148, 163, 255, 0.4),
+          transparent 55%
+        ),
+        rgba(15, 23, 42, 0.96);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-main);
+      font-size: 0.9rem;
+    }
+
+    .nav-btn-icon:hover {
+      border-color: var(--accent-cyan);
+      color: #ffffff;
+    }
+
+    /* ===== HERO ===== */
+
+    .hero-section {
+      padding: 3.5rem 0 2.75rem;
+      position: relative;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.8);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .hero-title {
+      font-size: 2.3rem;
+      font-weight: 900;
+      letter-spacing: 0.03em;
+      margin-top: 0.8rem;
+      margin-bottom: 0.4rem;
+      background: linear-gradient(
+        135deg,
+        #f9fafb,
+        #e5e7eb,
+        var(--accent-cyan)
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    @media (min-width: 992px) {
+      .hero-title {
+        font-size: 2.8rem;
+      }
+    }
+
+    .hero-subtitle {
+      max-width: 32rem;
+      font-size: 0.98rem;
+      color: var(--text-muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1.4rem;
+    }
+
+    .btn-primary-glow {
+      border: none;
+      border-radius: 999px;
+      padding: 0.6rem 1.45rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+      background-image: linear-gradient(
+        135deg,
+        var(--primary-1),
+        var(--primary-2)
+      );
+      color: #ffffff;
+      box-shadow: 0 10px 35px rgba(37, 99, 235, 0.55);
+    }
+
+    .btn-primary-glow:hover {
+      filter: brightness(1.05);
+      box-shadow: 0 15px 40px rgba(37, 99, 235, 0.75);
+    }
+
+    .btn-ghost-cyan {
+      border-radius: 999px;
+      padding: 0.6rem 1.45rem;
+      font-weight: 600;
+      border: 1px solid rgba(34, 211, 238, 0.8);
+      color: #a5f3fc;
+      background: radial-gradient(
+          circle at top left,
+          rgba(34, 211, 238, 0.18),
+          transparent 55%
+        ),
+        rgba(15, 23, 42, 0.9);
+    }
+
+    .btn-ghost-cyan:hover {
+      color: #ecfeff;
+      border-color: #22d3ee;
+      background: radial-gradient(
+          circle at top left,
+          rgba(34, 211, 238, 0.25),
+          transparent 60%
+        ),
+        rgba(15, 23, 42, 0.95);
+    }
+
+    .hero-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.1rem;
+      font-size: 0.8rem;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(55, 65, 81, 0.8);
+      color: var(--text-muted);
+    }
+
+    .hero-card {
+      border-radius: 18px;
+      background: radial-gradient(
+          circle at top,
+          rgba(124, 58, 237, 0.4),
+          transparent 65%
+        ),
+        radial-gradient(
+          circle at bottom,
+          rgba(34, 211, 238, 0.3),
+          transparent 70%
+        ),
+        rgba(9, 9, 23, 0.98);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      padding: 1.2rem 1.1rem;
+      box-shadow: 0 20px 60px rgba(15, 23, 42, 0.9);
+    }
+
+    .hero-stat-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+    }
+
+    .hero-stat-value {
+      font-size: 1.15rem;
+      font-weight: 800;
+    }
+
+    /* ===== SECTION TITLES ===== */
+
+    .section-title {
+      text-align: center;
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 0.25rem;
+    }
+
+    .section-title span {
+      background: linear-gradient(
+        135deg,
+        var(--primary-1),
+        var(--accent-cyan)
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      max-width: 32rem;
+      margin: 0 auto 1.4rem;
+    }
+
+    /* ===== PRODUCTS ===== */
+
+    .products-section {
+      padding: 2.4rem 0 2.4rem;
+      background: radial-gradient(
+          circle at top left,
+          rgba(124, 58, 237, 0.18),
+          transparent 55%
+        ),
+        radial-gradient(
+          circle at bottom right,
+          rgba(34, 211, 238, 0.15),
+          transparent 65%
+        ),
+        rgba(4, 5, 17, 0.98);
+    }
+
+    .product-card {
+      background: radial-gradient(
+          circle at top,
+          rgba(124, 58, 237, 0.35),
+          transparent 65%
+        ),
+        var(--card-bg);
+      border-radius: 18px;
+      border: 1px solid var(--card-border);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.85);
+      padding: 1rem 0.95rem 0.95rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .product-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -20%;
+      width: 140%;
+      height: 3px;
+      background: linear-gradient(
+        135deg,
+        var(--primary-1),
+        var(--accent-cyan)
+      );
+      opacity: 0;
+      transform: translateY(-100%);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(56, 189, 248, 0.7);
+      box-shadow: 0 24px 70px rgba(34, 197, 235, 0.4);
+    }
+
+    .product-card:hover::before {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 0.65rem;
+      right: 0.75rem;
+      font-size: 0.65rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .product-icon-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: radial-gradient(
+          circle at top,
+          rgba(56, 189, 248, 0.3),
+          transparent 60%
+        ),
+        #020617;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #bfdbfe;
+      margin-bottom: 0.6rem;
+    }
+
+    .product-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+
+    .product-cat-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .product-price {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--success);
+    }
+
+    .product-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.7rem;
+    }
+
+    .btn-icon-small {
+      border-radius: 999px;
+      padding: 0.35rem 0.9rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .btn-cart {
+      border: none;
+      background: linear-gradient(
+        135deg,
+        var(--primary-1),
+        var(--primary-2)
+      );
+      color: #ffffff;
+    }
+
+    .btn-cart:hover {
+      filter: brightness(1.06);
+    }
+
+    .btn-whatsapp {
+      border: 1px solid rgba(34, 197, 94, 0.9);
+      color: #bbf7d0;
+      background: rgba(6, 78, 59, 0.6);
+    }
+
+    .btn-whatsapp:hover {
+      background: rgba(6, 95, 70, 0.9);
+      color: #ecfdf5;
+    }
+
+    /* ===== CART / FLOATING BUTTON ===== */
+
+    .floating-cart {
+      position: fixed;
+      right: 1rem;
+      bottom: 1.1rem;
+      z-index: 900;
+      border-radius: 999px;
+      background: linear-gradient(
+        135deg,
+        var(--primary-1),
+        var(--accent-cyan)
+      );
+      border: none;
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1rem;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .floating-cart-count {
+      min-width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      background: #ffffff;
+      color: #020617;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 800;
+    }
+
+    .floating-wa {
+      position: fixed;
+      right: 1rem;
+      bottom: 3.5rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      background: #22c55e;
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      box-shadow: 0 18px 40px rgba(22, 163, 74, 0.7);
+      z-index: 900;
+      font-size: 1.2rem;
+    }
+
+    /* CART OFFCANVAS */
+
+    .cart-offcanvas {
+      background: radial-gradient(
+          circle at top,
+          rgba(124, 58, 237, 0.35),
+          transparent 60%
+        ),
+        #020617;
+      color: var(--text-main);
+    }
+
+    .cart-offcanvas .offcanvas-header {
+      border-bottom: 1px solid rgba(51, 65, 85, 0.8);
+    }
+
+    .cart-item-card {
+      border-radius: 14px;
+      border: 1px solid rgba(51, 65, 85, 0.9);
+      padding: 0.55rem 0.6rem;
+      background: rgba(15, 23, 42, 0.9);
+      margin-bottom: 0.55rem;
+    }
+
+    .cart-item-title {
+      font-size: 0.85rem;
+    }
+
+    .cart-item-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .cart-total-label {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .cart-total-value {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--success);
+    }
+
+    .empty-cart {
+      text-align: center;
+      padding: 2rem 0;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .empty-cart i {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+      opacity: 0.7;
+    }
+
+    /* ===== SECTIONS (Cara Order, FAQ) ===== */
+
+    .section-soft {
+      padding: 2.4rem 0 2.3rem;
+      background: rgba(5, 7, 20, 0.98);
+    }
+
+    .step-item {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .step-badge {
+      flex-shrink: 0;
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      background: rgba(124, 58, 237, 0.28);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #e5e7eb;
+    }
+
+    .step-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.12rem;
+    }
+
+    .step-text {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .faq-item {
+      border-radius: 14px;
+      border: 1px solid rgba(51, 65, 85, 0.9);
+      margin-bottom: 0.55rem;
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    .faq-header button {
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      padding: 0.6rem 0.8rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .faq-body {
+      padding: 0.55rem 0.8rem 0.7rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(51, 65, 85, 0.9);
+    }
+
+    /* ===== TESTIMONIALS ===== */
+
+    .testimonials-section {
+      padding: 2.4rem 0 2.4rem;
+      background: radial-gradient(
+          circle at top,
+          rgba(34, 211, 238, 0.2),
+          transparent 55%
+        ),
+        #020617;
+    }
+
+    .testimonial-card {
+      border-radius: 18px;
+      border: 1px solid rgba(51, 65, 85, 0.9);
+      background: rgba(15, 23, 42, 0.96);
+      padding: 1.2rem 1.1rem;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonial-card::before {
+      content: "“";
+      position: absolute;
+      top: -20px;
+      right: 18px;
+      font-size: 4.5rem;
+      color: rgba(148, 163, 184, 0.18);
+      font-family: "Georgia", serif;
+    }
+
+    .testimonial-text {
+      font-size: 0.86rem;
+      color: #e5e7eb;
+      margin-bottom: 0.7rem;
+    }
+
+    .testimonial-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .testimonial-role {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* ===== FOOTER GALAXY ===== */
+
+    .footer-galaxy {
+      padding: 2.4rem 0 1.3rem;
+      background: radial-gradient(
+          circle at top left,
+          rgba(124, 58, 237, 0.25),
+          transparent 60%
+        ),
+        radial-gradient(
+          circle at bottom right,
+          rgba(34, 211, 238, 0.2),
+          transparent 65%
+        ),
+        #050816;
+      border-top: 1px solid rgba(51, 65, 85, 0.9);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer-galaxy::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+          circle at 20% 0,
+          rgba(124, 58, 237, 0.5),
+          transparent 55%
+        ),
+        radial-gradient(
+          circle at 80% 100%,
+          rgba(34, 211, 238, 0.5),
+          transparent 60%
+        );
+      opacity: 0.18;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .footer-brand-title {
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      margin-bottom: 0.3rem;
+      color: #e5e7eb;
+    }
+
+    .footer-brand-name {
+      font-size: 1.1rem;
+      font-weight: 900;
+      background: linear-gradient(
+        135deg,
+        #ffffff,
+        var(--accent-cyan)
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.1rem;
+    }
+
+    .footer-brand-tagline {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .footer-nav-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #e5e7eb;
+      margin-bottom: 0.3rem;
+    }
+
+    .footer-nav-link {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-bottom: 0.15rem;
+    }
+
+    .footer-nav-link:hover {
+      color: #e0f2fe;
+      text-decoration: none;
+    }
+
+    .footer-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .footer-contact-item i {
+      color: var(--accent-cyan);
+      margin-top: 0.12rem;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      margin-top: 1.5rem;
+      padding-top: 0.65rem;
+      font-size: 0.75rem;
+      color: #6b7280;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.3rem;
+    }
+
+    @media (max-width: 576px) {
+      .hero-section {
+        padding-top: 2.2rem;
+      }
+      .hero-title {
+        font-size: 1.8rem;
+      }
+      .floating-cart {
+        right: 0.75rem;
+        bottom: 0.9rem;
+      }
+      .floating-wa {
+        right: 0.75rem;
+        bottom: 3.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- GALAXY LAYERS -->
+  <div class="stars"></div>
+  <div class="stars2"></div>
+  <div class="stars3"></div>
+  <div class="shooting-star"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-glass">
+    <div class="container">
+      <a class="navbar-brand" href="#top">
+        <span class="brand-main">D&D MULTIVERSE DIGITAL</span>
+        <span class="brand-sub">A DIGITAL CREATIVE STUDIO</span>
+      </a>
+      <button
+        class="navbar-toggler nav-btn-icon"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#mainNav"
+      >
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item">
+            <a class="nav-link active" href="#produk">Produk</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#testimoni">Testimoni</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#cara-order">Cara Order</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#faq">FAQ</a>
+          </li>
+          <li class="nav-item ms-lg-2">
+            <a
+              class="nav-link"
+              href="#kontak"
+            >
+              Kontak
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero-section" id="top">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-7">
+          <div class="hero-badge">
+            <i class="fa-solid fa-rocket"></i>
+            <span>Layanan digital premium, terkurasi, dan terpercaya</span>
+          </div>
+          <h1 class="hero-title">
+            Explore the Digital Multiverse.
+          </h1>
+          <p class="hero-subtitle">
+            Solusi satu pintu untuk akses premium aplikasi, tools AI, streaming,
+            hingga produktivitas. D&D Multiverse Digital membantu aktivitas kerja,
+            hiburan, dan karya kreatif Anda tetap lancar dan berkelas.
+          </p>
+          <div class="hero-actions">
+            <a href="#produk" class="btn btn-primary-glow">
+              <i class="fa-solid fa-tags me-1"></i> Lihat Produk
+            </a>
+            <a
+              href="https://wa.me/6287809236556?text=Halo%20admin%2C%20saya%20ingin%20bertanya%20mengenai%20produk%20di%20D%26D%20Multiverse%20Digital."
+              target="_blank"
+              class="btn btn-ghost-cyan"
+            >
+              <i class="fa-brands fa-whatsapp me-1"></i> Hubungi Admin
+            </a>
+          </div>
+          <div class="hero-pill-row">
+            <div class="hero-pill">
+              <i class="fa-solid fa-bolt"></i>
+              <span>Estimasi proses 1–10 menit*</span>
+            </div>
+            <div class="hero-pill">
+              <i class="fa-solid fa-shield-halved"></i>
+              <span>Garansi selama masa langganan*</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="hero-card">
+            <div class="mb-3">
+              <div class="hero-stat-label">Multiverse Metrics</div>
+            </div>
+            <div class="row g-3">
+              <div class="col-6">
+                <div class="hero-stat-value">1.500+</div>
+                <div class="hero-stat-label">Pesanan terselesaikan</div>
+              </div>
+              <div class="col-6">
+                <div class="hero-stat-value">4.9/5</div>
+                <div class="hero-stat-label">Tingkat kepuasan</div>
+              </div>
+              <div class="col-12 mt-2">
+                <div class="hero-stat-label mb-1">
+                  Metode pembayaran
+                </div>
+                <div class="hero-stat-value" style="font-size: 0.95rem;">
+                  QRIS • Transfer • E-Wallet*
+                </div>
+                <div
+                  class="mt-1"
+                  style="font-size: 0.75rem; color: var(--text-muted);"
+                >
+                  *Disesuaikan dengan kebijakan terbaru D&D Multiverse Digital.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUK -->
+  <section class="products-section" id="produk">
+    <div class="container">
+      <div class="section-title">
+        <span>Produk Digital Terpilih</span>
+      </div>
+      <p class="section-subtitle">
+        Pilih layanan yang paling sesuai dengan kebutuhan Anda — mulai dari tools
+        desain, streaming, hingga AI dan keamanan. Seluruh harga sudah termasuk
+        biaya layanan dan dukungan purna jual dari D&D Multiverse Digital.
+      </p>
+
+      <div class="row g-3" id="product-grid">
+        <!-- cards injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section" id="testimoni">
+    <div class="container">
+      <div class="section-title">
+        <span>Testimoni Pengguna</span>
+      </div>
+      <p class="section-subtitle">
+        Beberapa ulasan dari pelanggan yang sudah mempercayakan kebutuhan
+        digitalnya kepada D&D Multiverse Digital.
+      </p>
+
+      <div class="row g-3 mt-1">
+        <div class="col-md-4">
+          <article class="testimonial-card">
+            <p class="testimonial-text">
+              “Proses cepat dan komunikasinya sangat rapi. Semua dijelaskan
+              dengan detail, jadi saya merasa aman dan tenang saat bertransaksi.”
+            </p>
+            <div class="testimonial-name">Rizky A.</div>
+            <div class="testimonial-role">Content Creator — Jakarta</div>
+          </article>
+        </div>
+        <div class="col-md-4">
+          <article class="testimonial-card">
+            <p class="testimonial-text">
+              “Untuk kebutuhan streaming keluarga dan tools desain kerja, di sini
+              lengkap. Admin responsif dan selalu memberi solusi kalau ada kendala.”
+            </p>
+            <div class="testimonial-name">Maya L.</div>
+            <div class="testimonial-role">Marketing Specialist — Bandung</div>
+          </article>
+        </div>
+        <div class="col-md-4">
+          <article class="testimonial-card">
+            <p class="testimonial-text">
+              “Tampilan katalog jelas, harga kompetitif, dan after sales-nya
+              sigap. Sangat membantu untuk menunjang produktivitas harian saya.”
+            </p>
+            <div class="testimonial-name">Andi P.</div>
+            <div class="testimonial-role">Freelance Designer — Surabaya</div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARA ORDER -->
+  <section class="section-soft" id="cara-order">
+    <div class="container">
+      <div class="section-title">
+        <span>Cara Order di D&D Multiverse Digital</span>
+      </div>
+      <p class="section-subtitle">
+        Alur pemesanan yang dirancang sederhana, sehingga Anda dapat bertransaksi
+        dengan nyaman dan tanpa kebingungan.
+      </p>
+
+      <div class="row g-3 mt-1">
+        <div class="col-md-6">
+          <div class="step-item">
+            <div class="step-badge">1</div>
+            <div>
+              <div class="step-title">Pilih produk</div>
+              <p class="step-text">
+                Telusuri bagian <strong>Produk</strong>, baca deskripsi singkat
+                dan harga, kemudian tekan tombol
+                <strong>Tambah ke Keranjang</strong> atau
+                <strong>WhatsApp</strong> jika ingin berkonsultasi terlebih dahulu.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="step-item">
+            <div class="step-badge">2</div>
+            <div>
+              <div class="step-title">Buka keranjang</div>
+              <p class="step-text">
+                Tekan ikon <strong>Keranjang</strong> yang berada di kanan bawah
+                layar. Di sana Anda dapat meninjau ulang produk, jumlah, dan
+                total transaksi sebelum melanjutkan.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="step-item">
+            <div class="step-badge">3</div>
+            <div>
+              <div class="step-title">Checkout via WhatsApp</div>
+              <p class="step-text">
+                Tekan tombol <strong>Checkout via WhatsApp</strong>. Sistem akan
+                membuat format pesanan otomatis berdasarkan isi keranjang, sehingga
+                Anda cukup mengirimkan pesan tersebut ke admin.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="step-item">
+            <div class="step-badge">4</div>
+            <div>
+              <div class="step-title">Pembayaran & aktivasi</div>
+              <p class="step-text">
+                Lakukan pembayaran sesuai instruksi admin. Setelah terkonfirmasi,
+                akses, akun, atau detail aktivasi akan dikirim melalui WhatsApp
+                sesuai produk yang Anda pesan.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-soft" id="faq" style="background: #020617;">
+    <div class="container">
+      <div class="section-title">
+        <span>Pertanyaan yang Sering Diajukan</span>
+      </div>
+      <p class="section-subtitle">
+        Beberapa hal yang sering ditanyakan sebelum melakukan pemesanan.
+        Silakan baca terlebih dahulu, atau langsung hubungi admin jika masih ada
+        yang ingin dikonsultasikan.
+      </p>
+
+      <div class="row g-3 mt-1">
+        <div class="col-md-7">
+          <!-- FAQ items -->
+          <div class="faq-item">
+            <div class="faq-header">
+              <button
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#faq1"
+              >
+                Berapa lama proses setelah pembayaran?
+              </button>
+            </div>
+            <div id="faq1" class="collapse show">
+              <div class="faq-body">
+                Estimasi normal sekitar <strong>1–10 menit</strong> pada jam
+                operasional. Jika sedang padat atau terdapat kendala dari pihak
+                platform, admin akan memberikan informasi perkembangan secara
+                transparan.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-header">
+              <button
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#faq2"
+              >
+                Bagaimana jika akun mengalami kendala di tengah masa langganan?
+              </button>
+            </div>
+            <div id="faq2" class="collapse">
+              <div class="faq-body">
+                Silakan hubungi admin dan sertakan bukti pesanan serta penjelasan
+                kendala yang terjadi. Selama masih sesuai dengan ketentuan,
+                D&D Multiverse Digital akan membantu proses perbaikan atau
+                penanganan sesuai kebijakan garansi yang berlaku.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-header">
+              <button
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#faq3"
+              >
+                Metode pembayaran apa saja yang tersedia?
+              </button>
+            </div>
+            <div id="faq3" class="collapse">
+              <div class="faq-body">
+                Umumnya tersedia pembayaran melalui <strong>QRIS</strong>,
+                transfer bank, atau metode lain yang akan diinformasikan oleh
+                admin. Detail rekening atau kode QR akan dikirim setelah pesanan
+                Anda dikonfirmasi.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-header">
+              <button
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#faq4"
+              >
+                Status akun ini seperti apa?
+              </button>
+            </div>
+            <div id="faq4" class="collapse">
+              <div class="faq-body">
+                D&D Multiverse Digital berupaya mengikuti
+                <strong>ketentuan penggunaan</strong> setiap platform. Jenis akun
+                (misalnya sharing, personal, family, dan sebagainya) akan
+                dijelaskan oleh admin agar Anda memahami detail sebelum
+                melakukan pembayaran.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-5">
+          <div
+            class="p-3 p-md-4"
+            style="
+              border-radius: 18px;
+              border: 1px solid rgba(51, 65, 85, 0.9);
+              background: radial-gradient(
+                  circle at top,
+                  rgba(124, 58, 237, 0.5),
+                  transparent 60%
+                ),
+                rgba(15, 23, 42, 0.95);
+            "
+          >
+            <div
+              class="mb-2"
+              style="display: inline-flex; align-items: center; gap: 0.45rem;"
+            >
+              <div
+                style="
+                  width: 34px;
+                  height: 34px;
+                  border-radius: 999px;
+                  background: rgba(34, 197, 94, 0.18);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: #bbf7d0;
+                "
+              >
+                <i class="fa-brands fa-whatsapp"></i>
+              </div>
+              <div
+                style="
+                  font-size: 0.8rem;
+                  text-transform: uppercase;
+                  letter-spacing: 0.14em;
+                  color: var(--text-muted);
+                "
+              >
+                Butuh bantuan lebih lanjut?
+              </div>
+            </div>
+            <h3
+              style="
+                font-size: 1.05rem;
+                font-weight: 700;
+                margin-bottom: 0.35rem;
+              "
+            >
+              Silakan konsultasi dengan admin terlebih dahulu.
+            </h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">
+              Anda dapat menanyakan perbandingan paket, cara penggunaan, maupun
+              rekomendasi layanan yang paling sesuai dengan kebutuhan harian
+              ataupun bisnis Anda.
+            </p>
+            <a
+              href="https://wa.me/6287809236556?text=Halo%20admin%2C%20saya%20ingin%20konsultasi%20terlebih%20dahulu%20mengenai%20produk%20di%20D%26D%20Multiverse%20Digital."
+              target="_blank"
+              class="btn btn-success w-100"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  #22c55e,
+                  #16a34a
+                );
+                border: none;
+                font-size: 0.88rem;
+                font-weight: 700;
+              "
+            >
+              <i class="fa-brands fa-whatsapp me-1"></i>
+              Konsultasi via WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer-galaxy" id="kontak">
+    <div class="container">
+      <div class="row g-3 g-md-4">
+        <div class="col-md-5">
+          <div class="footer-brand-title">DIGITAL UNIVERSE</div>
+          <div class="footer-brand-name">D&D MULTIVERSE DIGITAL</div>
+          <div class="footer-brand-tagline">
+            A Digital Creative Studio
+          </div>
+          <p
+            style="
+              font-size: 0.8rem;
+              color: var(--text-muted);
+              margin-top: 0.5rem;
+            "
+          >
+            Menghubungkan berbagai kebutuhan digital Anda — mulai dari hiburan
+            hingga produktivitas kerja — melalui satu portal layanan yang
+            elegan dan terintegrasi.
+          </p>
+        </div>
+        <div class="col-md-3">
+          <div class="footer-nav-title">Navigasi</div>
+          <a href="#produk" class="footer-nav-link">Produk</a>
+          <a href="#testimoni" class="footer-nav-link">Testimoni</a>
+          <a href="#cara-order" class="footer-nav-link">Cara Order</a>
+          <a href="#faq" class="footer-nav-link">FAQ</a>
+          <a href="#top" class="footer-nav-link">Kembali ke Atas</a>
+        </div>
+        <div class="col-md-4">
+          <div class="footer-nav-title">Kontak</div>
+          <div class="footer-contact-item">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>WhatsApp: 0878-0923-6556</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <span>Email: brandotan94@gmail.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-globe"></i>
+            <span>Powered by D&D — A Digital Creative Studio</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> D&D Multiverse Digital. All rights reserved.</span>
+        <span>Website by D&D — A Digital Creative Studio</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING BUTTONS -->
+  <button
+    class="floating-wa"
+    onclick="window.open('https://wa.me/6287809236556?text=Halo%20admin%2C%20saya%20ingin%20bertanya%20mengenai%20produk%20di%20D%26D%20Multiverse%20Digital.', '_blank');"
+  >
+    <i class="fa-brands fa-whatsapp"></i>
+  </button>
+
+  <button
+    class="floating-cart"
+    type="button"
+    data-bs-toggle="offcanvas"
+    data-bs-target="#cartOffcanvas"
+  >
+    <i class="fa-solid fa-bag-shopping"></i>
+    <span>Keranjang</span>
+    <span class="floating-cart-count" id="cart-count">0</span>
+  </button>
+
+  <!-- OFFCANVAS CART -->
+  <div
+    class="offcanvas offcanvas-end cart-offcanvas"
+    tabindex="-1"
+    id="cartOffcanvas"
+  >
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">
+        <i class="fa-solid fa-basket-shopping me-2"></i>
+        Keranjang
+      </h5>
+      <button
+        type="button"
+        class="btn-close btn-close-white"
+        data-bs-dismiss="offcanvas"
+      ></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column">
+      <div id="cart-items"></div>
+      <div class="mt-auto pt-2">
+        <div
+          class="d-flex justify-content-between align-items-center mb-2"
+        >
+          <span class="cart-total-label">Total</span>
+          <span class="cart-total-value" id="cart-total">Rp0</span>
+        </div>
+        <div class="d-grid gap-2">
+          <button
+            class="btn btn-outline-danger btn-sm"
+            id="btn-clear-cart"
+          >
+            <i class="fa-solid fa-trash me-1"></i> Hapus Keranjang
+          </button>
+          <a
+            href="#"
+            target="_blank"
+            id="btn-checkout-wa"
+            class="btn btn-success btn-sm"
+            style="
+              background: linear-gradient(
+                135deg,
+                #22c55e,
+                #16a34a
+              );
+              border: none;
+              font-weight: 700;
+            "
+          >
+            <i class="fa-brands fa-whatsapp me-1"></i> Checkout via WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const WA_NUMBER = "6287809236556";
+
+    const products = [
+      // DESAIN / TOOLS
+      {
+        id: "capcut",
+        name: "CapCut Pro 1 Bulan",
+        price: 30000,
+        category: "Desain & Tools",
+        icon: "fa-scissors"
+      },
+      {
+        id: "chatgpt1",
+        name: "ChatGPT Plus 1 Bulan Invite",
+        price: 50000,
+        category: "Desain & Tools",
+        icon: "fa-robot"
+      },
+      {
+        id: "chatgpt3",
+        name: "ChatGPT Plus 3 Bulan",
+        price: 95000,
+        category: "Desain & Tools",
+        icon: "fa-brain"
+      },
+      // STREAMING
+      {
+        id: "vidio1",
+        name: "Vidio Platinum 1 Bulan All Device",
+        price: 50000,
+        category: "Streaming",
+        icon: "fa-tv"
+      },
+      {
+        id: "disney1",
+        name: "Disney+ Hotstar 1 Bulan",
+        price: 60000,
+        category: "Streaming",
+        icon: "fa-wand-magic-sparkles"
+      },
+      {
+        id: "netflix1",
+        name: "Netflix Premium 1 Bulan",
+        price: 45000,
+        category: "Streaming",
+        icon: "fa-film"
+      },
+      {
+        id: "viu1y",
+        name: "Viu Premium 1 Tahun",
+        price: 20000,
+        category: "Streaming",
+        icon: "fa-clapperboard"
+      },
+      {
+        id: "prime1",
+        name: "Amazon Prime Video 1 Bulan",
+        price: 30000,
+        category: "Streaming",
+        icon: "fa-video"
+      },
+      {
+        id: "vidio1y",
+        name: "Vidio Platinum 1 Tahun TV Only",
+        price: 25000,
+        category: "Streaming",
+        icon: "fa-tv"
+      },
+      {
+        id: "vidio1m",
+        name: "Vidio Platinum 1 Bulan Mobile Only",
+        price: 37000,
+        category: "Streaming",
+        icon: "fa-mobile-screen"
+      },
+      {
+        id: "iqiyi1",
+        name: "IQIYI 1 Bulan",
+        price: 35000,
+        category: "Streaming",
+        icon: "fa-film"
+      },
+      // MUSIK & APPS
+      {
+        id: "spotify1",
+        name: "Spotify Premium 1 Bulan",
+        price: 30000,
+        category: "Musik & Apps",
+        icon: "fa-music"
+      },
+      {
+        id: "yt3",
+        name: "YouTube Premium 3 Bulan",
+        price: 55000,
+        category: "Musik & Apps",
+        icon: "fa-youtube"
+      },
+      {
+        id: "yt1",
+        name: "YouTube Premium 1 Bulan",
+        price: 20000,
+        category: "Musik & Apps",
+        icon: "fa-play-circle"
+      },
+      // CANVA
+      {
+        id: "canva1y",
+        name: "Canva Pro 1 Tahun",
+        price: 30000,
+        category: "Desain",
+        icon: "fa-palette"
+      },
+      {
+        id: "canva1m",
+        name: "Canva Pro 1 Bulan",
+        price: 20000,
+        category: "Desain",
+        icon: "fa-brush"
+      },
+      // STORAGE
+      {
+        id: "g1",
+        name: "Google One 2TB + Gemini Pro",
+        price: 35000,
+        category: "Penyimpanan",
+        icon: "fa-cloud"
+      },
+      // PRODUKTIVITAS
+      {
+        id: "zoom",
+        name: "ZOOM 100 Peserta 14 Hari",
+        price: 23000,
+        category: "Produktivitas",
+        icon: "fa-users"
+      },
+      // SECURITY
+      {
+        id: "vpn",
+        name: "ExpressVPN 1 Bulan",
+        price: 25000,
+        category: "Keamanan",
+        icon: "fa-shield-halved"
+      },
+      // AI TOOLS
+      {
+        id: "perplexity",
+        name: "Perplexity Pro 1 Bulan",
+        price: 25000,
+        category: "AI Tools",
+        icon: "fa-microchip"
+      }
+    ];
+
+    const moneyIDR = (n) =>
+      "Rp" + (Number(n) || 0).toLocaleString("id-ID");
+
+    // RENDER PRODUCTS
+    const productGrid = document.getElementById("product-grid");
+    function renderProducts() {
+      productGrid.innerHTML = "";
+      products.forEach((p) => {
+        const col = document.createElement("div");
+        col.className = "col-6 col-md-4 col-lg-3";
+        col.innerHTML = `
+          <article class="product-card h-100">
+            <div class="product-badge">
+              <i class="fa-solid fa-star"></i><span>${p.category}</span>
+            </div>
+            <div class="product-icon-wrap">
+              <i class="fa-solid ${p.icon}"></i>
+            </div>
+            <h3 class="product-title">${p.name}</h3>
+            <div class="product-cat-label">${p.category}</div>
+            <div class="product-price">${moneyIDR(p.price)}</div>
+            <div class="product-actions">
+              <button class="btn btn-icon-small btn-cart" data-add="${p.id}">
+                <i class="fa-solid fa-cart-plus me-1"></i>Keranjang
+              </button>
+              <a
+                class="btn btn-icon-small btn-whatsapp"
+                target="_blank"
+                href="https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(
+                  "Halo admin, saya ingin memesan " +
+                    p.name +
+                    " dengan harga " +
+                    moneyIDR(p.price) +
+                    "."
+                )}"
+              >
+                <i class="fa-brands fa-whatsapp me-1"></i>WhatsApp
+              </a>
+            </div>
+          </article>
+        `;
+        productGrid.appendChild(col);
+      });
+    }
+
+    // CART
+    const CART_KEY = "ddm_cart";
+    const cartCountEl = document.getElementById("cart-count");
+    const cartItemsEl = document.getElementById("cart-items");
+    const cartTotalEl = document.getElementById("cart-total");
+    const checkoutBtn = document.getElementById("btn-checkout-wa");
+    const clearBtn = document.getElementById("btn-clear-cart");
+
+    function getCart() {
+      try {
+        const raw = localStorage.getItem(CART_KEY);
+        return raw ? JSON.parse(raw) : [];
+      } catch {
+        return [];
+      }
+    }
+
+    function saveCart(cart) {
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+      renderCart();
+    }
+
+    function addToCart(productId) {
+      const cart = getCart();
+      const found = cart.find((c) => c.id === productId);
+      if (found) {
+        found.qty += 1;
+      } else {
+        const p = products.find((x) => x.id === productId);
+        if (!p) return;
+        cart.push({ id: p.id, name: p.name, price: p.price, qty: 1 });
+      }
+      saveCart(cart);
+    }
+
+    function changeQty(productId, delta) {
+      const cart = getCart();
+      const item = cart.find((c) => c.id === productId);
+      if (!item) return;
+      item.qty = Math.max(1, item.qty + delta);
+      saveCart(cart);
+    }
+
+    function removeFromCart(productId) {
+      const cart = getCart().filter((c) => c.id !== productId);
+      saveCart(cart);
+    }
+
+    function clearCart() {
+      saveCart([]);
+    }
+
+    function renderCart() {
+      const cart = getCart();
+      if (!cart.length) {
+        cartItemsEl.innerHTML = `
+          <div class="empty-cart">
+            <i class="fa-regular fa-face-sad-tear"></i>
+            <div>Keranjang masih kosong.</div>
+            <div>Silakan pilih produk terlebih dahulu.</div>
+          </div>
+        `;
+        cartCountEl.textContent = "0";
+        cartTotalEl.textContent = moneyIDR(0);
+        checkoutBtn.href = "#";
+        checkoutBtn.classList.add("disabled");
+        return;
+      }
+
+      let total = 0;
+      cartItemsEl.innerHTML = cart
+        .map((item) => {
+          const sub = item.price * item.qty;
+          total += sub;
+          return `
+            <div class="cart-item-card">
+              <div class="d-flex justify-content-between align-items-start">
+                <div>
+                  <div class="cart-item-title">${item.name}</div>
+                  <div class="cart-item-meta">
+                    ${moneyIDR(item.price)} × ${item.qty} = ${moneyIDR(sub)}
+                  </div>
+                </div>
+                <div class="d-flex flex-column align-items-end gap-1">
+                  <div class="btn-group btn-group-sm">
+                    <button class="btn btn-outline-light" data-minus="${item.id}">-</button>
+                    <button class="btn btn-outline-light" data-plus="${item.id}">+</button>
+                  </div>
+                  <button class="btn btn-outline-danger btn-sm" data-remove="${item.id}">
+                    <i class="fa-solid fa-xmark"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+        })
+        .join("");
+
+      cartCountEl.textContent = String(
+        cart.reduce((a, b) => a + b.qty, 0)
+      );
+      cartTotalEl.textContent = moneyIDR(total);
+
+      const lines = cart
+        .map(
+          (i) =>
+            `• ${i.name} x${i.qty} = ${moneyIDR(i.price * i.qty)}`
+        )
+        .join("%0A");
+
+      const text =
+        `Halo admin, saya ingin melakukan checkout pesanan dari D&D Multiverse Digital:%0A%0A` +
+        lines +
+        `%0A%0ATotal: ${moneyIDR(
+          total
+        )}%0A%0AMohon informasikan langkah berikutnya.`;
+
+      checkoutBtn.href = `https://wa.me/${WA_NUMBER}?text=${text}`;
+      checkoutBtn.classList.remove("disabled");
+    }
+
+    // EVENT LISTENERS
+    document.addEventListener("click", (e) => {
+      const addBtn = e.target.closest("[data-add]");
+      const minusBtn = e.target.closest("[data-minus]");
+      const plusBtn = e.target.closest("[data-plus]");
+      const removeBtn = e.target.closest("[data-remove]");
+
+      if (addBtn) {
+        const id = addBtn.getAttribute("data-add");
+        addToCart(id);
+      } else if (minusBtn) {
+        const id = minusBtn.getAttribute("data-minus");
+        changeQty(id, -1);
+      } else if (plusBtn) {
+        const id = plusBtn.getAttribute("data-plus");
+        changeQty(id, +1);
+      } else if (removeBtn) {
+        const id = removeBtn.getAttribute("data-remove");
+        removeFromCart(id);
+      }
+    });
+
+    clearBtn.addEventListener("click", () => {
+      clearCart();
+    });
+
+    // INIT
+    document.addEventListener("DOMContentLoaded", () => {
+      renderProducts();
+      renderCart();
+      const y = document.getElementById("year");
+      if (y) y.textContent = new Date().getFullYear();
+    });
+  </script>
+</body>
+</html>
