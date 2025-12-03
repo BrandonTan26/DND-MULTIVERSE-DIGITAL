@@ -4,61 +4,43 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>D&D Multiverse Digital - Price List</title>
-
-  <!-- Bootstrap & Fonts -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
   <style>
     :root{
-      /* Tema luar angkasa + neon cyberpunk */
-      --primary-color:#22d3ee; /* cyan neon */
-      --secondary-color:#6366f1; /* indigo neon */
-      --accent-color:#f97316; /* orange accent */
+      --primary-color:#4c1d95;       /* ungu neon */
+      --secondary-color:#22d3ee;     /* cyan neon */
+      --accent-color:#e11d48;        /* pink neon */
       --success-color:#10b981;
       --warning-color:#f59e0b;
       --danger-color:#ef4444;
 
       --dark-color:#020617;
-      --light-color:#0b1020;
-      --muted-color:#64748b;
+      --light-color:#020617;
+      --muted-color:#9ca3af;
 
-      --bg-page:
-        radial-gradient(circle at 0% 0%, rgba(56,189,248,0.20), transparent 55%),
-        radial-gradient(circle at 100% 0%, rgba(129,140,248,0.20), transparent 55%),
-        radial-gradient(circle at 0% 100%, rgba(248,113,113,0.18), transparent 55%),
-        #020617;
-
+      --bg-page:radial-gradient(circle at top,#1d2040 0%,#020617 55%,#000 100%);
       --bg-surface:#020617;
       --text-main:#e5e7eb;
 
-      --card-shadow:0 8px 24px rgba(0,0,0,.8);
-      --card-shadow-hover:0 18px 40px rgba(0,0,0,.95);
+      --card-shadow:0 10px 35px rgba(15,23,42,.8);
+      --card-shadow-hover:0 25px 60px rgba(15,23,42,.95);
 
-      --border-radius:16px;
-
-      --gradient-primary:linear-gradient(135deg,#22d3ee 0%,#6366f1 45%,#f97316 100%);
-      --gradient-accent:linear-gradient(135deg,#22c55e 0%,#22d3ee 100%);
-
-      /* dinamis (diisi via JS) */
+      --border-radius:18px;
+      --gradient-primary:linear-gradient(135deg,#4c1d95 0%,#22c1c3 60%,#22d3ee 100%);
+      --gradient-accent:linear-gradient(135deg,#e11d48 0%,#a855f7 50%,#22d3ee 100%);
       --nav-h:64px;
     }
 
     html[data-theme="light"]{
-      --bg-page:
-        radial-gradient(circle at 0% 0%, rgba(56,189,248,0.10), transparent 55%),
-        radial-gradient(circle at 100% 0%, rgba(129,140,248,0.12), transparent 55%),
-        radial-gradient(circle at 0% 100%, rgba(248,113,113,0.10), transparent 55%),
-        #ffffff;
-
-      --bg-surface:#f8fafc;
-      --text-main:#0f172a;
-      --light-color:#f1f5f9;
+      --bg-page:linear-gradient(135deg,#1d4ed8 0%,#7c3aed 45%,#22d3ee 100%);
+      --bg-surface:#f9fafb;
+      --text-main:#020617;
+      --light-color:#e5e7eb;
       --muted-color:#64748b;
-
-      --card-shadow:0 4px 6px -1px rgba(15,23,42,.12),0 2px 4px -1px rgba(15,23,42,.08);
-      --card-shadow-hover:0 20px 25px -5px rgba(15,23,42,.20),0 10px 10px -5px rgba(15,23,42,.12);
+      --card-shadow:0 6px 18px rgba(15,23,42,.25);
+      --card-shadow-hover:0 18px 40px rgba(15,23,42,.3);
     }
 
     *{box-sizing:border-box}
@@ -70,7 +52,7 @@
       color:var(--text-main);
     }
     .container-fluid{
-      background:transparent;
+      background:var(--bg-surface);
       min-height:100vh;
       margin:0;
       padding:0;
@@ -78,90 +60,54 @@
 
     /* ===== Glass Navbar ===== */
     .nav-glass{
-      position:sticky;
-      top:0;
-      z-index:1100;
-      background:rgba(15,23,42,.86);
-      backdrop-filter:saturate(1.6) blur(16px);
+      position:sticky; top:0; z-index:1100;
+      background:rgba(15,23,42,.85);
+      backdrop-filter:saturate(1.4) blur(14px);
       border-bottom:1px solid rgba(148,163,184,.35);
     }
     html[data-theme="light"] .nav-glass{
-      background:rgba(248,250,252,.92);
+      background:rgba(15,23,42,.08);
       border-color:#e2e8f0;
     }
+
     .navbar-brand{
       font-weight:900;
-      letter-spacing:.5px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-size:1rem;
       background:var(--gradient-primary);
       -webkit-background-clip:text;
       background-clip:text;
       color:transparent;
-      text-transform:uppercase;
-      font-size:1.05rem;
     }
+
     .nav-link{
-      font-weight:700;
+      font-weight:600;
       border-radius:999px;
       padding:.45rem .9rem !important;
-    }
-    html[data-theme="light"] .nav-link{
-      color:#0f172a !important;
-    }
-    html[data-theme="dark"] .nav-link{
-      color:#e5e7eb !important;
+      font-size:.9rem;
+      color:var(--muted-color) !important;
     }
     .nav-link:hover{
-      background:rgba(99,102,241,.14);
-      color:#ffffff !important;
+      background:rgba(148,163,184,.18);
+      color:#e5e7eb !important;
     }
     .nav-link.active{
-      color:#fff !important;
+      color:#0f172a !important;
       background:var(--gradient-primary);
     }
+
     .navbar-toggler{
       border-radius:12px;
       border:1px solid #4b5563;
       padding:.25rem .4rem;
-      color:inherit;
-      background:rgba(15,23,42,.6);
+      background:rgba(15,23,42,.7);
     }
     html[data-theme="light"] .navbar-toggler{
       border-color:#cbd5e1;
-      background:rgba(255,255,255,.8);
+      background:rgba(255,255,255,.6);
     }
     .navbar-toggler:focus{ box-shadow:none; }
-
-    .nav-icon-btn{
-      width:42px;
-      height:42px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      border-radius:12px;
-      border:2px solid rgba(148,163,184,.45);
-      background:rgba(15,23,42,.85);
-      color:#e5e7eb;
-    }
-    html[data-theme="light"] .nav-icon-btn{
-      background:#ffffff;
-      border-color:#e2e8f0;
-      color:#0f172a;
-    }
-    .nav-cart-count{
-      position:absolute;
-      top:-6px;
-      right:-6px;
-      min-width:20px;
-      height:20px;
-      border-radius:999px;
-      background:#10b981;
-      color:#fff;
-      font-size:.75rem;
-      font-weight:900;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
 
     .navbar-toggler-icon{
       width:1.8rem;
@@ -169,10 +115,34 @@
       background-repeat:no-repeat;
       background-position:center;
       background-size:100%;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath stroke='%23ffffff' stroke-width='2' stroke-linecap='round' d='M4 6h16M4 12h16M4 18h16'/%3E%3C/svg%3E");
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath stroke='%23e5e7eb' stroke-width='2' stroke-linecap='round' d='M4 6h16M4 12h16M4 18h16'/%3E%3C/svg%3E");
     }
     html[data-theme='light'] .navbar-toggler-icon{
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath stroke='%230f172a' stroke-width='2' stroke-linecap='round' d='M4 6h16M4 12h16M4 18h16'/%3E%3C/svg%3E");
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath stroke='%23020617' stroke-width='2' stroke-linecap='round' d='M4 6h16M4 12h16M4 18h16'/%3E%3C/svg%3E");
+    }
+
+    .nav-icon-btn{
+      width:42px; height:42px;
+      display:inline-flex; align-items:center; justify-content:center;
+      border-radius:12px;
+      border:1px solid rgba(148,163,184,.6);
+      background:rgba(15,23,42,.85);
+      color:#e5e7eb;
+    }
+    html[data-theme="light"] .nav-icon-btn{
+      background:#ffffff;
+      color:#0f172a;
+      border-color:#e2e8f0;
+    }
+    .nav-cart-count{
+      position:absolute; top:-6px; right:-6px;
+      min-width:20px; height:20px;
+      border-radius:999px;
+      background:#22c55e;
+      color:#0f172a;
+      font-size:.75rem;
+      font-weight:900;
+      display:flex; align-items:center; justify-content:center;
     }
 
     html[data-theme="dark"] .offcanvas,
@@ -186,26 +156,13 @@
     }
     html[data-theme="dark"] .dropdown-item:hover{
       color:#fff;
-      background:rgba(99,102,241,.22);
-    }
-
-    .topbar{
-      position:sticky;
-      top:var(--nav-h);
-      z-index:1000;
-      background:#fff0;
-      border-bottom:1px solid #e2e8f0;
-      backdrop-filter:saturate(1.1) blur(6px);
-    }
-    html[data-theme="dark"] .topbar{
-      background:#0f172acc;
-      border-color:#1f2937;
+      background:rgba(55,65,81,.9);
     }
 
     .search-section{padding:1rem 0}
     .search-input,.sort-select{
       border:2px solid #1f2937;
-      border-radius:12px;
+      border-radius:999px;
       padding:.75rem 1rem;
       font-size:1rem;
       transition:.3s;
@@ -232,31 +189,33 @@
 
     .products-section{
       padding:2rem 0 1.5rem;
-      background:radial-gradient(circle at top,rgba(15,23,42,.9),rgba(15,23,42,1));
+      background:radial-gradient(circle at top,#111827 0%,#020617 55%);
     }
     html[data-theme="light"] .products-section{
-      background:#f8fafc;
+      background:#e5e7eb;
     }
+
     .section-title{
       font-size:2rem;
-      font-weight:700;
+      font-weight:800;
       color:var(--text-main);
-      margin-bottom:.25rem;
+      margin-bottom:.3rem;
       text-align:center;
+      letter-spacing:.03em;
     }
     .section-subtitle{
       color:var(--muted-color);
-      font-size:1rem;
+      font-size:.98rem;
       text-align:center;
       margin-bottom:1.25rem;
     }
 
     .product-card{
-      background:radial-gradient(circle at top left,rgba(56,189,248,.12),transparent 55%),var(--bg-surface);
+      background:radial-gradient(circle at top,#111827 0%,#020617 55%);
       border-radius:var(--border-radius);
       box-shadow:var(--card-shadow);
-      transition:all .4s cubic-bezier(.25,.8,.25,1);
-      border:1px solid rgba(148,163,184,.55);
+      transition:all .35s cubic-bezier(.25,.8,.25,1);
+      border:1px solid rgba(148,163,184,.32);
       overflow:hidden;
       height:100%;
       position:relative;
@@ -264,50 +223,37 @@
     html[data-theme="light"] .product-card{
       background:#ffffff;
       border-color:#e2e8f0;
-      box-shadow:0 10px 30px rgba(148,163,184,.35);
     }
     .product-card:hover{
-      transform:translateY(-6px);
+      transform:translateY(-6px) translateZ(0);
       box-shadow:var(--card-shadow-hover);
     }
     .product-card::before{
       content:"";
       position:absolute;
-      top:0;
-      left:0;
-      right:0;
-      height:4px;
-      background:var(--gradient-primary);
-      transform:scaleX(0);
-      transform-origin:left;
-      transition:transform .3s;
+      inset:0;
+      background:conic-gradient(from 180deg,#22d3ee33,#a855f733,#4c1d9533,#22c55e33,#22d3ee33);
+      opacity:0;
+      transition:opacity .35s;
     }
-    .product-card:hover::before{transform:scaleX(1);}
+    .product-card:hover::before{opacity:1;}
+    .product-card > *{position:relative; z-index:1;}
 
-    a.quick-wa{
-      text-decoration:none !important;
-      color:inherit;
-    }
-    a.quick-wa:hover,
-    a.quick-wa:focus{
-      text-decoration:none !important;
-    }
+    a.quick-wa { text-decoration:none !important; color:inherit; }
+    a.quick-wa:hover, a.quick-wa:focus { text-decoration:none !important; }
 
     .product-icon{
-      width:64px;
-      height:64px;
+      width:64px;height:64px;
       margin:0 auto 1rem;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:#ffffff;
-      border-radius:16px;
+      display:flex;align-items:center;justify-content:center;
+      background:rgba(15,23,42,.9);
+      border-radius:18px;
       transition:.3s;
-      border:1px solid #e2e8f0;
+      border:1px solid rgba(148,163,184,.5);
     }
-    html[data-theme="dark"] .product-icon{
-      background:rgba(15,23,42,1);
-      border-color:#1f2937;
+    html[data-theme="light"] .product-icon{
+      background:#ffffff;
+      border-color:#e2e8f0;
     }
     .product-card:hover .product-icon{
       background:var(--gradient-primary);
@@ -315,8 +261,7 @@
       border-color:transparent;
     }
     .product-icon img{
-      width:40px;
-      height:40px;
+      width:40px;height:40px;
       object-fit:contain;
       filter:none;
       transition:filter .3s;
@@ -337,23 +282,22 @@
     .price{
       font-size:1.1rem;
       font-weight:800;
-      color:var(--success-color);
+      color:#22c55e;
       margin-right:.5rem;
     }
     .price-old{
       font-size:.95rem;
-      color:#9ca3af;
+      color:#6b7280;
       text-decoration:line-through;
     }
 
     .category-badge{
       position:absolute;
-      top:1rem;
-      right:1rem;
+      top:1rem; right:1rem;
       background:var(--gradient-primary);
-      color:#fff;
+      color:#0f172a;
       padding:.25rem .5rem;
-      border-radius:6px;
+      border-radius:999px;
       font-size:.75rem;
       font-weight:800;
       display:inline-flex;
@@ -361,117 +305,118 @@
       gap:.35rem;
     }
 
-    .product-actions{
-      gap:.5rem;
-      justify-content:center;
+    .badge-stock{
+      position:absolute;
+      bottom:1rem; right:1rem;
+      border-radius:8px;
+      padding:.15rem .5rem;
+      font-size:.75rem;
     }
+
+    .product-actions{gap:.5rem;justify-content:center}
     .icon-btn{
-      width:42px;
-      height:42px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      border-radius:12px;
-      border:2px solid rgba(148,163,184,.45);
+      width:42px;height:42px;
+      display:inline-flex;align-items:center;justify-content:center;
+      border-radius:14px;
+      border:1px solid rgba(148,163,184,.6);
       background:rgba(15,23,42,.9);
       transition:.2s;
       color:#e5e7eb;
     }
+    .icon-btn i{font-size:1.05rem}
+    .icon-btn:disabled{opacity:.4;cursor:not-allowed}
+    .icon-btn:hover{transform:translateY(-1px);}
     html[data-theme="light"] .icon-btn{
-      background:#f8fafc;
+      background:#f9fafb;
       border-color:#e2e8f0;
       color:#0f172a;
     }
-    .icon-btn i{font-size:1.05rem}
-    .icon-btn:disabled{opacity:.6;cursor:not-allowed}
-    .icon-btn:hover{transform:translateY(-1px)}
 
     .btn-add.icon-btn{
-      border-color:#22d3ee;
-      background:rgba(34,211,238,.12);
-      color:#e0f2fe;
+      border-color:#a855f7;
+      background:rgba(88,28,135,.8);
+      color:#e9d5ff;
     }
     html[data-theme="light"] .btn-add.icon-btn{
-      background:#e0f2fe;
-      border-color:#bfdbfe;
-      color:#1d4ed8;
+      background:#eef2ff;
+      border-color:#c7d2fe;
+      color:#3730a3;
     }
+
     .quick-wa.icon-btn{
       border-color:#22c55e;
-      background:rgba(22,163,74,.12);
+      background:rgba(6,95,70,.9);
     }
-    .quick-wa.icon-btn i{color:#22c55e}
+    .quick-wa.icon-btn i{color:#bbf7d0;}
     html[data-theme="light"] .quick-wa.icon-btn{
-      background:#dcfce7;
-      border-color:#bbf7d0;
+      background:#ecfdf5;
+      border-color:#22c55e;
     }
 
     .wishlist-btn{
       position:absolute;
-      top:.6rem;
-      left:.6rem;
-      background:#020617e6;
-      border:1px solid #1f2937;
-      border-radius:50%;
-      width:38px;
-      height:38px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      cursor:pointer;
-      z-index:2;
+      top:.6rem; left:.6rem;
+      background:rgba(15,23,42,.9);
+      border:1px solid rgba(148,163,184,.6);
+      border-radius:999px;
+      width:38px;height:38px;
+      display:flex;align-items:center;justify-content:center;
+      cursor:pointer;z-index:2;
     }
     html[data-theme="light"] .wishlist-btn{
-      background:#ffffffcc;
+      background:#ffffff;
       border-color:#e2e8f0;
     }
-    .wishlist-btn i{color:#94a3b8}
-    .wishlist-btn.active i{color:#ef4444}
+    .wishlist-btn i{color:#9ca3af;}
+    .wishlist-btn.active i{color:#fb7185;}
 
     .modal-content{
       border-radius:var(--border-radius);
       border:none;
-      box-shadow:0 25px 50px -12px rgba(0,0,0,.55);
-      background:var(--bg-surface);
+      box-shadow:0 25px 50px -12px rgba(0,0,0,.9);
+      background:radial-gradient(circle at top,#020617 0%,#020617 60%,#020617 100%);
       color:var(--text-main);
+    }
+    html[data-theme="light"] .modal-content{
+      background:#ffffff;
+      box-shadow:0 18px 40px rgba(15,23,42,.2);
     }
     .modal-header{
       background:var(--gradient-primary);
-      color:#fff;
+      color:#0f172a;
       border-radius:var(--border-radius) var(--border-radius) 0 0;
       padding:1.1rem;
     }
     .btn-close{filter:brightness(0) invert(1)}
-    .modal-body{
-      padding:1rem;
-      color:var(--text-main);
-    }
+    .modal-body{padding:1rem;color:var(--text-main);}
     .modal-footer{
       padding:1rem;
-      border-top:1px solid #1f2937;
+      border-top:1px solid rgba(148,163,184,.35);
     }
 
     .modal-product-main{
       border-radius:18px;
-      padding:.65rem .75rem;
-      background:linear-gradient(135deg,rgba(34,211,238,.12),rgba(99,102,241,.16));
+      padding:.8rem .9rem;
+      background:linear-gradient(135deg,rgba(76,29,149,.7),rgba(34,211,238,.25));
     }
     html[data-theme="light"] .modal-product-main{
-      background:linear-gradient(135deg,rgba(191,219,254,.6),rgba(236,252,203,.5));
+      background:linear-gradient(135deg,rgba(129,140,248,.16),rgba(34,197,235,.14));
     }
+
     .modal-product-icon{
-      width:80px;
-      height:80px;
+      width:80px;height:80px;
     }
+
     .modal-category-pill{
-      background:linear-gradient(135deg,#22d3ee,#6366f1);
-      color:#fff;
+      background:linear-gradient(135deg,#22c1c3,#f97316);
+      color:#0f172a;
       border-radius:999px;
       padding:.2rem .65rem;
       font-size:.75rem;
       font-weight:600;
-      box-shadow:0 8px 20px rgba(15,23,42,.85);
+      box-shadow:0 8px 20px rgba(34,211,238,.7);
     }
+
     .modal-product-title{
       font-weight:800;
       font-size:1.05rem;
@@ -480,15 +425,16 @@
       font-size:.9rem;
       color:var(--muted-color);
     }
+
     .modal-product-prices .modal-price-main{
       font-size:1.1rem;
       font-weight:800;
-      color:var(--success-color);
+      color:#22c55e;
     }
     .modal-product-prices .modal-price-old{
       font-size:.9rem;
       text-decoration:line-through;
-      color:#9ca3af;
+      color:#6b7280;
     }
 
     .modal-variant-list{margin-top:.35rem;}
@@ -496,32 +442,34 @@
       border-radius:14px;
       padding:.7rem .8rem;
       border:1px solid #1f2937;
-      background:#020617;
+      background:rgba(15,23,42,.9);
     }
     .variant-card:hover{
-      border-color:#4f46e5;
-      box-shadow:0 18px 40px rgba(0,0,0,.95);
+      border-color:#a855f7;
+      box-shadow:0 18px 40px rgba(15,23,42,1);
     }
     html[data-theme="light"] .variant-card{
       background:#f9fafb;
       border-color:#e5e7eb;
-    }
-    html[data-theme="light"] .variant-card:hover{
-      border-color:#a5b4fc;
       box-shadow:0 8px 22px rgba(148,163,184,.45);
     }
+
     .variant-card-title{font-size:.95rem;}
     .variant-card-label{font-size:.78rem;}
     .variant-card-price{
       font-size:.95rem;
-      color:var(--success-color);
+      color:#22c55e;
     }
     .variant-card-price-old{
       font-size:.78rem;
       text-decoration:line-through;
       color:#9ca3af;
     }
-    .variant-features{margin:0 0 .4rem 0;padding:0;}
+
+    .variant-features{
+      margin:0 0 .4rem 0;
+      padding:0;
+    }
     .variant-feature-item{
       display:flex;
       align-items:flex-start;
@@ -540,6 +488,7 @@
       from{opacity:0;transform:translateY(20px)}
       to{opacity:1;transform:translateY(0)}
     }
+
     .empty-state{
       text-align:center;
       padding:3rem;
@@ -550,6 +499,7 @@
       margin-bottom:1rem;
       opacity:.5;
     }
+
     .loading{
       display:flex;
       justify-content:center;
@@ -557,43 +507,42 @@
       height:200px;
     }
     .spinner{
-      width:40px;
-      height:40px;
+      width:40px;height:40px;
       border:4px solid #1f2937;
-      border-top:4px solid var(--primary-color);
+      border-top:4px solid #22d3ee;
       border-radius:50%;
       animation:spin 1s linear infinite;
     }
     @keyframes spin{to{transform:rotate(360deg)}}
+
     .btn:focus,.form-control:focus,.form-select:focus{
-      outline:2px solid var(--primary-color);
+      outline:2px solid #22d3ee;
       outline-offset:2px;
       box-shadow:none;
     }
 
     .modal{ z-index:1200; }
     .modal-dialog{ margin:0.75rem auto; }
-
     .offcanvas{ z-index:1200; margin:0.75rem auto; }
 
     @supports (padding: max(0px)) {
       .modal{
-        padding-top: max(env(safe-area-inset-top, 0px), calc(var(--nav-h) + 10px));
-        padding-left: max(8px, env(safe-area-inset-left, 0px));
-        padding-right: max(8px, env(safe-area-inset-right, 0px));
-        padding-bottom: max(8px, env(safe-area-inset-bottom, 0px));
+        padding-top:max(env(safe-area-inset-top,0px),calc(var(--nav-h) + 10px));
+        padding-left:max(8px,env(safe-area-inset-left,0px));
+        padding-right:max(8px,env(safe-area-inset-right,0px));
+        padding-bottom:max(8px,env(safe-area-inset-bottom,0px));
       }
     }
 
-    @media (max-width: 576px){
+    @media (max-width:576px){
       .modal-dialog{ margin:0; }
       .modal-content{ border-radius:16px; }
       .modal-header{
-        position: sticky;
-        top: 0;
-        z-index: 1;
-        background: var(--gradient-primary);
-        color:#fff;
+        position:sticky;
+        top:0;
+        z-index:1;
+        background:var(--gradient-primary);
+        color:#0f172a;
       }
       .btn-close{ filter:brightness(0) invert(1); }
     }
@@ -604,23 +553,22 @@
 
     .floating-cart{
       position:fixed;
-      right:16px;
-      bottom:16px;
+      right:16px; bottom:16px;
       z-index:900;
       background:var(--gradient-primary);
       border:none;
-      color:#fff;
+      color:#0f172a;
       border-radius:999px;
       padding:.9rem 1.1rem;
-      box-shadow:0 18px 45px rgba(0,0,0,.85);
+      box-shadow:0 18px 45px rgba(0,0,0,.8);
       display:flex;
       align-items:center;
       gap:.6rem;
       font-weight:900;
     }
     .floating-cart .count{
-      background:#fff;
-      color:#1f2937;
+      background:#0f172a;
+      color:#e5e7eb;
       font-weight:900;
       padding:.1rem .5rem;
       border-radius:999px;
@@ -630,24 +578,20 @@
 
     .floating-dark{
       position:fixed;
-      left:16px;
-      bottom:16px;
+      left:16px; bottom:16px;
       z-index:900;
-      border:2px solid #1f2937;
-      background:#020617;
+      border:1px solid rgba(148,163,184,.6);
+      background:rgba(15,23,42,.9);
       border-radius:999px;
-      width:48px;
-      height:48px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      box-shadow:0 18px 45px rgba(0,0,0,.85);
+      width:48px;height:48px;
+      display:flex;align-items:center;justify-content:center;
+      box-shadow:0 18px 45px rgba(0,0,0,.8);
       color:#e5e7eb;
     }
     html[data-theme="light"] .floating-dark{
       background:#ffffff;
-      border-color:#e5e8f0;
-      color:#020617;
+      border-color:#e5e7eb;
+      color:#0f172a;
     }
 
     .load-more-wrap{text-align:center;margin-top:1rem}
@@ -674,37 +618,36 @@
     .hero-section{
       padding:2.75rem 0 2.25rem;
       background:
-        radial-gradient(circle at top left,rgba(56,189,248,.26),transparent 55%),
-        radial-gradient(circle at bottom right,rgba(129,140,248,.22),transparent 55%);
+        radial-gradient(circle at top left,rgba(56,189,248,.24),transparent 55%),
+        radial-gradient(circle at bottom right,rgba(244,63,94,.16),transparent 55%);
       border-bottom:1px solid rgba(148,163,184,.35);
     }
     html[data-theme="light"] .hero-section{
       background:
-        radial-gradient(circle at top left,rgba(191,219,254,.7),transparent 55%),
-        radial-gradient(circle at bottom right,rgba(254,215,170,.7),transparent 55%);
+        radial-gradient(circle at top left,rgba(56,189,248,.22),transparent 55%),
+        radial-gradient(circle at bottom right,rgba(244,63,94,.18),transparent 55%);
       border-color:#e2e8f0;
     }
     .hero-badge{
-      display:inline-flex;
-      align-items:center;
-      gap:.4rem;
+      display:inline-flex;align-items:center;gap:.4rem;
       padding:.3rem .75rem;
       border-radius:999px;
       background:rgba(15,23,42,.75);
-      border:1px solid rgba(148,163,184,.7);
+      border:1px solid rgba(148,163,184,.6);
       font-size:.78rem;
       font-weight:600;
-      color:#e5e7eb;
+      color:#bae6fd;
     }
     html[data-theme="light"] .hero-badge{
-      background:rgba(255,255,255,.9);
-      color:#0f172a;
+      background:#eff6ff;
+      color:#1e293b;
     }
     .hero-title{
-      font-size:2.25rem;
-      font-weight:800;
-      margin:.75rem 0 .4rem;
-      letter-spacing:.03em;
+      font-size:2.2rem;
+      font-weight:900;
+      margin:.8rem 0 .4rem;
+      letter-spacing:.04em;
+      text-transform:uppercase;
     }
     @media(min-width:768px){
       .hero-title{font-size:2.6rem;}
@@ -721,22 +664,21 @@
       gap:.75rem;
     }
     .hero-pill{
-      display:inline-flex;
-      align-items:center;
-      gap:.35rem;
+      display:inline-flex;align-items:center;gap:.35rem;
       font-size:.8rem;
       color:var(--muted-color);
     }
     .hero-stat-card{
-      border-radius:16px;
+      border-radius:18px;
       padding:.9rem 1rem;
-      background:#020617;
-      border:1px solid #1f2937;
+      background:rgba(15,23,42,.9);
+      border:1px solid rgba(148,163,184,.55);
       text-align:left;
     }
     html[data-theme="light"] .hero-stat-card{
-      background:#f9fafb;
+      background:#ffffff;
       border-color:#e5e7eb;
+      box-shadow:0 8px 28px rgba(15,23,42,.16);
     }
     .hero-stat-value{
       font-weight:800;
@@ -747,37 +689,34 @@
       color:var(--muted-color);
     }
 
-    /* KEUNGGULAN */
+    /* ========== BENEFIT SECTION ========== */
     .benefit-section{
       padding:2.5rem 0 1.5rem;
-      background:radial-gradient(circle at bottom,rgba(15,23,42,.85),rgba(15,23,42,1));
-      border-top:1px solid #1f2937;
+      background:radial-gradient(circle at top,#020617 0%,#020617 50%);
+      border-top:1px solid rgba(148,163,184,.35);
     }
     html[data-theme="light"] .benefit-section{
-      background:#ffffff;
-      border-color:#e2e8f0;
+      background:#f9fafb;
+      border-color:#e5e7eb;
     }
     .benefit-card{
       border-radius:18px;
       padding:1.1rem 1.1rem;
-      background:#020617;
+      background:rgba(15,23,42,.95);
       border:1px solid #1f2937;
       height:100%;
       box-shadow:0 18px 45px rgba(0,0,0,.85);
     }
     html[data-theme="light"] .benefit-card{
-      background:#f9fafb;
+      background:#ffffff;
       border-color:#e2e8f0;
-      box-shadow:0 10px 30px rgba(148,163,184,.3);
+      box-shadow:0 8px 24px rgba(15,23,42,.08);
     }
     .benefit-icon-wrap{
-      width:40px;
-      height:40px;
+      width:40px;height:40px;
       border-radius:999px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:rgba(56,189,248,.18);
+      display:flex;align-items:center;justify-content:center;
+      background:rgba(56,189,248,.16);
       color:#e0f2fe;
       margin-bottom:.65rem;
     }
@@ -785,87 +724,70 @@
       background:rgba(129,140,248,.15);
       color:#4f46e5;
     }
-    .benefit-title{
-      font-weight:700;
-      font-size:.98rem;
-      margin-bottom:.25rem;
-    }
-    .benefit-text{
-      font-size:.88rem;
-      color:var(--muted-color);
-    }
+    .benefit-title{font-weight:700;font-size:.98rem;margin-bottom:.25rem;}
+    .benefit-text{font-size:.88rem;color:var(--muted-color);}
 
-    /* CARA ORDER */
+    /* ========== STEPS SECTION ========== */
     .steps-section{
       padding:2.25rem 0 1.75rem;
-      background:#020617;
+      background:radial-gradient(circle at top,#020617 0%,#020617 55%);
     }
     html[data-theme="light"] .steps-section{
-      background:#f1f5f9;
+      background:#e5e7eb;
     }
     .step-item{
-      display:flex;
-      gap:.75rem;
-      align-items:flex-start;
+      display:flex;gap:.75rem;align-items:flex-start;
     }
     .step-badge{
       flex-shrink:0;
-      width:30px;
-      height:30px;
+      width:30px;height:30px;
       border-radius:999px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:700;
-      font-size:.82rem;
-      background:rgba(79,70,229,.32);
-      color:#c7d2fe;
+      display:flex;align-items:center;justify-content:center;
+      font-weight:700;font-size:.82rem;
+      background:rgba(56,189,248,.18);
+      color:#7dd3fc;
     }
     html[data-theme="light"] .step-badge{
-      background:rgba(79,70,229,.16);
+      background:rgba(129,140,248,.2);
       color:#4f46e5;
     }
-    .step-title{
-      font-weight:600;
-      font-size:.95rem;
-      margin-bottom:.15rem;
-    }
-    .step-text{
-      font-size:.87rem;
-      color:var(--muted-color);
-    }
+    .step-title{font-weight:600;font-size:.95rem;margin-bottom:.15rem;}
+    .step-text{font-size:.87rem;color:var(--muted-color);}
 
-    /* TESTIMONI */
+    /* ========== TESTIMONI SECTION ========== */
     .testimonial-section{
       padding:2.3rem 0 1.7rem;
-      background:var(--bg-surface);
+      background:radial-gradient(circle at top,#020617 0%,#020617 55%);
+    }
+    html[data-theme="light"] .testimonial-section{
+      background:#f9fafb;
     }
     .testimonial-card{
       border-radius:18px;
       padding:1rem 1rem .95rem;
       border:1px solid #1f2937;
       background:
-        radial-gradient(circle at top left,rgba(129,140,248,.28),transparent 55%),
+        radial-gradient(circle at top left,rgba(56,189,248,.18),transparent 55%),
         #020617;
       height:100%;
     }
     html[data-theme="light"] .testimonial-card{
       background:
-        radial-gradient(circle at top left,rgba(129,140,248,.18),transparent 55%),
-        #f9fafb;
+        radial-gradient(circle at top left,rgba(129,140,248,.17),transparent 55%),
+        #ffffff;
       border-color:#e2e8f0;
     }
     .testimonial-name{font-weight:600;font-size:.95rem;}
     .testimonial-meta{font-size:.78rem;color:var(--muted-color);}
     .testimonial-text{font-size:.88rem;margin-top:.35rem;}
 
-    /* FAQ */
+    /* ========== FAQ SECTION ========== */
     .faq-section{
       padding:2.4rem 0 1.8rem;
-      background:#020617;
+      background:radial-gradient(circle at top,#020617 0%,#020617 55%);
     }
     html[data-theme="light"] .faq-section{
-      background:#f8fafc;
+      background:#e5e7eb;
     }
     .faq-accordion .accordion-item{
       border-radius:14px;
@@ -883,45 +805,47 @@
     .faq-accordion .accordion-body{
       font-size:.88rem;
       padding:.7rem .9rem .8rem;
-      color:var(--muted-color);
       background:#020617;
+      color:var(--muted-color);
     }
     html[data-theme="light"] .faq-accordion .accordion-item{
       border-color:#e2e8f0;
     }
     html[data-theme="light"] .faq-accordion .accordion-button{
-      background:#f9fafb;
+      background:#ffffff;
       color:#0f172a;
     }
     html[data-theme="light"] .faq-accordion .accordion-body{
-      background:#f9fafb;
+      background:#ffffff;
       color:#64748b;
     }
 
-    /* KONTAK & FOOTER */
+    /* ========== CONTACT SECTION ========== */
     .contact-section{
       padding:2.2rem 0 1.5rem;
-      background:#020617;
-      border-top:1px solid #1f2937;
+      background:radial-gradient(circle at top,#020617 0%,#020617 55%);
+      border-top:1px solid rgba(148,163,184,.35);
     }
     html[data-theme="light"] .contact-section{
-      background:#f9fafb;
-      border-color:#e2e8f0;
+      background:#020617;
+      border-color:#e5e7eb;
     }
     .contact-pill{
-      display:inline-flex;
-      align-items:center;
-      gap:.4rem;
+      display:inline-flex;align-items:center;gap:.4rem;
       padding:.25rem .7rem;
       border-radius:999px;
       border:1px solid rgba(148,163,184,.6);
       font-size:.78rem;
       color:var(--muted-color);
+      background:rgba(15,23,42,.9);
+    }
+    html[data-theme="light"] .contact-pill{
+      background:#ffffff;
+      color:#0f172a;
+      border-color:#e2e8f0;
     }
     .contact-link{
-      display:inline-flex;
-      align-items:center;
-      gap:.45rem;
+      display:inline-flex;align-items:center;gap:.45rem;
       font-size:.9rem;
       text-decoration:none;
       color:var(--text-main);
@@ -929,8 +853,14 @@
     .contact-link i{font-size:1.1rem;}
     .contact-link:hover{
       text-decoration:none;
-      opacity:.88;
+      opacity:.9;
     }
+
+    .contact-section .text-muted,
+    .contact-section .small.text-muted {
+      color:#cbd5e1 !important;
+    }
+
     .footer-mini{
       border-top:1px solid rgba(148,163,184,.4);
       margin-top:1.25rem;
@@ -943,8 +873,7 @@
     .search-overlay{
       position:fixed;
       top:var(--nav-h);
-      left:0;
-      right:0;
+      left:0; right:0;
       z-index:1200;
       padding:.5rem 0;
       transform:translateY(-100%);
@@ -955,7 +884,7 @@
       border-bottom:1px solid #1f2937;
     }
     html[data-theme="light"] .search-overlay{
-      background:rgba(248,250,252,.98);
+      background:rgba(255,255,255,.96);
       border-color:#e2e8f0;
     }
     .search-overlay.open{
@@ -970,14 +899,12 @@
       border-radius:999px;
       padding:.4rem .75rem;
       background:#020617;
-      box-shadow:0 10px 30px rgba(15,23,42,.55);
+      box-shadow:0 10px 30px rgba(15,23,42,.65);
     }
     html[data-theme="light"] .search-overlay-inner{
       background:#ffffff;
     }
-    .search-overlay .overlay-icon{
-      color:#64748b;
-    }
+    .search-overlay .overlay-icon{color:#64748b;}
     .search-overlay .search-input{
       border:none;
       background:transparent;
@@ -989,42 +916,40 @@
       outline:none;
       box-shadow:none;
     }
-    .search-overlay .close-search i{
-      font-size:1.1rem;
+    .search-overlay .close-search i{font-size:1.1rem;}
+
+    @media (max-width:576px){
+      .search-overlay-inner{border-radius:14px;}
     }
 
-    .d-flex.gap-1 > *{
-      margin:0 !important;
-    }
-
+    .d-flex.gap-1 > *{margin:0 !important;}
   </style>
 </head>
 <body class="loaded">
-
 <div class="container-fluid">
+
   <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg nav-glass" id="mainNavbar">
     <div class="container">
       <a class="navbar-brand" href="index.html">D&D Multiverse Digital</a>
+
       <div class="d-flex align-items-center d-lg-none ms-auto gap-1">
-        <!-- Search icon mobile -->
-        <button class="nav-icon-btn d-inline-flex" type="button" data-nav-search="">
+        <button class="nav-icon-btn d-inline-flex" type="button" data-nav-search>
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
-        <!-- Menu toggler mobile -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
           <span class="navbar-toggler-icon"></span>
         </button>
       </div>
+
       <div class="collapse navbar-collapse" id="mainNav">
         <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
-          <li class="nav-item"><a class="nav-link active" data-scroll="" href="#produk">Produk</a></li>
+          <li class="nav-item"><a class="nav-link active" data-scroll href="#produk">Produk</a></li>
           <li class="nav-item"><a class="nav-link" href="#keunggulan">Keunggulan</a></li>
-          <li class="nav-item"><a class="nav-link" href="#kontak">Tentang</a></li>
+          <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
         </ul>
-        <!-- ICON UNTUK DESKTOP -->
         <div class="d-flex align-items-center gap-2 ms-lg-3">
-          <button class="nav-icon-btn position-relative d-none d-lg-inline-flex" title="Cari Produk" data-nav-search="">
+          <button class="nav-icon-btn position-relative d-none d-lg-inline-flex" title="Cari Produk" data-nav-search>
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
           <button id="navDarkBtn" class="nav-icon-btn position-relative" title="Toggle Dark Mode">
@@ -1039,59 +964,56 @@
     </div>
   </nav>
 
-  <!-- HERO SECTION -->
+  <!-- HERO -->
   <section class="hero-section">
     <div class="container">
       <div class="row g-4 align-items-center">
         <div class="col-md-7">
           <div class="hero-badge">
             <i class="fa-solid fa-shield-check"></i>
-            <span>Layanan digital premium, aman, dan bergaransi resmi</span>
+            <span>Solusi langganan aplikasi premium yang rapi, aman, dan terdokumentasi.</span>
           </div>
           <h1 class="hero-title">
-            Semua Layanan Digital Premium<br class="d-none d-md-block">
-            Dalam Satu Portal Resmi.
+            Layanan Digital Premium<br class="d-none d-md-block">
+            dalam Satu Portal Resmi.
           </h1>
           <p class="hero-subtitle">
-            D&D Multiverse Digital menyediakan berbagai layanan digital premium
-            seperti Netflix, YouTube Premium, Spotify, Canva Pro, dan aplikasi lain
-            dengan harga kompetitif, proses cepat, dan dukungan admin profesional.
+            D&D Multiverse Digital membantu Anda mengelola akses Netflix, YouTube Premium, Spotify, Canva Pro,
+            CapCut, hingga tools kreatif lainnya dengan harga terjangkau dan dukungan admin profesional.
           </p>
           <div class="hero-actions">
-            <a href="#listProduk" data-scroll="" class="btn btn-primary px-4 py-2" style="background:var(--gradient-primary);border:none;">
-              <i class="fa-solid fa-tags me-2"></i>
-              Lihat Harga & Produk
+            <a href="#listProduk" data-scroll class="btn btn-primary px-4 py-2"
+               style="background:var(--gradient-primary);border:none;">
+              <i class="fa-solid fa-tags me-2"></i> Lihat Daftar Produk
             </a>
-            <a href="https://wa.me/6287809236556?text=Halo%20Admin%20D%26D%20Multiverse%20Digital%2C%20saya%20ingin%20bertanya%20terkait%20layanan%20digital."
-               target="_blank"
-               class="btn btn-outline-success px-4 py-2">
-              <i class="fa-brands fa-whatsapp me-2"></i>
-              Hubungi Admin
+            <a href="https://wa.me/6287809236556" target="_blank" class="btn btn-outline-success px-4 py-2">
+              <i class="fa-brands fa-whatsapp me-2"></i> Hubungi Admin
             </a>
           </div>
           <div class="d-flex flex-wrap align-items-center gap-3 mt-3">
             <div class="hero-pill">
               <i class="fa-solid fa-bolt"></i>
-              <span>Estimasi proses 1–10 menit pada jam operasional</span>
+              <span>Estimasi proses 1–10 menit pada jam operasional.</span>
             </div>
             <div class="hero-pill">
               <i class="fa-solid fa-shield-halved"></i>
-              <span>Garansi berlaku selama masa langganan sesuai ketentuan</span>
+              <span>Garansi masa pakai sesuai ketentuan D&D Multiverse Digital.</span>
             </div>
           </div>
         </div>
+
         <div class="col-md-5">
           <div class="row g-3">
             <div class="col-6">
               <div class="hero-stat-card">
                 <div class="hero-stat-value">1.000+</div>
-                <div class="hero-stat-label">Pesanan terselesaikan</div>
+                <div class="hero-stat-label">Pesanan digital terselesaikan</div>
               </div>
             </div>
             <div class="col-6">
               <div class="hero-stat-card">
-                <div class="hero-stat-value">4,9/5</div>
-                <div class="hero-stat-label">Rata-rata kepuasan pelanggan</div>
+                <div class="hero-stat-value">4.9/5</div>
+                <div class="hero-stat-label">Rata-rata tingkat kepuasan pelanggan</div>
               </div>
             </div>
             <div class="col-12">
@@ -1100,26 +1022,28 @@
                   <i class="fa-solid fa-qrcode"></i>
                 </div>
                 <div>
-                  <div class="hero-stat-label mb-1">Metode Pembayaran</div>
+                  <div class="hero-stat-label mb-1">Metode pembayaran</div>
                   <div class="hero-stat-value">QRIS • Transfer • E-Wallet*</div>
                   <div class="small text-muted mt-1">
-                    *Disesuaikan dengan kebijakan terkini D&D Multiverse Digital.
+                    *Menyesuaikan kebijakan operasional D&D Multiverse Digital yang berlaku.
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Search Overlay -->
+  <!-- SEARCH OVERLAY -->
   <div id="searchOverlay" class="search-overlay">
     <div class="container">
       <div class="search-overlay-inner">
         <i class="fas fa-search overlay-icon"></i>
-        <input type="text" id="searchInput" class="form-control search-input" placeholder="Cari layanan digital yang Anda butuhkan...">
+        <input type="text" id="searchInput" class="form-control search-input"
+               placeholder="Cari produk atau aplikasi yang Anda butuhkan...">
         <button class="btn btn-link text-decoration-none close-search" id="btnCloseSearch" aria-label="Tutup">
           <i class="fa-solid fa-xmark"></i>
         </button>
@@ -1130,11 +1054,12 @@
   <!-- MAIN -->
   <main id="produk">
 
-    <!-- CARA ORDER -->
+    <!-- STEPS (CARA ORDER) -->
     <section class="steps-section" id="cara-order">
       <div class="container">
-        <h2 class="section-title">Cara Pemesanan di D&D Multiverse Digital</h2>
-        <p class="section-subtitle">Langkah sederhana bagi pelanggan yang baru pertama kali memesan layanan digital.</p>
+        <h2 class="section-title">Cara Order di D&D Multiverse Digital</h2>
+        <p class="section-subtitle">Panduan singkat untuk Anda yang pertama kali memesan layanan digital.</p>
+
         <div class="row g-3 g-md-4 mt-2">
           <div class="col-md-6">
             <div class="step-item">
@@ -1143,58 +1068,63 @@
                 <div class="step-title">Pilih produk dan varian</div>
                 <p class="step-text">
                   Telusuri daftar produk di bawah, klik tombol <strong>Detail</strong> untuk melihat varian,
-                  kemudian tentukan paket yang sesuai dengan kebutuhan Anda.
+                  kemudian pilih paket yang sesuai kebutuhan penggunaan Anda.
                 </p>
               </div>
             </div>
           </div>
+
           <div class="col-md-6">
             <div class="step-item">
               <div class="step-badge">2</div>
               <div>
-                <div class="step-title">Tambahkan ke Keranjang</div>
+                <div class="step-title">Tambahkan ke keranjang</div>
                 <p class="step-text">
-                  Tekan tombol <strong>Keranjang</strong> pada varian yang Anda pilih,
-                  lalu periksa kembali detail pesanan melalui menu keranjang di pojok kanan bawah.
+                  Tekan tombol <strong>Keranjang</strong> pada varian yang diinginkan, lalu tinjau kembali
+                  rincian pesanan melalui menu keranjang di pojok kanan bawah.
                 </p>
               </div>
             </div>
           </div>
+
           <div class="col-md-6">
             <div class="step-item">
               <div class="step-badge">3</div>
               <div>
-                <div class="step-title">Checkout melalui WhatsApp</div>
+                <div class="step-title">Checkout via WhatsApp</div>
                 <p class="step-text">
-                  Tekan tombol <strong>Checkout via WhatsApp</strong>; sistem akan menyiapkan format
-                  pesanan secara otomatis. Anda cukup mengirimkannya kepada admin resmi.
+                  Klik <strong>Checkout via WhatsApp</strong>. Format pesanan akan tersusun otomatis sehingga
+                  Anda hanya perlu mengirimkannya ke admin.
                 </p>
               </div>
             </div>
           </div>
+
           <div class="col-md-6">
             <div class="step-item">
               <div class="step-badge">4</div>
               <div>
                 <div class="step-title">Lakukan pembayaran & tunggu proses</div>
                 <p class="step-text">
-                  Lakukan pembayaran sesuai instruksi admin. Setelah itu, pesanan akan diproses dan
-                  akses akun akan disampaikan melalui WhatsApp sesuai data yang Anda berikan.
+                  Lakukan pembayaran sesuai instruksi. Setelah itu, pesanan diproses dan akses akun/layanan
+                  akan dikirimkan melalui WhatsApp beserta panduan singkat penggunaannya.
                 </p>
               </div>
             </div>
           </div>
         </div>
+
       </div>
     </section>
 
-    <!-- PRODUK (LIST DARI SHEET) -->
+    <!-- PRODUK LIST -->
     <section class="products-section" id="listProduk">
       <div class="container">
-        <h2 class="section-title">Produk Digital Terpilih</h2>
+        <h2 class="section-title">Katalog Layanan Digital</h2>
         <p class="section-subtitle">
-          Akses resmi ke berbagai layanan digital premium dengan harga terjangkau dan proses yang transparan.
+          Pilih paket langganan aplikasi premium yang paling relevan dengan kebutuhan kerja, hiburan, dan produktivitas Anda.
         </p>
+
         <div class="row g-3" id="produk-list">
           <div class="col-12">
             <div class="loading">
@@ -1202,6 +1132,7 @@
             </div>
           </div>
         </div>
+
         <div class="load-more-wrap">
           <button id="btnLoadMore" class="btn btn-outline-primary px-4 py-2 mt-2">
             <i class="fa-solid fa-rotate"></i> Muat Lebih
@@ -1210,38 +1141,39 @@
       </div>
     </section>
 
-    <!-- KEUNGGULAN -->
+    <!-- BENEFIT SECTION -->
     <section class="benefit-section" id="keunggulan">
       <div class="container">
-        <h2 class="section-title">Mengapa Memilih D&D Multiverse Digital?</h2>
+        <h2 class="section-title">Keunggulan D&D Multiverse Digital</h2>
         <p class="section-subtitle">
-          Bukan sekadar murah, tetapi juga jelas, aman, dan mudah dipahami bahkan oleh pengguna baru.
+          Tidak hanya harga bersahabat, namun prosedur kerja jelas, aman, dan mudah dipahami bahkan oleh pengguna baru.
         </p>
+
         <div class="row g-3 g-md-4 mt-2">
           <div class="col-md-3 col-sm-6">
             <div class="benefit-card">
               <div class="benefit-icon-wrap">
                 <i class="fa-solid fa-shield-heart"></i>
               </div>
-              <div class="benefit-title">Aman & Terpercaya</div>
+              <div class="benefit-title">Terstruktur & Terpercaya</div>
               <p class="benefit-text">
-                Telah melayani banyak pelanggan dengan catatan transaksi yang rapi dan terdokumentasi.
-                Setiap pesanan diproses melalui prosedur yang jelas dan dapat dipertanggungjawabkan.
+                Semua order dicatat dengan rapi sehingga mudah ditelusuri kembali. Proses dan ketentuan garansi dijelaskan dengan transparan.
               </p>
             </div>
           </div>
+
           <div class="col-md-3 col-sm-6">
             <div class="benefit-card">
               <div class="benefit-icon-wrap">
                 <i class="fa-solid fa-bolt"></i>
               </div>
-              <div class="benefit-title">Proses Cepat</div>
+              <div class="benefit-title">Proses Cepat & Terukur</div>
               <p class="benefit-text">
-                Estimasi proses 1–10 menit pada jam operasional, dengan komunikasi yang informatif
-                apabila terjadi antrean atau kendala teknis tertentu.
+                Estimasi pengerjaan 1–10 menit pada jam operasional, dengan pemberitahuan yang jelas apabila terjadi antrian atau kendala teknis.
               </p>
             </div>
           </div>
+
           <div class="col-md-3 col-sm-6">
             <div class="benefit-card">
               <div class="benefit-icon-wrap">
@@ -1249,20 +1181,19 @@
               </div>
               <div class="benefit-title">Garansi Masa Pakai</div>
               <p class="benefit-text">
-                Jika terjadi kendala pada akun selama masa garansi dan sesuai ketentuan,
-                akan dibantu proses penyesuaian atau penggantian sesuai kebijakan yang berlaku.
+                Jika akun mengalami kendala dalam masa garansi dan sesuai ketentuan, admin akan membantu perbaikan atau penggantian.
               </p>
             </div>
           </div>
+
           <div class="col-md-3 col-sm-6">
             <div class="benefit-card">
               <div class="benefit-icon-wrap">
                 <i class="fa-solid fa-headset"></i>
               </div>
-              <div class="benefit-title">Dukungan Responsif</div>
+              <div class="benefit-title">Pendampingan yang Responsif</div>
               <p class="benefit-text">
-                Admin siap menjelaskan perbedaan paket, ketentuan penggunaan, serta membantu
-                apabila terdapat pertanyaan terkait teknis atau masa langganan akun.
+                Admin siap menjelaskan perbedaan paket, skema penggunaan, hingga pendampingan teknis ringan setelah layanan aktif.
               </p>
             </div>
           </div>
@@ -1273,16 +1204,17 @@
     <!-- TESTIMONI -->
     <section class="testimonial-section" id="testimoni">
       <div class="container">
-        <h2 class="section-title">Testimoni Pelanggan</h2>
+        <h2 class="section-title">Ulasan Singkat Pelanggan</h2>
         <p class="section-subtitle">
-          Ringkasan pengalaman beberapa pelanggan yang telah menggunakan layanan digital di D&D Multiverse Digital.
+          Ringkasan pengalaman beberapa pelanggan yang telah menggunakan layanan D&D Multiverse Digital.
         </p>
+
         <div class="row g-3 g-md-4 mt-2">
           <div class="col-md-4">
             <div class="testimonial-card">
               <div class="d-flex justify-content-between align-items-center">
                 <div>
-                  <div class="testimonial-name">R*** – Lombok</div>
+                  <div class="testimonial-name">D*** – Jakarta</div>
                   <div class="testimonial-meta">YouTube Premium 3 Bulan</div>
                 </div>
                 <div class="text-warning">
@@ -1294,17 +1226,17 @@
                 </div>
               </div>
               <p class="testimonial-text">
-                “Proses sangat cepat, penjelasan jelas, dan dibantu hingga akun benar-benar aktif.
-                Saya berencana memperpanjang kembali setelah masa pakai berakhir.”
+                “Prosesnya jelas, akun aktif cepat, dan seluruh penjelasan dibuat tertulis sehingga mudah dicek ulang.”
               </p>
             </div>
           </div>
+
           <div class="col-md-4">
             <div class="testimonial-card">
               <div class="d-flex justify-content-between align-items-center">
                 <div>
-                  <div class="testimonial-name">S*** – Mahasiswa</div>
-                  <div class="testimonial-meta">Canva Pro & CapCut Pro</div>
+                  <div class="testimonial-name">M*** – Bandung</div>
+                  <div class="testimonial-meta">Canva Pro + CapCut Pro</div>
                 </div>
                 <div class="text-warning">
                   <i class="fa-solid fa-star"></i>
@@ -1315,17 +1247,17 @@
                 </div>
               </div>
               <p class="testimonial-text">
-                “Untuk keperluan tugas kuliah dan konten, layanan ini sangat membantu.
-                Harganya masih realistis untuk kondisi mahasiswa, dengan kualitas akses yang baik.”
+                “Sangat membantu pekerjaan desain dan pembuatan konten harian. Biaya masih logis untuk pekerja lepas.”
               </p>
             </div>
           </div>
+
           <div class="col-md-4">
             <div class="testimonial-card">
               <div class="d-flex justify-content-between align-items-center">
                 <div>
-                  <div class="testimonial-name">A*** – Freelancer</div>
-                  <div class="testimonial-meta">Netflix & Spotify</div>
+                  <div class="testimonial-name">L*** – Surabaya</div>
+                  <div class="testimonial-meta">Netflix & Spotify Premium</div>
                 </div>
                 <div class="text-warning">
                   <i class="fa-solid fa-star"></i>
@@ -1336,15 +1268,14 @@
                 </div>
               </div>
               <p class="testimonial-text">
-                “Sudah beberapa kali melakukan perpanjangan dan sejauh ini berjalan lancar.
-                Setiap kali muncul kendala, admin selalu responsif dan membantu hingga selesai.”
+                “Sudah beberapa kali perpanjang di sini. Komunikasi tertata dan setiap kendala dijelaskan dengan bahasa yang mudah dimengerti.”
               </p>
             </div>
           </div>
         </div>
+
         <p class="small text-muted mt-3">
-          *Testimoni di atas merupakan rangkuman dari beberapa pelanggan.
-          Bukti transfer dan dokumentasi testimoni yang lebih lengkap dapat diminta langsung kepada admin resmi.
+          *Testimoni merupakan ringkasan dari beberapa pelanggan. Bukti transaksi dan riwayat pemesanan dapat diminta langsung kepada admin apabila diperlukan.
         </p>
       </div>
     </section>
@@ -1354,89 +1285,102 @@
       <div class="container">
         <h2 class="section-title">Pertanyaan yang Sering Diajukan</h2>
         <p class="section-subtitle">
-          Jika Anda masih ragu atau memiliki pertanyaan, beberapa hal berikut dapat membantu menjelaskan layanan kami.
+          Beberapa poin berikut dapat membantu menjawab keraguan sebelum melakukan pemesanan.
         </p>
+
         <div class="row g-4 mt-2">
           <div class="col-md-7">
             <div class="accordion faq-accordion" id="faqAccordion">
+
               <div class="accordion-item">
                 <h2 class="accordion-header" id="faqOneHeading">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqOne" aria-expanded="false" aria-controls="faqOne">
-                    Berapa lama proses pemesanan biasanya?
+                  <button class="accordion-button collapsed" type="button"
+                          data-bs-toggle="collapse" data-bs-target="#faqOne"
+                          aria-expanded="false" aria-controls="faqOne">
+                    Berapa lama estimasi proses order?
                   </button>
                 </h2>
-                <div id="faqOne" class="accordion-collapse collapse" aria-labelledby="faqOneHeading" data-bs-parent="#faqAccordion">
+                <div id="faqOne" class="accordion-collapse collapse"
+                     aria-labelledby="faqOneHeading" data-bs-parent="#faqAccordion">
                   <div class="accordion-body">
                     Estimasi proses normal berada di kisaran
                     <strong>1–10 menit</strong> pada jam operasional.
-                    Apabila sedang terjadi antrean atau kendala teknis,
-                    admin akan menyampaikan informasi pembaruan estimasi kepada Anda.
+                    Jika sedang padat atau terdapat kendala teknis, admin akan menyampaikan
+                    informasi estimasi terbaru secara langsung.
                   </div>
                 </div>
               </div>
 
               <div class="accordion-item">
                 <h2 class="accordion-header" id="faqTwoHeading">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqTwo" aria-expanded="false" aria-controls="faqTwo">
-                    Bagaimana jika akun bermasalah di tengah masa langganan?
+                  <button class="accordion-button collapsed" type="button"
+                          data-bs-toggle="collapse" data-bs-target="#faqTwo"
+                          aria-expanded="false" aria-controls="faqTwo">
+                    Apa yang harus dilakukan jika akun bermasalah di tengah masa langganan?
                   </button>
                 </h2>
-                <div id="faqTwo" class="accordion-collapse collapse" aria-labelledby="faqTwoHeading" data-bs-parent="#faqAccordion">
+                <div id="faqTwo" class="accordion-collapse collapse"
+                     aria-labelledby="faqTwoHeading" data-bs-parent="#faqAccordion">
                   <div class="accordion-body">
-                    Silakan segera menghubungi admin dengan menyertakan bukti pemesanan.
-                    Selama masih dalam masa garansi dan sesuai ketentuan,
-                    D&D Multiverse Digital akan membantu proses penyesuaian atau penggantian akun
-                    sesuai kebijakan yang berlaku.
+                    Silakan segera menghubungi admin dan sertakan bukti order.
+                    Selama masih berada dalam <strong>masa garansi</strong> dan sesuai ketentuan,
+                    D&D Multiverse Digital akan membantu proses penanganan atau penggantian sesuai kebijakan.
                   </div>
                 </div>
               </div>
 
               <div class="accordion-item">
                 <h2 class="accordion-header" id="faqThreeHeading">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqThree" aria-expanded="false" aria-controls="faqThree">
+                  <button class="accordion-button collapsed" type="button"
+                          data-bs-toggle="collapse" data-bs-target="#faqThree"
+                          aria-expanded="false" aria-controls="faqThree">
                     Metode pembayaran apa saja yang tersedia?
                   </button>
                 </h2>
-                <div id="faqThree" class="accordion-collapse collapse" aria-labelledby="faqThreeHeading" data-bs-parent="#faqAccordion">
+                <div id="faqThree" class="accordion-collapse collapse"
+                     aria-labelledby="faqThreeHeading" data-bs-parent="#faqAccordion">
                   <div class="accordion-body">
                     Saat ini pembayaran dapat dilakukan melalui
-                    <strong>QRIS</strong> dan metode lain yang diinformasikan admin
-                    (seperti transfer bank atau dompet digital tertentu).
-                    Rincian rekening atau tujuan pembayaran akan dikirim setelah Anda checkout melalui WhatsApp.
+                    <strong>QRIS</strong> dan metode lain yang diinformasikan oleh admin,
+                    seperti transfer bank atau e-wallet tertentu.
+                    Detail tujuan pembayaran akan dikirim setelah Anda melakukan checkout via WhatsApp.
                   </div>
                 </div>
               </div>
 
               <div class="accordion-item">
                 <h2 class="accordion-header" id="faqFourHeading">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqFour" aria-expanded="false" aria-controls="faqFour">
-                    Apakah akun dapat digunakan pada banyak perangkat?
+                  <button class="accordion-button collapsed" type="button"
+                          data-bs-toggle="collapse" data-bs-target="#faqFour"
+                          aria-expanded="false" aria-controls="faqFour">
+                    Apakah akun dapat digunakan di banyak perangkat?
                   </button>
                 </h2>
-                <div id="faqFour" class="accordion-collapse collapse" aria-labelledby="faqFourHeading" data-bs-parent="#faqAccordion">
+                <div id="faqFour" class="accordion-collapse collapse"
+                     aria-labelledby="faqFourHeading" data-bs-parent="#faqAccordion">
                   <div class="accordion-body">
-                    Setiap platform memiliki
-                    <strong>aturan penggunaan</strong> yang berbeda.
-                    Admin akan menjelaskan apakah akun boleh digunakan di beberapa perangkat,
-                    hanya pada satu perangkat, atau terdapat batasan login tertentu
-                    sebelum Anda melakukan pembayaran.
+                    Setiap platform memiliki <strong>aturan pemakaian</strong> yang berbeda.
+                    Admin akan menjelaskan secara terbuka apakah akun dapat digunakan multi-device,
+                    hanya satu perangkat, atau memiliki batasan login tertentu sebelum Anda melakukan pembayaran.
                   </div>
                 </div>
               </div>
 
               <div class="accordion-item">
                 <h2 class="accordion-header" id="faqFiveHeading">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqFive" aria-expanded="false" aria-controls="faqFive">
-                    Apakah layanan ini legal dan aman digunakan?
+                  <button class="accordion-button collapsed" type="button"
+                          data-bs-toggle="collapse" data-bs-target="#faqFive"
+                          aria-expanded="false" aria-controls="faqFive">
+                    Apakah layanan ini mengikuti kebijakan platform resmi?
                   </button>
                 </h2>
-                <div id="faqFive" class="accordion-collapse collapse" aria-labelledby="faqFiveHeading" data-bs-parent="#faqAccordion">
+                <div id="faqFive" class="accordion-collapse collapse"
+                     aria-labelledby="faqFiveHeading" data-bs-parent="#faqAccordion">
                   <div class="accordion-body">
                     D&D Multiverse Digital berupaya mengikuti
                     <strong>ketentuan penggunaan</strong> dari masing-masing platform.
-                    Jenis akun (misalnya sharing, personal, family, dan lain-lain)
-                    akan dijelaskan secara terbuka oleh admin sesuai produk yang Anda pilih,
-                    sehingga Anda dapat menggunakan layanan dengan lebih bijak.
+                    Jenis akun (sharing, personal, family, dan sebagainya) akan dijelaskan secara rinci
+                    oleh admin sesuai produk yang dipilih.
                   </div>
                 </div>
               </div>
@@ -1449,28 +1393,23 @@
               <div class="benefit-icon-wrap mb-2">
                 <i class="fa-solid fa-circle-question"></i>
               </div>
-              <div class="benefit-title mb-1">
-                Masih memiliki pertanyaan lain?
-              </div>
+              <div class="benefit-title mb-1">Masih ada hal yang ingin diklarifikasi?</div>
               <p class="benefit-text mb-3">
-                Apabila pertanyaan Anda belum terjawab melalui FAQ,
-                silakan menghubungi admin melalui WhatsApp.
-                Sampaikan kebutuhan Anda, dan admin akan membantu merekomendasikan
-                paket yang paling sesuai.
+                Jika pertanyaan Anda belum terjawab dari daftar di samping, silakan menghubungi admin secara langsung.
+                Jelaskan kebutuhan Anda, dan admin akan membantu memilih paket yang paling sesuai.
               </p>
-              <a href="https://wa.me/6287809236556?text=Halo%20Admin%20D%26D%20Multiverse%20Digital%2C%20saya%20ingin%20bertanya%20lebih%20lanjut%20mengenai%20layanan%20digital."
-                 target="_blank"
-                 class="btn btn-success w-100">
-                <i class="fa-brands fa-whatsapp me-2"></i>
-                Tanya Admin Sekarang
+              <a href="https://wa.me/6287809236556?text=Halo%20admin%2C%20saya%20ingin%20bertanya%20lebih%20dulu%20sebelum%20melakukan%20order%20produk%20digital."
+                 target="_blank" class="btn btn-success w-100">
+                <i class="fa-brands fa-whatsapp me-2"></i> Tanya Admin Sekarang
               </a>
             </div>
           </div>
+
         </div>
       </div>
     </section>
 
-    <!-- KONTAK & FOOTER -->
+    <!-- CONTACT & FOOTER -->
     <section class="contact-section" id="kontak">
       <div class="container">
         <div class="row g-3 align-items-start">
@@ -1483,69 +1422,81 @@
               Hubungi & Ikuti D&D Multiverse Digital
             </h3>
             <p class="mb-2" style="font-size:.9rem;color:var(--muted-color);">
-              Untuk informasi promo, pembaruan layanan, serta panduan penggunaan,
-              Anda dapat menyimpan kontak resmi dan menghubungi kami melalui kanal berikut.
+              Simpan kontak berikut untuk memperoleh informasi promo, pembaruan layanan, serta panduan penggunaan akun.
             </p>
             <ul class="list-unstyled small mb-0">
-              <li>Jam operasional: <strong>08.00 – 23.00 WIB</strong></li>
-              <li>Di luar jam tersebut, respon dapat sedikit lebih lambat.</li>
+              <li>Jam operasional: <strong>08.00 – 23.00 WITA</strong></li>
+              <li>Di luar jam tersebut, respons dapat sedikit lebih lambat.</li>
             </ul>
           </div>
+
           <div class="col-md-7">
             <div class="row g-2">
               <div class="col-sm-6">
-                <a href="https://wa.me/6287809236556?text=Halo%20Admin%20D%26D%20Multiverse%20Digital%2C%20saya%20ingin%20melakukan%20pemesanan%20layanan%20digital."
-                   target="_blank"
-                   class="contact-link">
+                <a href="https://wa.me/6287809236556" target="_blank" class="contact-link">
                   <i class="fa-brands fa-whatsapp text-success"></i>
                   <div>
                     <div>WhatsApp Admin</div>
                     <div class="small text-muted">
-                      Pemesanan layanan digital, konfirmasi pembayaran, dan konsultasi paket.
+                      Konsultasi produk, cek harga, dan konfirmasi pembayaran.
                     </div>
                   </div>
                 </a>
               </div>
-              <div class="col-sm-6">
-                <a href="https://wa.me/6287809236556?text=Halo%20Admin%2C%20saya%20ingin%20mendapatkan%20informasi%20terbaru%20mengenai%20promo%20dan%20layanan."
-                   target="_blank"
-                   class="contact-link">
-                  <i class="fa-brands fa-whatsapp text-success"></i>
-                  <div>
-                    <div>Informasi & Promo</div>
-                    <div class="small text-muted">
-                      Informasi berkala mengenai pembaruan layanan dan promo yang sedang berjalan.
-                    </div>
-                  </div>
-                </a>
-              </div>
+
               <div class="col-sm-6">
                 <a href="#" class="contact-link">
-                  <i class="fa-solid fa-globe"></i>
+                  <i class="fa-brands fa-whatsapp text-success"></i>
                   <div>
-                    <div>Website Resmi</div>
+                    <div>WhatsApp Group (segera hadir)</div>
                     <div class="small text-muted">
-                      Halaman ini merupakan situs resmi D&D Multiverse Digital untuk daftar harga.
+                      Rencana kanal informasi berkala mengenai update katalog dan promo.
                     </div>
                   </div>
                 </a>
               </div>
-              <!-- Slot tambahan jika suatu saat ingin menambah kanal lain -->
+
+              <div class="col-sm-6">
+                <a href="https://t.me/AutoOrderPBS_bot" target="_blank" class="contact-link">
+                  <i class="fa-brands fa-telegram text-primary"></i>
+                  <div>
+                    <div>Telegram Bot Auto Order</div>
+                    <div class="small text-muted">
+                      Pesan produk digital secara otomatis melalui Telegram.
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+              <div class="col-sm-6">
+                <a href="https://ontan26.github.io" target="_blank" class="contact-link">
+                  <i class="fa-solid fa-globe"></i>
+                  <div>
+                    <div>Halaman Resmi D&D Multiverse Digital</div>
+                    <div class="small text-muted">
+                      Ringkasan layanan, katalog, dan informasi pembaruan.
+                    </div>
+                  </div>
+                </a>
+              </div>
+
             </div>
           </div>
         </div>
+
         <div class="footer-mini mt-3">
           <div class="d-flex flex-wrap justify-content-between gap-2">
-            <span>© <span id="footerYear">2025</span> D&D Multiverse Digital. All rights reserved.</span>
-            <span>Crafted with dedication by Brandon Tan.</span>
+            <span>© <span id="footerYear">2025</span> D&D MULTIVERSE DIGITAL — A Digital Creative Studio.</span>
+            <span>Crafted with vision by Brandon Tan.</span>
           </div>
         </div>
       </div>
     </section>
+
   </main>
 </div>
 
-<!-- Modal Detail -->
+<!-- MODAL DETAIL -->
 <div class="modal fade" id="produkModal" tabindex="-1" aria-labelledby="produkModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-scrollable">
     <div class="modal-content" id="produkModalContent">
@@ -1568,7 +1519,7 @@
   </div>
 </div>
 
-<!-- Offcanvas Cart -->
+<!-- OFFCANVAS CART -->
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCart" aria-labelledby="offcanvasCartLabel">
   <div class="offcanvas-header">
     <button class="btn btn-link text-decoration-none d-inline d-md-none me-2" data-bs-dismiss="offcanvas" aria-label="Kembali">
@@ -1601,19 +1552,19 @@
   </div>
 </div>
 
-<!-- Floating buttons -->
+<!-- FLOATING BUTTONS -->
 <button class="floating-cart" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
-  <i class="fa-solid fa-bag-shopping"></i><span class="count" id="cartCount">0</span>
+  <i class="fa-solid fa-bag-shopping"></i>
+  <span class="count" id="cartCount">0</span>
 </button>
 <button class="floating-dark" id="floatingDarkBtn" title="Toggle Dark Mode">
   <i class="fa-solid fa-sun"></i>
 </button>
 
-<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-  // Pastikan variabel tinggi navbar up-to-date saat modal dibuka
+  // Tinggi navbar
   const navbar = document.getElementById('mainNavbar');
   function refreshNavH(){
     const h = navbar ? navbar.offsetHeight : 64;
@@ -1628,21 +1579,22 @@
 
 <script>
   // ========= SHEETS CONFIG =========
-  const SHEET_ID = "16fNB7oX2-PIIuNDjrzL3xgtNSQTTnxC2gxW2x78GoHI"; // tetap referensi sama, harga dasar dari sini
+  const SHEET_ID   = "16fNB7oX2-PIIuNDjrzL3xgtNSQTTnxC2gxW2x78GoHI";
   const SHEET_NAME = "Produk";
-  const DEFAULT_WA = "6287809236556"; // nomor WA D&D Multiverse Digital
-  const SHEET_JSON_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(SHEET_NAME)}`;
+  const DEFAULT_WA = "6287809236556"; // nomor Boss Brandon
+  const SHEET_JSON_URL =
+    `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(SHEET_NAME)}`;
 
   // ========= STATE =========
   let produkVariants = []; // tiap baris sheet = varian
-  let produkGroups = [];   // hasil dikelompokkan per kolom group
-  let viewData = [];
-  let page = 1;
-  const perPage = 12;
+  let produkGroups   = []; // hasil dikelompokkan per kolom group
+  let viewData       = [];
+  let page           = 1;
+  const perPage      = 12;
 
-  const produkList = document.getElementById("produk-list");
-  const searchInput = document.getElementById("searchInput");
-  const btnLoadMore = document.getElementById("btnLoadMore");
+  const produkList   = document.getElementById("produk-list");
+  const searchInput  = document.getElementById("searchInput");
+  const btnLoadMore  = document.getElementById("btnLoadMore");
 
   const CART_KEY = "dnd_cart";
   const WISH_KEY = "dnd_wishlist";
@@ -1661,9 +1613,11 @@
     "Instagram":"fa-brands fa-instagram",
     "TikTok":"fa-brands fa-tiktok"
   };
+
   const categories = [
     {value:"", label:"Semua", icon:"fa-rotate"},
-    ...["Instagram","TikTok","Langganan","Streaming","Penyimpanan","Software","Desain","Produktivitas","AI Tools","Keamanan","Game","Voucher"]
+    ...["Instagram","TikTok","Langganan","Streaming","Penyimpanan","Software",
+       "Desain","Produktivitas","AI Tools","Keamanan","Game","Voucher"]
       .map(k=>({value:k,label:k,icon:categoryIconsFA[k]}))
   ];
 
@@ -1682,7 +1636,8 @@
   document.addEventListener('hidden.bs.collapse', setNavOffset);
 
   function showLoading(){
-    produkList.innerHTML=`<div class="col-12"><div class="loading"><div class="spinner"></div></div></div>`;
+    produkList.innerHTML =
+      `<div class="col-12"><div class="loading"><div class="spinner"></div></div></div>`;
   }
 
   // ===== Bangun grup dari varian (pakai kolom group) =====
@@ -1690,7 +1645,7 @@
     const map = new Map();
 
     produkVariants.forEach(v =>{
-      const key = v.group || v.nama; // kalau group kosong, fallback nama
+      const key = v.group || v.nama;
       let g = map.get(key);
       if(!g){
         g = {
@@ -1698,7 +1653,7 @@
           title: key,
           kategori: v.kategori,
           ikon: v.ikon,
-          wa: v.wa || DEFAULT_WA,
+          wa: DEFAULT_WA,
           variants: [],
           minHarga: v.harga || 0,
           maxHargaLama: v.harga_lama || 0,
@@ -1717,7 +1672,7 @@
 
   // ===== Filter & Sort di level group =====
   function applyFilterSort(){
-    const q = (searchInput?.value || "").toLowerCase();
+    const q = (searchInput.value || "").toLowerCase();
 
     viewData = produkGroups.filter(g=>{
       const inTitle    = (g.title || "").toLowerCase().includes(q);
@@ -1730,8 +1685,8 @@
 
   // ===== Render card per group =====
   function renderProduk(append=false){
-    const start=(page-1)*perPage;
-    const slice=viewData.slice(start,start+perPage);
+    const start = (page-1)*perPage;
+    const slice = viewData.slice(start,start+perPage);
 
     if(!append) produkList.innerHTML="";
 
@@ -1741,12 +1696,14 @@
           <div class="empty-state">
             <i class="fas fa-search"></i>
             <h4>Produk tidak ditemukan</h4>
-            <p>Silakan ubah kata kunci pencarian atau periksa kembali kategori yang dipilih.</p>
+            <p>Coba ubah kata kunci pencarian.</p>
           </div>
         </div>`;
       btnLoadMore.style.display="none";
       return;
     }
+
+    const wishlist = getStorage(WISH_KEY,[]);
 
     slice.forEach((group,idx)=>{
       const col=document.createElement("div");
@@ -1755,9 +1712,7 @@
       const catIconClass = categoryIconsFA[group.kategori] || "fa-box";
       const hasDiscount  = (group.maxHargaLama||0) > (group.minHarga||0);
       const stokOK       = !!group.available;
-
-      const wishlist=getStorage(WISH_KEY,[]);
-      const wished = wishlist.includes(group.key);
+      const wished       = wishlist.includes(group.key);
 
       col.innerHTML=`
         <div class="card product-card fade-in" style="animation-delay:${idx*0.03}s">
@@ -1772,7 +1727,7 @@
           <div class="card-body p-3 text-center">
             <div class="product-icon">
               <img src="${group.ikon||''}" alt="${group.title||''}"
-                   onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHJ4PSI4IiBmaWxsPSIjZmZmIiBzdHJva2U9IiNlMmU4ZjAiIHN0cm9rZS13aWR0aD0iMSIvPjwvc3ZnPg=='">
+                   onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHJ4PSI4IiBmaWxsPSIjMTAxODI0IiBzdHJva2U9IiM0ODU2NjYiIHN0cm9rZS13aWR0aD0iMSIvPjwvc3ZnPg=='">
             </div>
             <h6 class="product-title">${group.title||''}</h6>
             <div class="price-wrap">
@@ -1796,7 +1751,7 @@
                  ${stokOK?'':'aria-disabled="true"'}
                  target="_blank" aria-label="WhatsApp"
                  href="https://wa.me/${encodeURIComponent(group.wa||DEFAULT_WA)}?text=${
-                   encodeURIComponent(`Halo Admin D&D Multiverse Digital, saya tertarik dengan produk ${group.title}. Mohon informasi detail varian dan harganya.`)
+                   encodeURIComponent(`Halo admin, saya tertarik dengan paket ${group.title}. Mohon informasi detail varian dan harga.`)
                  }">
                 <i class="fa-brands fa-whatsapp"></i>
               </a>
@@ -1806,22 +1761,24 @@
       produkList.appendChild(col);
     });
 
-    btnLoadMore.style.display = (viewData.length > (start + slice.length)) ? "inline-block" : "none";
+    btnLoadMore.style.display =
+      (viewData.length > (start + slice.length)) ? "inline-block" : "none";
   }
 
   // ===== Modal Detail & varian =====
-  const modalEl=document.getElementById('produkModal');
-  const bsModal=new bootstrap.Modal(modalEl);
-  const modalAddCart=document.getElementById('modalAddCart');
-  const modalBody=document.getElementById('modalBody');
-  let currentDetailIdx=null;
+  const modalEl   = document.getElementById('produkModal');
+  const bsModal   = new bootstrap.Modal(modalEl);
+  const modalAddCart = document.getElementById('modalAddCart');
+  const modalBody = document.getElementById('modalBody');
+  let currentDetailIdx = null;
 
   function showDetailByGlobalIndex(globalIdx){
     const group = viewData[globalIdx];
     currentDetailIdx = globalIdx;
 
     const catIconClass = categoryIconsFA[group.kategori] || "fa-box";
-    const primaryVariant = group.variants.find(v => Number(v.stok)>0) || group.variants[0];
+    const primaryVariant =
+      group.variants.find(v => Number(v.stok)>0) || group.variants[0];
 
     const variantsHTML = group.variants.map((v,i)=>{
       const fitur = (v.deskripsi||[]).map(li =>
@@ -1861,8 +1818,8 @@
                     ${stokOK ? '' : 'disabled'}>
               <i class="fa-solid fa-cart-plus me-1"></i>Keranjang
             </button>
-            <a href="https://wa.me/${encodeURIComponent(v.wa || group.wa || DEFAULT_WA)}?text=${
-                encodeURIComponent(`Halo Admin D&D Multiverse Digital, saya ingin memesan ${v.nama} dengan harga ${money(v.harga)}.`)
+            <a href="https://wa.me/${encodeURIComponent(DEFAULT_WA)}?text=${
+                encodeURIComponent(`Halo admin, saya ingin memesan ${v.nama} (${money(v.harga)}).`)
               }"
               target="_blank"
               class="btn btn-sm btn-success ${stokOK ? '' : 'disabled'}">
@@ -1879,7 +1836,7 @@
             <div class="product-icon modal-product-icon mx-auto">
               <img src="${group.ikon || ''}" alt="${group.title || ''}"
                   style="width:60px;height:60px;"
-                  onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHJ4PSIxMiIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjZTJlOGYwIiBzdHJva2Utd2lkdGg9IjEiLz48L3N2Zz4='">
+                  onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHJ4PSIxMiIgZmlsbD0iIzIwMTgzMCIgc3Ryb2tlPSIjNjQ3NDhiIiBzdHJva2Utd2lkdGg9IjEiLz48L3N2Zz4='">
             </div>
             <span class="badge modal-category-pill mt-2 d-inline-flex align-items-center gap-1">
               <i class="fa-solid ${catIconClass}"></i>
@@ -1913,8 +1870,8 @@
     const modalPesanBtn = document.getElementById("modalPesanBtn");
     if(primaryVariant){
       modalPesanBtn.href =
-        `https://wa.me/${encodeURIComponent(primaryVariant.wa || group.wa || DEFAULT_WA)}?text=${
-          encodeURIComponent(`Halo Admin D&D Multiverse Digital, saya ingin memesan ${primaryVariant.nama} dengan harga ${money(primaryVariant.harga)}.`)
+        `https://wa.me/${encodeURIComponent(DEFAULT_WA)}?text=${
+          encodeURIComponent(`Halo admin, saya ingin memesan ${primaryVariant.nama} (${money(primaryVariant.harga)}).`)
         }`;
       modalAddCart.disabled = !(Number(primaryVariant.stok)>0);
       modalAddCart.dataset.primaryVariant = primaryVariant.nama;
@@ -1927,6 +1884,7 @@
     bsModal.show();
   }
 
+  // Gesture tutup modal (mobile)
   (function enableModalSwipeClose(){
     const content=document.getElementById('produkModalContent'); let startY=null;
     content.addEventListener('touchstart',e=>{startY=e.touches[0].clientY;},{passive:true});
@@ -1946,36 +1904,44 @@
     new bootstrap.Offcanvas('#offcanvasCart').show();
   });
 
-  // ===== Load data dari Sheet =====
+  // ===== LOAD DATA DARI SHEET =====
   async function loadProdukFromSheet(){
     showLoading();
     try{
-      const res=await fetch(SHEET_JSON_URL,{cache:'no-store'});
-      const text=await res.text();
-      const json=JSON.parse(text.substring(47,text.length-2));
-      const rows=json.table.rows||[];
+      const res  = await fetch(SHEET_JSON_URL,{cache:'no-store'});
+      const text = await res.text();
+      const json = JSON.parse(text.substring(47,text.length-2));
+      const rows = json.table.rows || [];
 
-      // nama, harga_dasar, ikon, deskripsi, kategori, wa, harga_dasar_lama, stok, kode, group
+      // Kolom: nama, harga, ikon, deskripsi, kategori, wa(btt), harga_lama, stok, kode, group
       produkVariants = rows.map((r,idx)=>{
-        const c=r.c||[];
+        const c = r.c || [];
+        const baseHarga      = Number(c[1]?.v ?? 0) || 0;
+        const baseHargaLama  = Number(c[6]?.v ?? 0) || 0;
 
-        const nama       = c[0]?.v ?? "";
-        const baseHarga  = Number(c[1]?.v ?? 0) || 0;
-        const ikon       = c[2]?.v ?? "";
-        const deskripsi  = (c[3]?.v ?? "").toString().split("||").map(s=>s.trim()).filter(Boolean);
-        const kategori   = c[4]?.v ?? "";
-        const wa         = c[5]?.v ?? DEFAULT_WA;
-        const baseHargaLama = Number(c[6]?.v ?? 0) || 0;
-        const stok       = Number(c[7]?.v ?? 0) || 0;
-        const kode       = c[8]?.v ?? "";
-        const group      = c[9]?.v ?? "";
+        const nama      = c[0]?.v ?? "";
+        const harga     = baseHarga + 5000;     // markup +5k
+        const ikon      = c[2]?.v ?? "";
+        const deskripsi = (c[3]?.v ?? "").toString().split("||").map(s=>s.trim()).filter(Boolean);
+        const kategori  = c[4]?.v ?? "";
+        const harga_lama= baseHargaLama ? baseHargaLama + 5000 : 0;
+        const stok      = Number(c[7]?.v ?? 0) || 0;
+        const kode      = c[8]?.v ?? "";
+        const group     = c[9]?.v ?? "";
 
-        // MARKUP +5.000 dari harga dasar referensi
-        const markup = 5000;
-        const harga = baseHarga > 0 ? baseHarga + markup : 0;
-        const harga_lama = baseHargaLama > 0 ? baseHargaLama + markup : 0;
-
-        return { id:idx, nama, harga, ikon, deskripsi, kategori, wa, harga_lama, stok, kode, group };
+        return {
+          id:idx,
+          nama,
+          harga,
+          ikon,
+          deskripsi,
+          kategori,
+          wa: DEFAULT_WA,  // paksa selalu ke nomor Boss Brandon
+          harga_lama,
+          stok,
+          kode,
+          group
+        };
       });
 
       buildGroups();
@@ -1989,7 +1955,7 @@
           <div class="empty-state">
             <i class="fas fa-triangle-exclamation"></i>
             <h4>Gagal memuat data</h4>
-            <p>Periksa kembali pengaturan akses Sheet, ID Sheet, atau koneksi internet Anda.</p>
+            <p>Periksa pengaturan berbagi Google Sheet, ID, dan nama sheet.</p>
             <code>${SHEET_JSON_URL}</code>
           </div>
         </div>`;
@@ -1997,77 +1963,83 @@
     }
   }
 
-  // ===== Cart & Wishlist =====
+  // ===== CART & WISHLIST =====
   function getCart(){return getStorage(CART_KEY,[]);}
   function setCart(c){setStorage(CART_KEY,c); updateCartUI();}
   function addToCart(name,qty=1){
     const item = produkVariants.find(p=>p.nama===name);
     if(!item || !(Number(item.stok)>0)) return;
-    const cart=getCart();
-    const ex=cart.find(ci=>ci.nama===name);
+    const cart = getCart();
+    const ex   = cart.find(ci=>ci.nama===name);
     if(ex){ex.qty+=qty;}
-    else{cart.push({nama:item.nama,harga:item.harga,wa:item.wa||DEFAULT_WA,qty});}
+    else{cart.push({nama:item.nama,harga:item.harga,wa:DEFAULT_WA,qty});}
     setCart(cart);
   }
-  function removeFromCart(name){setCart(getCart().filter(ci=>ci.nama!==name));}
+  function removeFromCart(name){
+    setCart(getCart().filter(ci=>ci.nama!==name));
+  }
   function changeQty(name,delta){
-    const cart=getCart(); const it=cart.find(ci=>ci.nama===name); if(!it)return;
-    it.qty=Math.max(1,(it.qty||1)+delta); setCart(cart);
+    const cart=getCart();
+    const it=cart.find(ci=>ci.nama===name);
+    if(!it)return;
+    it.qty=Math.max(1,(it.qty||1)+delta);
+    setCart(cart);
   }
   function clearCart(){setCart([]);}
 
   function updateCartUI(){
-    const cart=getCart();
+    const cart = getCart();
     const totalQty = cart.reduce((a,b)=>a+(b.qty||1),0);
-    document.getElementById("cartCount").textContent=totalQty;
+    document.getElementById("cartCount").textContent = totalQty;
 
-    const wrap=document.getElementById("cartItems");
+    const wrap = document.getElementById("cartItems");
     if(cart.length===0){
-      wrap.innerHTML=`<div class="empty-state"><i class="fa-regular fa-face-frown"></i><p>Keranjang kosong</p></div>`;
-      document.getElementById("cartTotal").textContent=money(0);
-      document.getElementById("btnCheckoutWA").href="#";
+      wrap.innerHTML = `
+        <div class="empty-state">
+          <i class="fa-regular fa-face-frown"></i>
+          <p>Keranjang kosong</p>
+        </div>`;
+      document.getElementById("cartTotal").textContent = money(0);
+      document.getElementById("btnCheckoutWA").href = "#";
       document.getElementById('navCartCount').textContent = 0;
-      document.dispatchEvent(new CustomEvent('dnd:cart-updated',{detail:{count:0,total:0}}));
+      document.dispatchEvent(
+        new CustomEvent('dnd:cart-updated',{detail:{count:0,total:0}})
+      );
       return;
     }
+
     let total=0;
-    wrap.innerHTML=cart.map(ci=>{
+    wrap.innerHTML = cart.map(ci=>{
       const sub=(ci.harga||0)*(ci.qty||1); total+=sub;
       return `
-      <div class="d-flex align-items-center justify-content-between border rounded-3 p-2 mb-2">
-        <div>
-          <div class="fw-bold">${ci.nama}</div>
-          <div class="text-muted small">${money(ci.harga)} × ${ci.qty}</div>
-        </div>
-        <div class="d-flex align-items-center gap-2">
-          <button class="btn btn-sm btn-outline-secondary" data-qtyminus="${encodeURIComponent(ci.nama)}">-</button>
-          <button class="btn btn-sm btn-outline-secondary" data-qtyplus="${encodeURIComponent(ci.nama)}">+</button>
-          <button class="btn btn-sm btn-outline-danger" data-remove="${encodeURIComponent(ci.nama)}"><i class="fa-solid fa-trash"></i></button>
-        </div>
-      </div>`;
+        <div class="d-flex align-items-center justify-content-between border rounded-3 p-2 mb-2">
+          <div>
+            <div class="fw-bold">${ci.nama}</div>
+            <div class="text-muted small">${money(ci.harga)} × ${ci.qty}</div>
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            <button class="btn btn-sm btn-outline-secondary" data-qtyminus="${encodeURIComponent(ci.nama)}">-</button>
+            <button class="btn btn-sm btn-outline-secondary" data-qtyplus="${encodeURIComponent(ci.nama)}">+</button>
+            <button class="btn btn-sm btn-outline-danger" data-remove="${encodeURIComponent(ci.nama)}">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </div>
+        </div>`;
     }).join("");
-    document.getElementById("cartTotal").textContent=money(total);
 
-    const lines=cart.map(ci=>`• ${ci.nama} x${ci.qty} = ${money(ci.harga*ci.qty)}`).join('\n');
-    const text=
-`Halo Admin D&D Multiverse Digital,
-saya ingin melakukan pemesanan layanan digital berikut:
+    document.getElementById("cartTotal").textContent = money(total);
 
-${lines}
+    const lines = cart.map(ci=>`• ${ci.nama} x${ci.qty} = ${money(ci.harga*ci.qty)}`).join('\n');
+    const text  =
+      `Halo admin, saya ingin checkout layanan digital berikut:\n${lines}\n\nTotal: ${money(total)}\n\nTerima kasih.`;
 
-Total: ${money(total)}
-
-Nama:
-Metode pembayaran:
-Catatan tambahan:
-
-Terima kasih.`;
-    const uniqueWAs=[...new Set(cart.map(c=>c.wa||DEFAULT_WA))];
-    const waTarget=uniqueWAs.length===1?uniqueWAs[0]:DEFAULT_WA;
-    document.getElementById("btnCheckoutWA").href=`https://wa.me/${encodeURIComponent(waTarget)}?text=${encodeURIComponent(text)}`;
+    document.getElementById("btnCheckoutWA").href =
+      `https://wa.me/${encodeURIComponent(DEFAULT_WA)}?text=${encodeURIComponent(text)}`;
 
     document.getElementById('navCartCount').textContent = totalQty;
-    document.dispatchEvent(new CustomEvent('dnd:cart-updated',{detail:{count:totalQty,total}}));
+    document.dispatchEvent(
+      new CustomEvent('dnd:cart-updated',{detail:{count:totalQty,total}})
+    );
   }
 
   function toggleWishlist(key){
@@ -2078,10 +2050,11 @@ Terima kasih.`;
     setStorage(WISH_KEY,list);
   }
 
-  // ===== Events =====
-  if (searchInput) {
-    searchInput.addEventListener("input",()=>{applyFilterSort();renderProduk(false);});
-  }
+  // ===== EVENTS =====
+  searchInput.addEventListener("input",()=>{
+    applyFilterSort();
+    renderProduk(false);
+  });
 
   produkList.addEventListener("click",e=>{
     const t=e.target.closest("[data-detail],[data-add],[data-wish]");
@@ -2097,13 +2070,22 @@ Terima kasih.`;
   });
 
   document.getElementById("cartItems").addEventListener("click",e=>{
-    const t=e.target.closest("[data-qtyminus],[data-qtyplus],[data-remove]"); if(!t)return;
-    if(t.dataset.qtyminus){changeQty(decodeURIComponent(t.dataset.qtyminus),-1);}
-    else if(t.dataset.qtyplus){changeQty(decodeURIComponent(t.dataset.qtyplus),+1);}
-    else if(t.dataset.remove){removeFromCart(decodeURIComponent(t.dataset.remove));}
+    const t=e.target.closest("[data-qtyminus],[data-qtyplus],[data-remove]");
+    if(!t)return;
+    if(t.dataset.qtyminus){
+      changeQty(decodeURIComponent(t.dataset.qtyminus),-1);
+    }else if(t.dataset.qtyplus){
+      changeQty(decodeURIComponent(t.dataset.qtyplus),+1);
+    }else if(t.dataset.remove){
+      removeFromCart(decodeURIComponent(t.dataset.remove));
+    }
   });
+
   document.getElementById("btnClearCart").addEventListener("click",()=>clearCart());
-  document.getElementById("btnLoadMore").addEventListener("click",()=>{page+=1;renderProduk(true);});
+  document.getElementById("btnLoadMore").addEventListener("click",()=>{
+    page+=1;
+    renderProduk(true);
+  });
 
   document.getElementById("modalAddCart").addEventListener("click",()=>{
     const primaryName = document.getElementById("modalAddCart").dataset.primaryVariant;
@@ -2112,27 +2094,30 @@ Terima kasih.`;
     new bootstrap.Offcanvas('#offcanvasCart').show();
   });
 
-  // ===== Dark mode, nav, sinkron cart =====
+  // ===== Dark mode & nav =====
   (function initTheme(){
-    const saved=localStorage.getItem("dnd_theme")||"dark";
+    const saved = localStorage.getItem("dnd_theme") || "dark";
     document.documentElement.setAttribute("data-theme",saved);
-    const darkBtn=document.getElementById("floatingDarkBtn");
-    const setIcon=()=>{darkBtn.innerHTML=`<i class="fa-solid ${document.documentElement.getAttribute('data-theme')==='dark'?'fa-sun':'fa-moon'}"></i>`;}
+    const darkBtn = document.getElementById("floatingDarkBtn");
+    const setIcon = ()=>{
+      darkBtn.innerHTML =
+        `<i class="fa-solid ${document.documentElement.getAttribute('data-theme')==='dark'?'fa-sun':'fa-moon'}"></i>`;
+    };
     setIcon();
     darkBtn.addEventListener("click",()=>{
-      const mode=document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";
+      const mode = document.documentElement.getAttribute("data-theme")==="dark" ? "light" : "dark";
       document.documentElement.setAttribute("data-theme",mode);
       localStorage.setItem("dnd_theme",mode);
       setIcon();
       const navBtn=document.getElementById('navDarkBtn');
-      if(navBtn){ navBtn.innerHTML = `<i class="fa-solid ${mode==='dark'?'fa-sun':'fa-moon'}"></i>`; }
+      if(navBtn){ navBtn.innerHTML = darkBtn.innerHTML; }
     });
   })();
 
-  // NAVBAR SEARCH OVERLAY
   (function initNavbarSearch(){
-    const searchBtns = document.querySelectorAll('[data-nav-search]');
-    const searchOverlay = document.getElementById('searchOverlay');
+    const searchBtns   = document.querySelectorAll('[data-nav-search]');
+    const searchOverlay= document.getElementById('searchOverlay');
+    const btnCloseSearch = document.getElementById('btnCloseSearch');
 
     if(!searchBtns.length || !searchOverlay || !searchInput) return;
 
@@ -2159,7 +2144,6 @@ Terima kasih.`;
       btn.addEventListener('click', toggleSearch);
     });
 
-    const btnCloseSearch = document.getElementById('btnCloseSearch');
     if (btnCloseSearch) {
       btnCloseSearch.addEventListener('click', closeSearch);
     }
@@ -2169,7 +2153,6 @@ Terima kasih.`;
     });
   })();
 
-  // Smooth scroll nav
   document.addEventListener('click',(e)=>{
     const a=e.target.closest('a[data-scroll][href^="#"]');
     if(!a) return;
@@ -2181,20 +2164,13 @@ Terima kasih.`;
     if(coll && coll.classList.contains('show')) new bootstrap.Collapse(coll).hide();
   });
 
-  // Active nav on this page
-  (function setActiveNav(){
-    const path = location.pathname.split('/').pop() || 'index.html';
-    document.querySelectorAll('.nav-link').forEach(n=>{
-      const href = n.getAttribute('href');
-      if(n.hasAttribute('data-scroll') && (path==='index.html' || path==='')) n.classList.add('active');
-      else if(href && href.endsWith(path)) n.classList.add('active');
-    });
-  })();
-
   (function hookNavbarDark(){
     const btn = document.getElementById('navDarkBtn');
     if(!btn) return;
-    const setIcon=()=>{ btn.innerHTML = `<i class="fa-solid ${document.documentElement.getAttribute('data-theme')==='dark'?'fa-sun':'fa-moon'}"></i>`; };
+    const setIcon=()=>{
+      btn.innerHTML =
+        `<i class="fa-solid ${document.documentElement.getAttribute('data-theme')==='dark'?'fa-sun':'fa-moon'}"></i>`;
+    };
     setIcon();
     btn.addEventListener('click', ()=>{
       const mode=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
@@ -2220,12 +2196,11 @@ Terima kasih.`;
     setNavOffset();
     loadProdukFromSheet();
     updateCartUI();
-
     const fy = document.getElementById('footerYear');
     if(fy){ fy.textContent = new Date().getFullYear(); }
   });
+
   window.addEventListener('load',()=>document.body.classList.add('loaded'));
 </script>
-
 </body>
 </html>
