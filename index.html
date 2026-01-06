@@ -1,14 +1,11 @@
-<!DOCTYPE html>
 <html lang="id" data-theme="light" style="--nav-h: 95px;">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>D&amp;D Multiverse Digital - Price List</title>
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <title>D&amp;D Multiverse Digital - Price List</title> 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"> 
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"> 
   <style>
     :root{
       --primary-color:#4c1d95;
@@ -877,547 +874,613 @@
     }
 
     .d-flex.gap-1 > *{margin:0 !important;}
-  </style>
-</head>
 
-<body class="loaded">
-  <div class="container-fluid">
-    <nav class="navbar navbar-expand-lg nav-glass" id="mainNavbar">
-      <div class="container">
-        <a class="navbar-brand" href="index.html">D&amp;D Multiverse Digital</a>
+    /* ===== WELCOME OVERLAY ===== */
+    .welcome-overlay{
+      position:fixed;
+      inset:0;
+      z-index:2000;
+      background:rgba(15,23,42,.88);
+      backdrop-filter:blur(16px);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:1.5rem;
+      opacity:1;
+      visibility:visible;
+      transition:opacity .3s ease, visibility .3s ease;
+    }
+    html[data-theme="light"] .welcome-overlay{
+      background:rgba(15,23,42,.35);
+    }
+    .welcome-overlay.hidden{
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+    }
+    .welcome-card{
+      max-width:480px;
+      width:100%;
+      border-radius:22px;
+      padding:1.6rem 1.5rem 1.4rem;
+      background:
+        radial-gradient(circle at top left,rgba(56,189,248,.24),transparent 55%),
+        radial-gradient(circle at bottom right,rgba(244,63,94,.18),transparent 60%),
+        #020617;
+      border:1px solid rgba(148,163,184,.55);
+      box-shadow:0 26px 60px rgba(0,0,0,.95);
+      color:#e5e7eb;
+    }
+    html[data-theme="light"] .welcome-card{
+      background:
+        radial-gradient(circle at top left,rgba(56,189,248,.18),transparent 55%),
+        radial-gradient(circle at bottom right,rgba(244,63,94,.16),transparent 60%),
+        #ffffff;
+      color:#020617;
+      border-color:#e2e8f0;
+      box-shadow:0 20px 45px rgba(15,23,42,.25);
+    }
+    .welcome-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:.4rem;
+      padding:.25rem .75rem;
+      border-radius:999px;
+      background:rgba(15,23,42,.85);
+      border:1px solid rgba(148,163,184,.7);
+      font-size:.78rem;
+      font-weight:500;
+      margin-bottom:.75rem;
+    }
+    html[data-theme="light"] .welcome-badge{
+      background:#eff6ff;
+      border-color:#bfdbfe;
+      color:#1e293b;
+    }
+    .welcome-title{
+      font-size:1.35rem;
+      font-weight:800;
+      margin-bottom:.35rem;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+    }
+    .welcome-kicker{
+      font-size:.9rem;
+      color:#cbd5e1;
+      margin-bottom:.75rem;
+    }
+    html[data-theme="light"] .welcome-kicker{
+      color:#64748b;
+    }
+    .welcome-text{
+      font-size:.9rem;
+      margin-bottom:.4rem;
+      color:#cbd5e1;
+    }
+    html[data-theme="light"] .welcome-text{
+      color:#475569;
+    }
+    .welcome-list{
+      padding-left:1.1rem;
+      margin:0 0 .75rem 0;
+      font-size:.88rem;
+      color:#94a3b8;
+    }
+    html[data-theme="light"] .welcome-list{
+      color:#64748b;
+    }
+    .welcome-list li{
+      margin-bottom:.25rem;
+    }
+    .welcome-footnote{
+      font-size:.78rem;
+      color:#9ca3af;
+      margin-bottom:.9rem;
+    }
+    html[data-theme="light"] .welcome-footnote{
+      color:#94a3b8;
+    }
+    .welcome-actions .btn{
+      font-weight:700;
+      border-radius:999px;
+    }
+    @media(max-width:480px){
+      .welcome-card{
+        padding:1.35rem 1.2rem 1.2rem;
+      }
+      .welcome-title{
+        font-size:1.2rem;
+      }
+    }
+  </style> 
+ </head> 
+ <body class="loaded"> 
 
-        <div class="d-flex align-items-center d-lg-none ms-auto gap-1">
-          <button class="nav-icon-btn d-inline-flex" type="button" data-nav-search="">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </button>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </div>
-
-        <div class="collapse navbar-collapse" id="mainNav">
-          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
-            <li class="nav-item"><a class="nav-link active" data-scroll="" href="#produk">Produk</a></li>
-            <li class="nav-item"><a class="nav-link" href="#keunggulan">Keunggulan</a></li>
-            <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
-          </ul>
-
-          <div class="d-flex align-items-center gap-2 ms-lg-3">
-            <button class="nav-icon-btn position-relative d-none d-lg-inline-flex" title="Cari Produk" data-nav-search="">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-            <button id="navDarkBtn" class="nav-icon-btn position-relative" title="Toggle Dark Mode">
-              <i class="fa-solid fa-moon"></i>
-            </button>
-            <button class="nav-icon-btn position-relative" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart">
-              <i class="fa-solid fa-bag-shopping"></i>
-              <span id="navCartCount" class="nav-cart-count">0</span>
-            </button>
-          </div>
-        </div>
+  <!-- WELCOME OVERLAY -->
+  <div id="welcomeOverlay" class="welcome-overlay">
+    <div class="welcome-card">
+      <div class="welcome-badge">
+        <i class="fa-solid fa-circle-info"></i>
+        <span>Important information before you continue</span>
       </div>
-    </nav>
-
-    <section class="hero-section">
-      <div class="container">
-        <div class="row g-4 align-items-center">
-          <div class="col-md-7">
-            <div class="hero-badge">
-              <i class="fa-solid fa-shield-check"></i>
-              <span>Solusi langganan aplikasi premium yang rapi, aman, dan terdokumentasi.</span>
-            </div>
-            <h1 class="hero-title">
-              Layanan Digital Premium<br class="d-none d-md-block"> dalam Satu Portal Resmi.
-            </h1>
-            <p class="hero-subtitle">
-              D&amp;D Multiverse Digital membantu Anda mengelola akses Netflix, YouTube Premium, Spotify, Canva Pro, CapCut, hingga tools kreatif lainnya dengan harga terjangkau dan dukungan admin profesional.
-            </p>
-            <div class="hero-actions">
-              <a href="#listProduk" data-scroll="" class="btn btn-primary px-4 py-2" style="background:var(--gradient-primary);border:none;">
-                <i class="fa-solid fa-tags me-2"></i> Lihat Daftar Produk
-              </a>
-              <a href="https://wa.me/6287809236556" target="_blank" class="btn btn-outline-success px-4 py-2">
-                <i class="fa-brands fa-whatsapp me-2"></i> Hubungi Admin
-              </a>
-            </div>
-            <div class="d-flex flex-wrap align-items-center gap-3 mt-3">
-              <div class="hero-pill">
-                <i class="fa-solid fa-bolt"></i>
-                <span>Estimasi proses 1–10 menit pada jam operasional.</span>
-              </div>
-              <div class="hero-pill">
-                <i class="fa-solid fa-shield-halved"></i>
-                <span>Garansi masa pakai sesuai ketentuan D&amp;D Multiverse Digital.</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-5">
-            <div class="row g-3">
-              <div class="col-6">
-                <div class="hero-stat-card">
-                  <div class="hero-stat-value">1.000+</div>
-                  <div class="hero-stat-label">Pesanan digital terselesaikan</div>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="hero-stat-card">
-                  <div class="hero-stat-value">4.9/5</div>
-                  <div class="hero-stat-label">Rata-rata tingkat kepuasan pelanggan</div>
-                </div>
-              </div>
-              <div class="col-12">
-                <div class="hero-stat-card d-flex align-items-center gap-3">
-                  <div class="benefit-icon-wrap mb-0">
-                    <i class="fa-solid fa-qrcode"></i>
-                  </div>
-                  <div>
-                    <div class="hero-stat-label mb-1">Metode pembayaran</div>
-                    <div class="hero-stat-value">QRIS • Transfer • E-Wallet*</div>
-                    <div class="small text-muted mt-1">
-                      *Menyesuaikan kebijakan operasional D&amp;D Multiverse Digital yang berlaku.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <div id="searchOverlay" class="search-overlay">
-      <div class="container">
-        <div class="search-overlay-inner">
-          <i class="fas fa-search overlay-icon"></i>
-          <input type="text" id="searchInput" class="form-control search-input" placeholder="Cari produk atau aplikasi yang Anda butuhkan...">
-          <button class="btn btn-link text-decoration-none close-search" id="btnCloseSearch" aria-label="Tutup">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <main id="produk">
-      <section class="steps-section" id="cara-order">
-        <div class="container">
-          <h2 class="section-title">Cara Order di D&amp;D Multiverse Digital</h2>
-          <p class="section-subtitle">Panduan singkat untuk Anda yang pertama kali memesan layanan digital.</p>
-
-          <div class="row g-3 g-md-4 mt-2">
-            <div class="col-md-6">
-              <div class="step-item">
-                <div class="step-badge">1</div>
-                <div>
-                  <div class="step-title">Pilih produk dan varian</div>
-                  <p class="step-text">
-                    Telusuri daftar produk di bawah, klik tombol <strong>Detail</strong> untuk melihat varian, kemudian pilih paket yang sesuai kebutuhan penggunaan Anda.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <div class="step-item">
-                <div class="step-badge">2</div>
-                <div>
-                  <div class="step-title">Tambahkan ke keranjang</div>
-                  <p class="step-text">
-                    Tekan tombol <strong>Keranjang</strong> pada varian yang diinginkan, lalu tinjau kembali rincian pesanan melalui menu keranjang di pojok kanan bawah.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <div class="step-item">
-                <div class="step-badge">3</div>
-                <div>
-                  <div class="step-title">Checkout via WhatsApp</div>
-                  <p class="step-text">
-                    Klik <strong>Checkout via WhatsApp</strong>. Format pesanan akan tersusun otomatis sehingga Anda hanya perlu mengirimkannya ke admin.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <div class="step-item">
-                <div class="step-badge">4</div>
-                <div>
-                  <div class="step-title">Lakukan pembayaran &amp; tunggu proses</div>
-                  <p class="step-text">
-                    Lakukan pembayaran sesuai instruksi. Setelah itu, pesanan diproses dan akses akun/layanan akan dikirimkan melalui WhatsApp beserta panduan singkat penggunaannya.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      <section class="products-section" id="listProduk">
-        <div class="container">
-          <h2 class="section-title">Katalog Layanan Digital</h2>
-          <p class="section-subtitle">
-            Pilih paket langganan aplikasi premium yang paling relevan dengan kebutuhan kerja, hiburan, dan produktivitas Anda.
-          </p>
-
-          <div class="row g-3" id="produk-list">
-            <div class="col-12">
-              <div class="loading">
-                <div class="spinner"></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="load-more-wrap">
-            <button id="btnLoadMore" class="btn btn-outline-primary px-4 py-2 mt-2">
-              <i class="fa-solid fa-rotate"></i> Muat Lebih
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <section class="benefit-section" id="keunggulan">
-        <div class="container">
-          <h2 class="section-title">Keunggulan D&amp;D Multiverse Digital</h2>
-          <p class="section-subtitle">
-            Tidak hanya harga bersahabat, namun prosedur kerja jelas, aman, dan mudah dipahami bahkan oleh pengguna baru.
-          </p>
-
-          <div class="row g-3 g-md-4 mt-2">
-            <div class="col-md-3 col-sm-6">
-              <div class="benefit-card">
-                <div class="benefit-icon-wrap">
-                  <i class="fa-solid fa-shield-heart"></i>
-                </div>
-                <div class="benefit-title">Terstruktur &amp; Terpercaya</div>
-                <p class="benefit-text">
-                  Semua order dicatat dengan rapi sehingga mudah ditelusuri kembali. Proses dan ketentuan garansi dijelaskan dengan transparan.
-                </p>
-              </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6">
-              <div class="benefit-card">
-                <div class="benefit-icon-wrap">
-                  <i class="fa-solid fa-bolt"></i>
-                </div>
-                <div class="benefit-title">Proses Cepat &amp; Terukur</div>
-                <p class="benefit-text">
-                  Estimasi pengerjaan 1–10 menit pada jam operasional, dengan pemberitahuan yang jelas apabila terjadi antrian atau kendala teknis.
-                </p>
-              </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6">
-              <div class="benefit-card">
-                <div class="benefit-icon-wrap">
-                  <i class="fa-solid fa-arrows-rotate"></i>
-                </div>
-                <div class="benefit-title">Garansi Masa Pakai</div>
-                <p class="benefit-text">
-                  Jika akun mengalami kendala dalam masa garansi dan sesuai ketentuan, admin akan membantu perbaikan atau penggantian sesuai kebijakan.
-                </p>
-              </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6">
-              <div class="benefit-card">
-                <div class="benefit-icon-wrap">
-                  <i class="fa-solid fa-headset"></i>
-                </div>
-                <div class="benefit-title">Pendampingan yang Responsif</div>
-                <p class="benefit-text">
-                  Admin siap menjelaskan perbedaan paket, skema penggunaan, hingga pendampingan teknis ringan setelah layanan aktif.
-                </p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <section class="testimonial-section" id="testimoni">
-        <div class="container">
-          <h2 class="section-title">Ulasan Singkat Pelanggan</h2>
-          <p class="section-subtitle">
-            Ringkasan pengalaman beberapa pelanggan yang telah menggunakan layanan D&amp;D Multiverse Digital.
-          </p>
-
-          <div class="row g-3 g-md-4 mt-2">
-            <div class="col-md-4">
-              <div class="testimonial-card">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <div class="testimonial-name">D*** – Jakarta</div>
-                    <div class="testimonial-meta">YouTube Premium 3 Bulan</div>
-                  </div>
-                  <div class="text-warning">
-                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
-                  </div>
-                </div>
-                <p class="testimonial-text">“Prosesnya jelas, akun aktif cepat, dan seluruh penjelasan dibuat tertulis sehingga mudah dicek ulang.”</p>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="testimonial-card">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <div class="testimonial-name">M*** – Bandung</div>
-                    <div class="testimonial-meta">Canva Pro + CapCut Pro</div>
-                  </div>
-                  <div class="text-warning">
-                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                  </div>
-                </div>
-                <p class="testimonial-text">“Sangat membantu pekerjaan desain dan pembuatan konten harian. Biaya masih logis untuk pekerja lepas.”</p>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="testimonial-card">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <div class="testimonial-name">L*** – Surabaya</div>
-                    <div class="testimonial-meta">Netflix &amp; Spotify Premium</div>
-                  </div>
-                  <div class="text-warning">
-                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                  </div>
-                </div>
-                <p class="testimonial-text">“Sudah beberapa kali perpanjang di sini. Komunikasi tertata dan setiap kendala dijelaskan dengan bahasa yang mudah dimengerti.”</p>
-              </div>
-            </div>
-          </div>
-
-          <p class="small text-muted mt-3">
-            *Testimoni merupakan ringkasan dari beberapa pelanggan. Bukti transaksi dan riwayat pemesanan dapat diminta langsung kepada admin apabila diperlukan.
-          </p>
-        </div>
-      </section>
-
-      <section class="faq-section" id="faq">
-        <div class="container">
-          <h2 class="section-title">Pertanyaan yang Sering Diajukan</h2>
-          <p class="section-subtitle">
-            Beberapa poin berikut dapat membantu menjawab keraguan sebelum melakukan pemesanan.
-          </p>
-
-          <div class="row g-4 mt-2">
-            <div class="col-md-7">
-              <div class="accordion faq-accordion" id="faqAccordion">
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="faqOneHeading">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqOne" aria-expanded="false" aria-controls="faqOne">
-                      Berapa lama estimasi proses order?
-                    </button>
-                  </h2>
-                  <div id="faqOne" class="accordion-collapse collapse" aria-labelledby="faqOneHeading" data-bs-parent="#faqAccordion">
-                    <div class="accordion-body">
-                      Estimasi proses normal berada di kisaran <strong>1–10 menit</strong> pada jam operasional. Jika sedang padat atau terdapat kendala teknis, admin akan menyampaikan informasi estimasi terbaru secara langsung.
-                    </div>
-                  </div>
-                </div>
-
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="faqTwoHeading">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqTwo" aria-expanded="false" aria-controls="faqTwo">
-                      Apa yang harus dilakukan jika akun bermasalah di tengah masa langganan?
-                    </button>
-                  </h2>
-                  <div id="faqTwo" class="accordion-collapse collapse" aria-labelledby="faqTwoHeading" data-bs-parent="#faqAccordion">
-                    <div class="accordion-body">
-                      Silakan segera menghubungi admin dan sertakan bukti order. Selama masih berada dalam <strong>masa garansi</strong> dan sesuai ketentuan, D&amp;D Multiverse Digital akan membantu proses penanganan atau penggantian sesuai kebijakan.
-                    </div>
-                  </div>
-                </div>
-
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="faqThreeHeading">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqThree" aria-expanded="false" aria-controls="faqThree">
-                      Metode pembayaran apa saja yang tersedia?
-                    </button>
-                  </h2>
-                  <div id="faqThree" class="accordion-collapse collapse" aria-labelledby="faqThreeHeading" data-bs-parent="#faqAccordion">
-                    <div class="accordion-body">
-                      Saat ini pembayaran dapat dilakukan melalui <strong>QRIS</strong> dan metode lain yang diinformasikan oleh admin, seperti transfer bank atau e-wallet tertentu. Detail tujuan pembayaran akan dikirim setelah Anda melakukan checkout via WhatsApp.
-                    </div>
-                  </div>
-                </div>
-
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="faqFourHeading">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqFour" aria-expanded="false" aria-controls="faqFour">
-                      Apakah akun dapat digunakan di banyak perangkat?
-                    </button>
-                  </h2>
-                  <div id="faqFour" class="accordion-collapse collapse" aria-labelledby="faqFourHeading" data-bs-parent="#faqAccordion">
-                    <div class="accordion-body">
-                      Setiap platform memiliki <strong>aturan pemakaian</strong> yang berbeda. Admin akan menjelaskan secara terbuka apakah akun dapat digunakan multi-device, hanya satu perangkat, atau memiliki batasan login tertentu sebelum Anda melakukan pembayaran.
-                    </div>
-                  </div>
-                </div>
-
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="faqFiveHeading">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqFive" aria-expanded="false" aria-controls="faqFive">
-                      Apakah layanan ini mengikuti kebijakan platform resmi?
-                    </button>
-                  </h2>
-                  <div id="faqFive" class="accordion-collapse collapse" aria-labelledby="faqFiveHeading" data-bs-parent="#faqAccordion">
-                    <div class="accordion-body">
-                      D&amp;D Multiverse Digital berupaya mengikuti <strong>ketentuan penggunaan</strong> dari masing-masing platform. Jenis akun (sharing, personal, family, dan sebagainya) akan dijelaskan secara rinci oleh admin sesuai produk yang dipilih.
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
-            <div class="col-md-5">
-              <div class="benefit-card">
-                <div class="benefit-icon-wrap mb-2">
-                  <i class="fa-solid fa-circle-question"></i>
-                </div>
-                <div class="benefit-title mb-1">Masih ada hal yang ingin diklarifikasi?</div>
-                <p class="benefit-text mb-3">
-                  Jika pertanyaan Anda belum terjawab dari daftar di samping, silakan menghubungi admin secara langsung. Jelaskan kebutuhan Anda, dan admin akan membantu memilih paket yang paling sesuai.
-                </p>
-                <a href="https://wa.me/6287809236556?text=Halo%20admin%2C%20saya%20ingin%20bertanya%20lebih%20dulu%20sebelum%20melakukan%20order%20produk%20digital."
-                   target="_blank" class="btn btn-success w-100">
-                  <i class="fa-brands fa-whatsapp me-2"></i> Tanya Admin Sekarang
-                </a>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      <section class="contact-section" id="kontak">
-        <div class="container">
-          <div class="row g-3 align-items-start">
-            <div class="col-md-5">
-              <span class="contact-pill mb-2">
-                <i class="fa-solid fa-building"></i><span>D&amp;D Multiverse Digital</span>
-              </span>
-              <h3 class="mt-2 mb-2" style="font-size:1.35rem;font-weight:700;">Hubungi &amp; Ikuti D&amp;D Multiverse Digital</h3>
-              <p class="mb-2" style="font-size:.9rem;color:var(--muted-color);">
-                Simpan kontak berikut untuk memperoleh informasi promo, pembaruan layanan, serta panduan penggunaan akun.
-              </p>
-              <ul class="list-unstyled small mb-0">
-                <li>Jam operasional: <strong>08.00 – 23.00 WITA</strong></li>
-                <li>Di luar jam tersebut, respons dapat sedikit lebih lambat.</li>
-              </ul>
-            </div>
-
-            <div class="col-md-7">
-              <div class="row g-2">
-                <div class="col-sm-8 col-12">
-                  <a href="https://wa.me/6287809236556" target="_blank" class="contact-link">
-                    <i class="fa-brands fa-whatsapp text-success"></i>
-                    <div>
-                      <div>WhatsApp Admin</div>
-                      <div class="small text-muted">
-                        Konsultasi produk, cek harga, dan konfirmasi pembayaran secara langsung dengan admin.
-                      </div>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="footer-mini mt-3">
-            <div class="d-flex flex-wrap justify-content-between gap-2">
-              <span>© <span id="footerYear">2025</span> D&amp;D MULTIVERSE DIGITAL — A Digital Creative Studio.</span>
-              <span>Crafted with vision by Brandon Tan.</span>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-    </main>
-  </div>
-
-  <!-- Modal Detail Produk -->
-  <div class="modal fade" id="produkModal" tabindex="-1" aria-labelledby="produkModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-scrollable">
-      <div class="modal-content" id="produkModalContent">
-        <div class="modal-header">
-          <h5 class="modal-title" id="produkModalLabel">
-            <i class="fas fa-info-circle me-2"></i> Detail Produk
-          </h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
-        </div>
-        <div class="modal-body" id="modalBody"></div>
-        <div class="modal-footer">
-          <button class="btn btn-outline-primary" id="modalAddCart">
-            <i class="fa-solid fa-cart-plus me-2"></i><span>Keranjang</span>
-          </button>
-          <a href="#" class="btn btn-success" id="modalPesanBtn" target="_blank">
-            <i class="fab fa-whatsapp me-2"></i><span>Pesan Sekarang</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Offcanvas Keranjang -->
-  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCart" aria-labelledby="offcanvasCartLabel">
-    <div class="offcanvas-header">
-      <button class="btn btn-link text-decoration-none d-inline d-md-none me-2" data-bs-dismiss="offcanvas" aria-label="Kembali">
-        <i class="fa-solid fa-chevron-left"></i>
-      </button>
-      <h5 class="offcanvas-title" id="offcanvasCartLabel">
-        <i class="fa-solid fa-basket-shopping me-2"></i>Keranjang
-      </h5>
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-
-    <div class="offcanvas-body d-flex flex-column">
-      <div id="cartItems" class="mb-3">
-        <div class="empty-state">
-          <i class="fa-regular fa-face-frown"></i>
-          <p>Keranjang kosong</p>
-        </div>
-      </div>
-
-      <div class="d-flex justify-content-between fw-bold fs-5">
-        <span>Total</span>
-        <span id="cartTotal">Rp0</span>
-      </div>
-
-      <div class="mt-3 d-grid gap-2">
-        <button class="btn btn-outline-danger" id="btnClearCart">
-          <i class="fa-solid fa-trash me-2"></i>Hapus Keranjang
+      <h2 class="welcome-title">Welcome to D&amp;D Multiverse Digital</h2>
+      <p class="welcome-kicker">Portal langganan layanan digital premium yang tertata, aman, dan terdokumentasi.</p>
+      <p class="welcome-text">
+        Sebelum Anda mulai memilih paket, mohon perhatikan beberapa poin singkat berikut:
+      </p>
+      <ul class="welcome-list">
+        <li>Harga dan ketersediaan layanan dapat menyesuaikan kebijakan platform serta D&amp;D Multiverse Digital.</li>
+        <li>Detail akun, masa aktif, dan ketentuan garansi akan dikirimkan secara tertulis oleh admin saat proses order.</li>
+        <li>Untuk menghindari miskomunikasi, silakan konfirmasi ke admin jika ada hal yang belum jelas sebelum melakukan pembayaran.</li>
+      </ul>
+      <p class="welcome-footnote">
+        Dengan melanjutkan, Anda memahami bahwa seluruh layanan mengikuti syarat &amp; ketentuan yang berlaku di D&amp;D Multiverse Digital dan masing-masing platform.
+      </p>
+      <div class="welcome-actions">
+        <button id="welcomeGotIt" class="btn btn-primary w-100" style="background:var(--gradient-primary);border:none;">
+          Got it
         </button>
-        <a href="#" target="_blank" id="btnCheckoutWA" class="btn btn-success">
-          <i class="fab fa-whatsapp me-2"></i>Checkout via WhatsApp
-        </a>
       </div>
     </div>
   </div>
+  <!-- END WELCOME OVERLAY -->
 
-  <button class="floating-cart" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
-    <i class="fa-solid fa-bag-shopping"></i>
-    <span class="count" id="cartCount">0</span>
-  </button>
-
-  <button class="floating-dark" id="floatingDarkBtn" title="Toggle Dark Mode">
-    <i class="fa-solid fa-moon"></i>
-  </button>
-
-  <!-- Bootstrap JS (wajib buat modal/offcanvas) -->
+  <div class="container-fluid"> 
+   <nav class="navbar navbar-expand-lg nav-glass" id="mainNavbar"> 
+    <div class="container"> 
+     <a class="navbar-brand" href="index.html">D&amp;D Multiverse Digital</a> 
+     <div class="d-flex align-items-center d-lg-none ms-auto gap-1"> 
+      <button class="nav-icon-btn d-inline-flex" type="button" data-nav-search=""> <i class="fa-solid fa-magnifying-glass"></i> </button> 
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"> <span class="navbar-toggler-icon"></span> </button> 
+     </div> 
+     <div class="collapse navbar-collapse" id="mainNav"> 
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1"> 
+       <li class="nav-item"><a class="nav-link active" data-scroll="" href="#produk">Produk</a></li> 
+       <li class="nav-item"><a class="nav-link" href="#keunggulan">Keunggulan</a></li> 
+       <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li> 
+      </ul> 
+      <div class="d-flex align-items-center gap-2 ms-lg-3"> 
+       <button class="nav-icon-btn position-relative d-none d-lg-inline-flex" title="Cari Produk" data-nav-search=""> <i class="fa-solid fa-magnifying-glass"></i> </button> 
+       <button id="navDarkBtn" class="nav-icon-btn position-relative" title="Toggle Dark Mode"><i class="fa-solid fa-moon"></i></button> 
+       <button class="nav-icon-btn position-relative" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart"> <i class="fa-solid fa-bag-shopping"></i> <span id="navCartCount" class="nav-cart-count">0</span> </button> 
+      </div> 
+     </div> 
+    </div> 
+   </nav> 
+   <section class="hero-section"> 
+    <div class="container"> 
+     <div class="row g-4 align-items-center"> 
+      <div class="col-md-7"> 
+       <div class="hero-badge"> 
+        <i class="fa-solid fa-shield-check"></i> 
+        <span>Solusi langganan aplikasi premium yang rapi, aman, dan terdokumentasi.</span> 
+       </div> 
+       <h1 class="hero-title"> Layanan Digital Premium<br class="d-none d-md-block"> dalam Satu Portal Resmi. </h1> 
+       <p class="hero-subtitle"> D&amp;D Multiverse Digital membantu Anda mengelola akses Netflix, YouTube Premium, Spotify, Canva Pro, CapCut, hingga tools kreatif lainnya dengan harga terjangkau dan dukungan admin profesional. </p> 
+       <div class="hero-actions"> 
+        <a href="#listProduk" data-scroll="" class="btn btn-primary px-4 py-2" style="background:var(--gradient-primary);border:none;"> <i class="fa-solid fa-tags me-2"></i> Lihat Daftar Produk </a> 
+        <a href="https://wa.me/6287809236556" target="_blank" class="btn btn-outline-success px-4 py-2"> <i class="fa-brands fa-whatsapp me-2"></i> Hubungi Admin </a> 
+       </div> 
+       <div class="d-flex flex-wrap align-items-center gap-3 mt-3"> 
+        <div class="hero-pill"> 
+         <i class="fa-solid fa-bolt"></i> 
+         <span>Estimasi proses 1–10 menit pada jam operasional.</span> 
+        </div> 
+        <div class="hero-pill"> 
+         <i class="fa-solid fa-shield-halved"></i> 
+         <span>Garansi masa pakai sesuai ketentuan D&amp;D Multiverse Digital.</span> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="col-md-5"> 
+       <div class="row g-3"> 
+        <div class="col-6"> 
+         <div class="hero-stat-card"> 
+          <div class="hero-stat-value">
+           1.000+
+          </div> 
+          <div class="hero-stat-label">
+           Pesanan digital terselesaikan
+          </div> 
+         </div> 
+        </div> 
+        <div class="col-6"> 
+         <div class="hero-stat-card"> 
+          <div class="hero-stat-value">
+           4.9/5
+          </div> 
+          <div class="hero-stat-label">
+           Rata-rata tingkat kepuasan pelanggan
+          </div> 
+         </div> 
+        </div> 
+        <div class="col-12"> 
+         <div class="hero-stat-card d-flex align-items-center gap-3"> 
+          <div class="benefit-icon-wrap mb-0"> 
+           <i class="fa-solid fa-qrcode"></i> 
+          </div> 
+          <div> 
+           <div class="hero-stat-label mb-1">
+            Metode pembayaran
+           </div> 
+           <div class="hero-stat-value">
+            QRIS • Transfer • E-Wallet*
+           </div> 
+           <div class="small text-muted mt-1">
+             *Menyesuaikan kebijakan operasional D&amp;D Multiverse Digital yang berlaku. 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </section> 
+   <div id="searchOverlay" class="search-overlay"> 
+    <div class="container"> 
+     <div class="search-overlay-inner"> 
+      <i class="fas fa-search overlay-icon"></i> 
+      <input type="text" id="searchInput" class="form-control search-input" placeholder="Cari produk atau aplikasi yang Anda butuhkan..."> 
+      <button class="btn btn-link text-decoration-none close-search" id="btnCloseSearch" aria-label="Tutup"> <i class="fa-solid fa-xmark"></i> </button> 
+     </div> 
+    </div> 
+   </div> 
+   <main id="produk"> 
+    <section class="steps-section" id="cara-order"> 
+     <div class="container"> 
+      <h2 class="section-title">Cara Order di D&amp;D Multiverse Digital</h2> 
+      <p class="section-subtitle">Panduan singkat untuk Anda yang pertama kali memesan layanan digital.</p> 
+      <div class="row g-3 g-md-4 mt-2"> 
+       <div class="col-md-6"> 
+        <div class="step-item"> 
+         <div class="step-badge">
+          1
+         </div> 
+         <div> 
+          <div class="step-title">
+           Pilih produk dan varian
+          </div> 
+          <p class="step-text"> Telusuri daftar produk di bawah, klik tombol <strong>Detail</strong> untuk melihat varian, kemudian pilih paket yang sesuai kebutuhan penggunaan Anda. </p> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="col-md-6"> 
+        <div class="step-item"> 
+         <div class="step-badge">
+          2
+         </div> 
+         <div> 
+          <div class="step-title">
+           Tambahkan ke keranjang
+          </div> 
+          <p class="step-text"> Tekan tombol <strong>Keranjang</strong> pada varian yang diinginkan, lalu tinjau kembali rincian pesanan melalui menu keranjang di pojok kanan bawah. </p> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="col-md-6"> 
+        <div class="step-item"> 
+         <div class="step-badge">
+          3
+         </div> 
+         <div> 
+          <div class="step-title">
+           Checkout via WhatsApp
+          </div> 
+          <p class="step-text"> Klik <strong>Checkout via WhatsApp</strong>. Format pesanan akan tersusun otomatis sehingga Anda hanya perlu mengirimkannya ke admin. </p> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="col-md-6"> 
+        <div class="step-item"> 
+         <div class="step-badge">
+          4
+         </div> 
+         <div> 
+          <div class="step-title">
+           Lakukan pembayaran &amp; tunggu proses
+          </div> 
+          <p class="step-text"> Lakukan pembayaran sesuai instruksi. Setelah itu, pesanan diproses dan akses akun/layanan akan dikirimkan melalui WhatsApp beserta panduan singkat penggunaannya. </p> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </section> 
+    <section class="products-section" id="listProduk"> 
+     <div class="container"> 
+      <h2 class="section-title">Katalog Layanan Digital</h2> 
+      <p class="section-subtitle"> Pilih paket langganan aplikasi premium yang paling relevan dengan kebutuhan kerja, hiburan, dan produktivitas Anda. </p> 
+      <div class="row g-3" id="produk-list">
+       <div class="col-12">
+        <div class="loading">
+         <div class="spinner"></div>
+        </div>
+       </div>
+      </div> 
+      <div class="load-more-wrap"> 
+       <button id="btnLoadMore" class="btn btn-outline-primary px-4 py-2 mt-2"> <i class="fa-solid fa-rotate"></i> Muat Lebih </button> 
+      </div> 
+     </div> 
+    </section> 
+    <section class="benefit-section" id="keunggulan"> 
+     <div class="container"> 
+      <h2 class="section-title">Keunggulan D&amp;D Multiverse Digital</h2> 
+      <p class="section-subtitle"> Tidak hanya harga bersahabat, namun prosedur kerja jelas, aman, dan mudah dipahami bahkan oleh pengguna baru. </p> 
+      <div class="row g-3 g-md-4 mt-2"> 
+       <div class="col-md-3 col-sm-6"> 
+        <div class="benefit-card"> 
+         <div class="benefit-icon-wrap"> 
+          <i class="fa-solid fa-shield-heart"></i> 
+         </div> 
+         <div class="benefit-title">
+          Terstruktur &amp; Terpercaya
+         </div> 
+         <p class="benefit-text"> Semua order dicatat dengan rapi sehingga mudah ditelusuri kembali. Proses dan ketentuan garansi dijelaskan dengan transparan. </p> 
+        </div> 
+       </div> 
+       <div class="col-md-3 col-sm-6"> 
+        <div class="benefit-card"> 
+         <div class="benefit-icon-wrap"> 
+          <i class="fa-solid fa-bolt"></i> 
+         </div> 
+         <div class="benefit-title">
+          Proses Cepat &amp; Terukur
+         </div> 
+         <p class="benefit-text"> Estimasi pengerjaan 1–10 menit pada jam operasional, dengan pemberitahuan yang jelas apabila terjadi antrian atau kendala teknis. </p> 
+        </div> 
+       </div> 
+       <div class="col-md-3 col-sm-6"> 
+        <div class="benefit-card"> 
+         <div class="benefit-icon-wrap"> 
+          <i class="fa-solid fa-arrows-rotate"></i> 
+         </div> 
+         <div class="benefit-title">
+          Garansi Masa Pakai
+         </div> 
+         <p class="benefit-text"> Jika akun mengalami kendala dalam masa garansi dan sesuai ketentuan, admin akan membantu perbaikan atau penggantian sesuai kebijakan. </p> 
+        </div> 
+       </div> 
+       <div class="col-md-3 col-sm-6"> 
+        <div class="benefit-card"> 
+         <div class="benefit-icon-wrap"> 
+          <i class="fa-solid fa-headset"></i> 
+         </div> 
+         <div class="benefit-title">
+          Pendampingan yang Responsif
+         </div> 
+         <p class="benefit-text"> Admin siap menjelaskan perbedaan paket, skema penggunaan, hingga pendampingan teknis ringan setelah layanan aktif. </p> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </section> 
+    <section class="testimonial-section" id="testimoni"> 
+     <div class="container"> 
+      <h2 class="section-title">Ulasan Singkat Pelanggan</h2> 
+      <p class="section-subtitle"> Ringkasan pengalaman beberapa pelanggan yang telah menggunakan layanan D&amp;D Multiverse Digital. </p> 
+      <div class="row g-3 g-md-4 mt-2"> 
+       <div class="col-md-4"> 
+        <div class="testimonial-card"> 
+         <div class="d-flex justify-content-between align-items-center"> 
+          <div> 
+           <div class="testimonial-name">
+            D*** – Jakarta
+           </div> 
+           <div class="testimonial-meta">
+            YouTube Premium 3 Bulan
+           </div> 
+          </div> 
+          <div class="text-warning"> 
+           <i class="fa-solid fa-star"></i>
+           <i class="fa-solid fa-star"></i>
+           <i class="fa-solid fa-star"></i>
+           <i class="fa-solid fa-star"></i>
+           <i class="fa-solid fa-star-half-stroke"></i> 
+          </div> 
+         </div> 
+         <p class="testimonial-text">“Prosesnya jelas, akun aktif cepat, dan seluruh penjelasan dibuat tertulis sehingga mudah dicek ulang.”</p> 
+        </div> 
+       </div> 
+       <div class="col-md-4"> 
+        <div class="testimonial-card"> 
+         <div class="d-flex justify-content-between align-items-center"> 
+          <div> 
+           <div class="testimonial-name">
+            M*** – Bandung
+           </div> 
+           <div class="testimonial-meta">
+            Canva Pro + CapCut Pro
+           </div> 
+          </div> 
+          <div class="text-warning"> 
+           <i class="fa-solid fa-star"></i>
+           <i class="fa-solid fa-star"></i>
+           <i class="fa-solid fa-star"></i>
+           <i class="fa-solid fa-star"></i>
+           <i class="fa-solid fa-star"></i> 
+          </div> 
+         </div> 
+         <p class="testimonial-text">“Sangat membantu pekerjaan desain dan pembuatan konten harian. Biaya masih logis untuk pekerja lepas.”</p> 
+        </div> 
+       </div> 
+       <div class="col-md-4"> 
+        <div class="testimonial-card"> 
+         <div class="d-flex justify-content-between align-items-center"> 
+          <div> 
+           <div class="testimonial-name">
+            L*** – Surabaya
+           </div> 
+           <div class="testimonial-meta">
+            Netflix &amp; Spotify Premium
+           </div> 
+          </div> 
+          <div class="text-warning"> 
+           <i class="fa-solid fa-star"></i>
+           <i class="fa-solid fa-star"></i>
+           <i class="fa-solid fa-star"></i>
+           <i class="fa-solid fa-star"></i>
+           <i class="fa-solid fa-star"></i> 
+          </div> 
+         </div> 
+         <p class="testimonial-text">“Sudah beberapa kali perpanjang di sini. Komunikasi tertata dan setiap kendala dijelaskan dengan bahasa yang mudah dimengerti.”</p> 
+        </div> 
+       </div> 
+      </div> 
+      <p class="small text-muted mt-3"> *Testimoni merupakan ringkasan dari beberapa pelanggan. Bukti transaksi dan riwayat pemesanan dapat diminta langsung kepada admin apabila diperlukan. </p> 
+     </div> 
+    </section> 
+    <section class="faq-section" id="faq"> 
+     <div class="container"> 
+      <h2 class="section-title">Pertanyaan yang Sering Diajukan</h2> 
+      <p class="section-subtitle"> Beberapa poin berikut dapat membantu menjawab keraguan sebelum melakukan pemesanan. </p> 
+      <div class="row g-4 mt-2"> 
+       <div class="col-md-7"> 
+        <div class="accordion faq-accordion" id="faqAccordion"> 
+         <div class="accordion-item"> 
+          <h2 class="accordion-header" id="faqOneHeading"> <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqOne" aria-expanded="false" aria-controls="faqOne"> Berapa lama estimasi proses order? </button> </h2> 
+          <div id="faqOne" class="accordion-collapse collapse" aria-labelledby="faqOneHeading" data-bs-parent="#faqAccordion"> 
+           <div class="accordion-body">
+             Estimasi proses normal berada di kisaran 
+            <strong>1–10 menit</strong> pada jam operasional. Jika sedang padat atau terdapat kendala teknis, admin akan menyampaikan informasi estimasi terbaru secara langsung. 
+           </div> 
+          </div> 
+         </div> 
+         <div class="accordion-item"> 
+          <h2 class="accordion-header" id="faqTwoHeading"> <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqTwo" aria-expanded="false" aria-controls="faqTwo"> Apa yang harus dilakukan jika akun bermasalah di tengah masa langganan? </button> </h2> 
+          <div id="faqTwo" class="accordion-collapse collapse" aria-labelledby="faqTwoHeading" data-bs-parent="#faqAccordion"> 
+           <div class="accordion-body">
+             Silakan segera menghubungi admin dan sertakan bukti order. Selama masih berada dalam 
+            <strong>masa garansi</strong> dan sesuai ketentuan, D&amp;D Multiverse Digital akan membantu proses penanganan atau penggantian sesuai kebijakan. 
+           </div> 
+          </div> 
+         </div> 
+         <div class="accordion-item"> 
+          <h2 class="accordion-header" id="faqThreeHeading"> <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqThree" aria-expanded="false" aria-controls="faqThree"> Metode pembayaran apa saja yang tersedia? </button> </h2> 
+          <div id="faqThree" class="accordion-collapse collapse" aria-labelledby="faqThreeHeading" data-bs-parent="#faqAccordion"> 
+           <div class="accordion-body">
+             Saat ini pembayaran dapat dilakukan melalui 
+            <strong>QRIS</strong> dan metode lain yang diinformasikan oleh admin, seperti transfer bank atau e-wallet tertentu. Detail tujuan pembayaran akan dikirim setelah Anda melakukan checkout via WhatsApp. 
+           </div> 
+          </div> 
+         </div> 
+         <div class="accordion-item"> 
+          <h2 class="accordion-header" id="faqFourHeading"> <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqFour" aria-expanded="false" aria-controls="faqFour"> Apakah akun dapat digunakan di banyak perangkat? </button> </h2> 
+          <div id="faqFour" class="accordion-collapse collapse" aria-labelledby="faqFourHeading" data-bs-parent="#faqAccordion"> 
+           <div class="accordion-body">
+             Setiap platform memiliki 
+            <strong>aturan pemakaian</strong> yang berbeda. Admin akan menjelaskan secara terbuka apakah akun dapat digunakan multi-device, hanya satu perangkat, atau memiliki batasan login tertentu sebelum Anda melakukan pembayaran. 
+           </div> 
+          </div> 
+         </div> 
+         <div class="accordion-item"> 
+          <h2 class="accordion-header" id="faqFiveHeading"> <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqFive" aria-expanded="false" aria-controls="faqFive"> Apakah layanan ini mengikuti kebijakan platform resmi? </button> </h2> 
+          <div id="faqFive" class="accordion-collapse collapse" aria-labelledby="faqFiveHeading" data-bs-parent="#faqAccordion"> 
+           <div class="accordion-body">
+             D&amp;D Multiverse Digital berupaya mengikuti 
+            <strong>ketentuan penggunaan</strong> dari masing-masing platform. Jenis akun (sharing, personal, family, dan sebagainya) akan dijelaskan secara rinci oleh admin sesuai produk yang dipilih. 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="col-md-5"> 
+        <div class="benefit-card"> 
+         <div class="benefit-icon-wrap mb-2"> 
+          <i class="fa-solid fa-circle-question"></i> 
+         </div> 
+         <div class="benefit-title mb-1">
+          Masih ada hal yang ingin diklarifikasi?
+         </div> 
+         <p class="benefit-text mb-3"> Jika pertanyaan Anda belum terjawab dari daftar di samping, silakan menghubungi admin secara langsung. Jelaskan kebutuhan Anda, dan admin akan membantu memilih paket yang paling sesuai. </p> 
+         <a href="https://wa.me/6287809236556?text=Halo%20admin%2C%20saya%20ingin%20bertanya%20lebih%20dulu%20sebelum%20melakukan%20order%20produk%20digital." target="_blank" class="btn btn-success w-100"> <i class="fa-brands fa-whatsapp me-2"></i> Tanya Admin Sekarang </a> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </section> 
+    <section class="contact-section" id="kontak"> 
+     <div class="container"> 
+      <div class="row g-3 align-items-start"> 
+       <div class="col-md-5"> 
+        <span class="contact-pill mb-2"> <i class="fa-solid fa-building"></i><span>D&amp;D Multiverse Digital</span> </span> 
+        <h3 class="mt-2 mb-2" style="font-size:1.35rem;font-weight:700;">Hubungi &amp; Ikuti D&amp;D Multiverse Digital</h3> 
+        <p class="mb-2" style="font-size:.9rem;color:var(--muted-color);"> Simpan kontak berikut untuk memperoleh informasi promo, pembaruan layanan, serta panduan penggunaan akun. </p> 
+        <ul class="list-unstyled small mb-0"> 
+         <li>Jam operasional: <strong>08.00 – 23.00 WITA</strong></li> 
+         <li>Di luar jam tersebut, respons dapat sedikit lebih lambat.</li> 
+        </ul> 
+       </div> 
+       <div class="col-md-7"> 
+        <div class="row g-2"> 
+         <div class="col-sm-8 col-12"> 
+          <a href="https://wa.me/6287809236556" target="_blank" class="contact-link"> <i class="fa-brands fa-whatsapp text-success"></i> 
+           <div> 
+            <div>
+             WhatsApp Admin
+            </div> 
+            <div class="small text-muted">
+              Konsultasi produk, cek harga, dan konfirmasi pembayaran secara langsung dengan admin. 
+            </div> 
+           </div> </a> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="footer-mini mt-3"> 
+       <div class="d-flex flex-wrap justify-content-between gap-2"> 
+        <span>© <span id="footerYear">2026</span> D&amp;D MULTIVERSE DIGITAL — A Digital Creative Studio.</span> 
+        <span>Crafted with vision by Brandon Tan.</span> 
+       </div> 
+      </div> 
+     </div> 
+    </section> 
+   </main> 
+  </div> 
+  <!-- Modal Detail Produk --> 
+  <div class="modal fade" id="produkModal" tabindex="-1" aria-labelledby="produkModalLabel" aria-hidden="true"> 
+   <div class="modal-dialog modal-lg modal-dialog-scrollable"> 
+    <div class="modal-content" id="produkModalContent"> 
+     <div class="modal-header"> 
+      <h5 class="modal-title" id="produkModalLabel"> <i class="fas fa-info-circle me-2"></i> Detail Produk </h5> 
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button> 
+     </div> 
+     <div class="modal-body" id="modalBody"></div> 
+     <div class="modal-footer"> 
+      <button class="btn btn-outline-primary" id="modalAddCart"> <i class="fa-solid fa-cart-plus me-2"></i><span>Keranjang</span> </button> 
+      <a href="#" class="btn btn-success" id="modalPesanBtn" target="_blank"> <i class="fab fa-whatsapp me-2"></i><span>Pesan Sekarang</span> </a> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <!-- Offcanvas Keranjang --> 
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCart" aria-labelledby="offcanvasCartLabel"> 
+   <div class="offcanvas-header"> 
+    <button class="btn btn-link text-decoration-none d-inline d-md-none me-2" data-bs-dismiss="offcanvas" aria-label="Kembali"> <i class="fa-solid fa-chevron-left"></i> </button> 
+    <h5 class="offcanvas-title" id="offcanvasCartLabel"> <i class="fa-solid fa-basket-shopping me-2"></i>Keranjang </h5> 
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button> 
+   </div> 
+   <div class="offcanvas-body d-flex flex-column"> 
+    <div id="cartItems" class="mb-3"> 
+     <div class="empty-state"> 
+      <i class="fa-regular fa-face-frown"></i> 
+      <p>Keranjang kosong</p> 
+     </div>
+    </div> 
+    <div class="d-flex justify-content-between fw-bold fs-5"> 
+     <span>Total</span> 
+     <span id="cartTotal">Rp0</span> 
+    </div> 
+    <div class="mt-3 d-grid gap-2"> 
+     <button class="btn btn-outline-danger" id="btnClearCart"> <i class="fa-solid fa-trash me-2"></i>Hapus Keranjang </button> 
+     <a href="#" target="_blank" id="btnCheckoutWA" class="btn btn-success"> <i class="fab fa-whatsapp me-2"></i>Checkout via WhatsApp </a> 
+    </div> 
+   </div> 
+  </div> 
+  <button class="floating-cart" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart"> <i class="fa-solid fa-bag-shopping"></i> <span class="count" id="cartCount">0</span> </button> 
+  <button class="floating-dark" id="floatingDarkBtn" title="Toggle Dark Mode"><i class="fa-solid fa-moon"></i></button> 
+  <!-- Bootstrap JS (wajib buat modal/offcanvas) --> 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
   <script>
     const navbar = document.getElementById('mainNavbar');
     function refreshNavH(){
@@ -1429,8 +1492,7 @@
     document.addEventListener('shown.bs.collapse', refreshNavH);
     document.addEventListener('hidden.bs.collapse', refreshNavH);
     refreshNavH();
-  </script>
-
+  </script> 
   <script>
     const SHEET_ID   = "16fNB7oX2-PIIuNDjrzL3xgtNSQTTnxC2gxW2x78GoHI";
     const SHEET_NAME = "Produk";
@@ -1810,7 +1872,7 @@
             }
           }
 
-          // >>> REVISI HARGA: total markup jadi +8000
+          // TOTAL MARKUP +8000
           const harga      = baseHarga + 8000;
           const harga_lama = baseHargaLama ? baseHargaLama + 8000 : 0;
 
@@ -1939,9 +2001,8 @@
       renderProduk(false);
     });
 
-    // >>> REVISI UX: klik kartu => WA, bukan klik varian
+    // KLIK KARTU => WA, TOMBOL KHUSUS TETEP JALAN
     produkList.addEventListener("click",e=>{
-      // kalau klik tombol aksi khusus
       const t = e.target.closest("[data-detail],[data-add],[data-wish]");
       if(t){
         e.stopPropagation();
@@ -1959,7 +2020,6 @@
         }
       }
 
-      // klik area kartu => WA
       const card = e.target.closest(".product-card");
       if(!card) return;
 
@@ -2095,9 +2155,25 @@
       updateCartUI();
       const fy = document.getElementById('footerYear');
       if(fy){ fy.textContent = new Date().getFullYear(); }
+
+      // WELCOME OVERLAY LOGIC
+      const overlay = document.getElementById('welcomeOverlay');
+      const btnGot  = document.getElementById('welcomeGotIt');
+      const SEEN_KEY = 'dnd_welcome_seen';
+
+      if(overlay && btnGot){
+        const seen = localStorage.getItem(SEEN_KEY)==='1';
+        if(seen){
+          overlay.classList.add('hidden');
+        }
+        btnGot.addEventListener('click', ()=>{
+          overlay.classList.add('hidden');
+          localStorage.setItem(SEEN_KEY,'1');
+        });
+      }
     });
 
     window.addEventListener('load',()=>document.body.classList.add('loaded'));
-  </script>
-</body>
+  </script> 
+ </body>
 </html>
