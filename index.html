@@ -1,1567 +1,1029 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id" data-theme="dark">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>D&D MULTIVERSE DIGITAL — Price List</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>D&D Multiverse Digital — Price List</title>
 
-  <!-- Libs -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --neonA:#7c3aed; /* purple */
-      --neonB:#06b6d4; /* cyan */
-      --neonC:#22c55e; /* green */
-      --bg0:#050816;
-      --bg1:#070a1f;
-      --surface:#0b1028;
-      --surface2:#0a1333;
-      --text:#e5e7eb;
-      --muted:#a7b0c0;
-      --border:rgba(148,163,184,.18);
-      --shadow:0 14px 40px rgba(0,0,0,.55);
-      --radius:18px;
-      --nav-h:72px;
-    }
+      --bg0:#05060a;
+      --bg1:#070b14;
+      --glass: rgba(255,255,255,.06);
+      --glass2: rgba(255,255,255,.09);
+      --stroke: rgba(255,255,255,.10);
+      --text:#e7eaf3;
+      --muted:#a3aac2;
 
-    html[data-theme="light"]{
-      --bg0:#f6f8ff;
-      --bg1:#eef2ff;
-      --surface:#ffffff;
-      --surface2:#f8fafc;
-      --text:#0f172a;
-      --muted:#475569;
-      --border:rgba(2,6,23,.12);
-      --shadow:0 14px 40px rgba(2,6,23,.14);
+      --neon1:#7c3aed;
+      --neon2:#22d3ee;
+      --neon3:#34d399;
+      --warn:#fbbf24;
+
+      --radius:18px;
+      --shadow: 0 18px 45px rgba(0,0,0,.55);
+      --shadow2: 0 26px 70px rgba(0,0,0,.60);
+
+      --nav-h: 70px;
     }
 
     *{box-sizing:border-box}
+    html,body{height:100%}
     body{
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color:var(--text);
       background:
-        radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,.22), transparent 55%),
-        radial-gradient(900px 700px at 90% 20%, rgba(6,182,212,.18), transparent 55%),
-        radial-gradient(900px 700px at 30% 95%, rgba(34,197,94,.10), transparent 55%),
-        linear-gradient(180deg,var(--bg0),var(--bg1));
-      min-height:100vh;
+        radial-gradient(900px 500px at 12% 10%, rgba(124,58,237,.25), transparent 60%),
+        radial-gradient(700px 420px at 85% 22%, rgba(34,211,238,.18), transparent 55%),
+        radial-gradient(800px 520px at 55% 90%, rgba(52,211,153,.14), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      overflow-x:hidden;
     }
 
-    /* subtle stars */
-    .stars{
-      position:fixed; inset:0; pointer-events:none; z-index:0;
+    /* starfield (simple) */
+    .stars:before, .stars:after{
+      content:"";
+      position:fixed; inset:0;
       background-image:
-        radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,.35) 50%, transparent 51%),
-        radial-gradient(1px 1px at 70% 30%, rgba(255,255,255,.28) 50%, transparent 51%),
-        radial-gradient(1px 1px at 40% 70%, rgba(255,255,255,.22) 50%, transparent 51%),
-        radial-gradient(2px 2px at 25% 40%, rgba(255,255,255,.18) 50%, transparent 51%),
-        radial-gradient(2px 2px at 85% 75%, rgba(255,255,255,.16) 50%, transparent 51%);
-      opacity:.7;
-      filter: blur(.2px);
+        radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,.55) 50%, transparent 55%),
+        radial-gradient(1px 1px at 35% 70%, rgba(255,255,255,.35) 50%, transparent 55%),
+        radial-gradient(1px 1px at 80% 35%, rgba(255,255,255,.40) 50%, transparent 55%),
+        radial-gradient(1px 1px at 55% 25%, rgba(255,255,255,.25) 50%, transparent 55%),
+        radial-gradient(1px 1px at 60% 80%, rgba(255,255,255,.25) 50%, transparent 55%),
+        radial-gradient(2px 2px at 20% 85%, rgba(255,255,255,.18) 50%, transparent 55%);
+      opacity:.35;
+      pointer-events:none;
+      z-index:-1;
     }
-
-    .app{position:relative; z-index:1;}
+    .stars:after{
+      opacity:.18;
+      filter: blur(.4px);
+      transform: scale(1.02);
+    }
 
     /* NAV */
-    .nav-glow{
+    .nav-glass{
       position:sticky; top:0; z-index:1100;
-      backdrop-filter: blur(14px) saturate(1.1);
-      background: linear-gradient(90deg, rgba(11,16,40,.72), rgba(11,16,40,.45));
-      border-bottom:1px solid var(--border);
-    }
-    html[data-theme="light"] .nav-glow{
-      background: linear-gradient(90deg, rgba(255,255,255,.75), rgba(255,255,255,.55));
+      backdrop-filter: blur(12px) saturate(1.1);
+      background: linear-gradient(90deg, rgba(255,255,255,.06), rgba(255,255,255,.04));
+      border-bottom:1px solid var(--stroke);
     }
     .brand{
-      font-weight:900; letter-spacing:.2px;
-      background: linear-gradient(90deg,var(--neonA),var(--neonB));
-      -webkit-background-clip:text; background-clip:text; color:transparent;
+      display:flex; align-items:center; gap:.75rem;
+      font-weight:900;
+      letter-spacing:.2px;
       text-decoration:none;
+      color:var(--text);
+    }
+    .brand-badge{
+      width:42px;height:42px;border-radius:14px;
+      display:grid;place-items:center;
+      background: linear-gradient(135deg, rgba(124,58,237,.35), rgba(34,211,238,.22));
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow: 0 10px 30px rgba(124,58,237,.18);
+    }
+    .brand-title{
+      line-height:1.05;
+      margin:0;
       font-size:1.05rem;
+    }
+    .brand-sub{
+      margin:0;
+      font-size:.82rem;
+      color:var(--muted);
+      font-weight:700;
+    }
+    .nav-btn{
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      border-radius: 999px;
+      padding:.55rem .85rem;
+      font-weight:900;
+      transition:.18s ease;
+      display:inline-flex; align-items:center; gap:.5rem;
+      text-decoration:none;
       white-space:nowrap;
     }
-    .pill-link{
-      font-weight:800;
-      color:var(--text)!important;
-      padding:.45rem .85rem!important;
-      border-radius:999px;
-      border:1px solid transparent;
-    }
-    .pill-link:hover{
-      border-color:var(--border);
-      background: rgba(124,58,237,.10);
-    }
-    .pill-link.active{
-      background: linear-gradient(90deg, rgba(124,58,237,.22), rgba(6,182,212,.18));
-      border-color: rgba(124,58,237,.28);
-    }
-
-    .icon-btn{
-      width:42px;height:42px;
-      display:inline-flex;align-items:center;justify-content:center;
-      border-radius:14px;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.04);
-      color:var(--text);
-      transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
-      position:relative;
-    }
-    html[data-theme="light"] .icon-btn{background: rgba(2,6,23,.03)}
-    .icon-btn:hover{transform: translateY(-1px); box-shadow: 0 10px 26px rgba(0,0,0,.20); background: rgba(124,58,237,.08);}
-    .cart-badge{
-      position:absolute; top:-6px; right:-6px;
-      min-width:20px; height:20px; padding:0 6px;
-      border-radius:999px;
-      background: linear-gradient(90deg,var(--neonC),#16a34a);
-      color:#fff;
-      font-weight:900;
-      display:flex; align-items:center; justify-content:center;
-      font-size:.72rem;
-      border:2px solid rgba(0,0,0,.25);
+    .nav-btn:hover{transform: translateY(-1px); box-shadow: 0 14px 30px rgba(0,0,0,.45); color:var(--text)}
+    .nav-btn.primary{
+      border:0;
+      background: linear-gradient(135deg, rgba(124,58,237,.95), rgba(34,211,238,.85));
     }
 
     /* HERO */
     .hero{
-      padding: 2.6rem 0 1.2rem;
+      padding: 2.4rem 0 1.2rem;
     }
     .hero-card{
-      border:1px solid var(--border);
-      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      border-radius: calc(var(--radius) + 6px);
+      border-radius: 26px;
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.14);
       box-shadow: var(--shadow);
       overflow:hidden;
       position:relative;
     }
-    html[data-theme="light"] .hero-card{
-      background: linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.65));
-    }
-    .hero-card::before{
+    .hero-card:before{
       content:"";
       position:absolute; inset:-2px;
-      background: radial-gradient(800px 240px at 10% 20%, rgba(124,58,237,.35), transparent 55%),
-                  radial-gradient(760px 240px at 90% 30%, rgba(6,182,212,.28), transparent 55%);
-      opacity:.9;
+      background:
+        radial-gradient(520px 220px at 20% 10%, rgba(124,58,237,.35), transparent 60%),
+        radial-gradient(520px 240px at 80% 20%, rgba(34,211,238,.22), transparent 60%);
+      opacity:.85;
       pointer-events:none;
     }
-    .hero-inner{position:relative; padding: 1.45rem 1.35rem;}
-    .hero-badge{
-      display:inline-flex; align-items:center; gap:.5rem;
-      padding:.35rem .8rem;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background: rgba(0,0,0,.16);
-      font-weight:800;
-      color: var(--text);
-      font-size:.82rem;
-    }
-    html[data-theme="light"] .hero-badge{background: rgba(124,58,237,.06)}
-    .hero-title{
-      font-weight:900;
-      letter-spacing:.2px;
-      line-height:1.12;
-      font-size:2.05rem;
-      margin:.8rem 0 .45rem;
-    }
-    @media(min-width:768px){ .hero-title{font-size:2.55rem;} }
-    .hero-sub{
-      color:var(--muted);
-      max-width: 44rem;
-      font-size:.98rem;
-      margin-bottom:1rem;
-    }
-    .hero-actions{display:flex; flex-wrap:wrap; gap:.7rem}
-    .btn-neon{
-      border:none;
-      font-weight:900;
-      padding:.7rem 1.05rem;
-      border-radius:14px;
-      color:#fff!important;
-      background: linear-gradient(90deg,var(--neonA),var(--neonB));
-      box-shadow: 0 12px 30px rgba(124,58,237,.25);
-    }
-    .btn-neon:hover{filter:saturate(1.1); transform: translateY(-1px);}
-    .btn-ghost{
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.04);
-      color:var(--text)!important;
-      font-weight:900;
-      padding:.7rem 1.05rem;
-      border-radius:14px;
-    }
-    .btn-ghost:hover{background: rgba(6,182,212,.10);}
-    .hero-mini{
-      margin-top:1.1rem;
-      display:flex; flex-wrap:wrap;
-      gap:.8rem;
-      color:var(--muted);
-      font-weight:700;
-      font-size:.85rem;
-    }
-    .mini-pill{
-      display:inline-flex; gap:.5rem; align-items:center;
-      padding:.35rem .7rem; border-radius:999px;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.03);
-    }
+    .hero-inner{position:relative; padding: 1.3rem 1.2rem;}
+    @media(min-width:768px){ .hero-inner{padding: 1.8rem 1.8rem;} }
 
-    /* SECTIONS */
-    section{scroll-margin-top: calc(var(--nav-h) + 18px);}
+    .pill{
+      display:inline-flex; align-items:center; gap:.5rem;
+      border-radius:999px;
+      padding:.35rem .75rem;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.22);
+      font-weight:900;
+      color:#eaf2ff;
+      font-size:.86rem;
+    }
+    .hero h1{
+      margin:.75rem 0 .5rem;
+      font-weight:1000;
+      letter-spacing:-.02em;
+      line-height:1.1;
+      font-size: clamp(1.65rem, 4vw, 2.6rem);
+    }
+    .hero p{
+      margin:0;
+      color:var(--muted);
+      max-width: 60ch;
+      font-weight:700;
+    }
+    .hero-actions{display:flex; flex-wrap:wrap; gap:.75rem; margin-top: 1rem;}
+    .hero-stats{
+      margin-top: 1rem;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:.75rem;
+    }
+    @media(min-width:768px){ .hero-stats{grid-template-columns: repeat(3, 1fr);} }
+    .stat{
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.18);
+      padding: .85rem .95rem;
+      display:flex; gap:.75rem; align-items:center;
+    }
+    .stat .ico{
+      width:42px;height:42px;border-radius:14px;
+      display:grid;place-items:center;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+    }
+    .stat .k{font-weight:1000}
+    .stat .v{color:var(--muted); font-weight:800; font-size:.88rem}
+
+    /* TOOLS */
+    .tools{
+      position:sticky;
+      top: var(--nav-h);
+      z-index: 1000;
+      padding: .85rem 0;
+      backdrop-filter: blur(12px) saturate(1.1);
+      background: linear-gradient(180deg, rgba(5,6,10,.75), rgba(5,6,10,.35));
+      border-bottom:1px solid rgba(255,255,255,.10);
+    }
+    .tool-card{
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      padding: .85rem;
+      box-shadow: 0 16px 40px rgba(0,0,0,.45);
+    }
+    .control{
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.22);
+      color: var(--text);
+      padding: .85rem .95rem;
+      font-weight:800;
+    }
+    .control::placeholder{color: rgba(231,234,243,.55)}
+    .control:focus{
+      outline:none;
+      box-shadow: 0 0 0 4px rgba(34,211,238,.12);
+      border-color: rgba(34,211,238,.30);
+    }
+    .search-wrap{position:relative}
+    .search-ico{
+      position:absolute; left:14px; top:50%;
+      transform: translateY(-50%);
+      color: rgba(231,234,243,.60);
+      pointer-events:none;
+    }
+    .search-input{padding-left: 2.75rem;}
+
+    /* GRID */
     .section{
-      padding: 2.2rem 0 1.4rem;
+      padding: 1.35rem 0 2.2rem;
+    }
+    .section-head{
+      text-align:center;
+      margin-bottom: 1.0rem;
     }
     .section-title{
-      font-weight:900;
-      font-size:1.75rem;
-      text-align:center;
-      margin-bottom:.25rem;
+      font-weight:1000;
+      letter-spacing:-.02em;
+      margin:0 0 .25rem;
+      font-size: 1.65rem;
     }
-    .section-subtitle{
-      color:var(--muted);
-      text-align:center;
-      max-width: 56rem;
-      margin: 0 auto 1.2rem;
-      font-weight:600;
+    .section-sub{
+      margin:0 auto;
+      max-width: 70ch;
+      color: var(--muted);
+      font-weight:800;
       font-size:.95rem;
     }
 
-    /* STEPS */
-    .steps-grid{
+    .grid{
       display:grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap:1rem;
-      margin-top:.9rem;
+      gap: 1rem;
+      grid-template-columns: repeat(12, 1fr);
     }
-    @media(max-width:992px){ .steps-grid{grid-template-columns: repeat(2, minmax(0,1fr));} }
-    @media(max-width:576px){ .steps-grid{grid-template-columns: 1fr;} }
-    .step-card{
-      border:1px solid var(--border);
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.03);
-      padding: .95rem .95rem .85rem;
-      box-shadow: 0 10px 26px rgba(0,0,0,.18);
-    }
-    html[data-theme="light"] .step-card{background: rgba(255,255,255,.65)}
-    .step-num{
-      width:28px;height:28px;border-radius:999px;
-      display:inline-flex;align-items:center;justify-content:center;
-      font-weight:900;
-      background: rgba(124,58,237,.20);
-      border:1px solid rgba(124,58,237,.25);
-      color: var(--text);
-      margin-bottom:.5rem;
-    }
-    .step-title{font-weight:900; font-size:.98rem; margin-bottom:.25rem;}
-    .step-text{color:var(--muted); font-weight:600; font-size:.87rem; margin:0;}
+    .grid-item{ grid-column: span 12; }
+    @media(min-width:576px){ .grid-item{ grid-column: span 6; } }
+    @media(min-width:992px){ .grid-item{ grid-column: span 4; } }
+    @media(min-width:1200px){ .grid-item{ grid-column: span 3; } }
 
-    /* PRODUCTS */
-    .tools-row{display:flex; gap:.75rem; flex-wrap:wrap; align-items:center; justify-content:center; margin: 1rem 0 1.2rem;}
-    .search-wrap{
-      flex: 1 1 420px;
-      max-width: 640px;
-      position:relative;
-    }
-    .search-wrap i{
-      position:absolute; left:14px; top:50%; transform: translateY(-50%);
-      color:var(--muted);
-    }
-    .search-input{
-      width:100%;
-      padding:.78rem .95rem .78rem 2.45rem;
-      border-radius: 14px;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.03);
-      color: var(--text);
-      font-weight:700;
-      outline:none;
-    }
-    html[data-theme="light"] .search-input{background: rgba(255,255,255,.75)}
-    .search-input:focus{box-shadow: 0 0 0 3px rgba(6,182,212,.20); border-color: rgba(6,182,212,.35);}
-
-    .product-card{
+    .pcard{
       height:100%;
-      border-radius: calc(var(--radius) + 2px);
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.03);
-      box-shadow: 0 14px 40px rgba(0,0,0,.20);
+      border-radius: 20px;
+      border:1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: 0 18px 45px rgba(0,0,0,.45);
       overflow:hidden;
-      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-      position:relative;
       cursor:pointer;
+      transition: .18s ease;
+      position:relative;
+      display:flex;
+      flex-direction:column;
     }
-    html[data-theme="light"] .product-card{background: rgba(255,255,255,.75)}
-    .product-card:hover{
-      transform: translateY(-6px);
-      box-shadow: 0 20px 55px rgba(0,0,0,.28);
-      border-color: rgba(124,58,237,.32);
+    .pcard:hover{
+      transform: translateY(-3px);
+      box-shadow: var(--shadow2);
+      border-color: rgba(34,211,238,.25);
     }
-    .top-glow{
-      position:absolute; inset:0 0 auto 0; height:3px;
-      background: linear-gradient(90deg,var(--neonA),var(--neonB));
-      opacity:.85;
+    .pcard:before{
+      content:"";
+      position:absolute; left:0; top:0; right:0; height:3px;
+      background: linear-gradient(90deg, rgba(124,58,237,.95), rgba(34,211,238,.85), rgba(52,211,153,.70));
+      opacity:.9;
     }
-    .cat-badge{
-      position:absolute; top:12px; right:12px;
-      font-size:.72rem; font-weight:900;
-      padding:.32rem .55rem;
-      border-radius: 12px;
-      color:#fff;
-      background: linear-gradient(90deg, rgba(124,58,237,.85), rgba(6,182,212,.75));
-      border:1px solid rgba(255,255,255,.18);
+
+    .phead{
+      padding: 1rem 1rem .65rem;
+      display:flex;
+      align-items:flex-start;
+      gap:.85rem;
     }
-    .wish-btn{
-      position:absolute; top:12px; left:12px;
-      width:38px; height:38px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background: rgba(0,0,0,.20);
-      color: var(--text);
-      display:flex; align-items:center; justify-content:center;
+    .plogo{
+      width:56px;height:56px;border-radius:18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.25);
+      display:grid;place-items:center;
+      overflow:hidden;
+      flex:0 0 auto;
     }
-    html[data-theme="light"] .wish-btn{background: rgba(255,255,255,.55)}
-    .wish-btn.active{color:#ef4444; border-color: rgba(239,68,68,.35)}
-    .prod-media{
-      padding: 1.0rem 1.0rem .25rem;
-      display:flex; align-items:center; justify-content:center;
+    .plogo img{
+      width:36px;height:36px;
+      object-fit:contain;
+      filter: drop-shadow(0 10px 24px rgba(0,0,0,.45));
     }
-    .prod-img{
-      width:78px; height:78px;
-      border-radius: 22px;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.05);
-      object-fit: cover;
-      box-shadow: 0 12px 30px rgba(0,0,0,.25);
-    }
-    .prod-body{padding: .65rem 1.0rem 1.0rem; display:flex; flex-direction:column; gap:.55rem;}
-    .prod-title{
-      font-weight:900;
-      font-size:1.00rem;
-      line-height:1.28;
-      min-height:2.55em;
-      margin:0;
-    }
-    .price-main{
-      font-weight:1000;
-      font-size:1.15rem;
-      background: linear-gradient(90deg,var(--neonA),var(--neonB));
-      -webkit-background-clip:text; background-clip:text; color:transparent;
-    }
-    .price-old{color:var(--muted); text-decoration:line-through; font-weight:800; font-size:.88rem;}
-    .meta-row{display:flex; gap:.5rem; flex-wrap:wrap; align-items:center;}
-    .chip{
-      font-weight:900;
+
+    .pchip{
+      display:inline-flex; align-items:center; gap:.45rem;
+      font-weight:950;
       font-size:.78rem;
+      padding:.35rem .6rem;
       border-radius:999px;
-      padding:.25rem .55rem;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.03);
-      color: var(--text);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.25);
+      color: rgba(231,234,243,.92);
+      white-space:nowrap;
     }
-    .chip.ok{border-color: rgba(34,197,94,.25); background: rgba(34,197,94,.10); }
-    .chip.no{border-color: rgba(239,68,68,.25); background: rgba(239,68,68,.10); }
-    .btn-detail{
-      margin-top:auto;
-      width:100%;
-      border:none;
-      border-radius: 14px;
-      padding:.72rem .9rem;
+    .pchip i{color: rgba(34,211,238,.95)}
+
+    .ptitle{
+      margin:.35rem 0 .2rem;
       font-weight:1000;
-      color:#fff;
-      background: linear-gradient(90deg,var(--neonA),var(--neonB));
-      box-shadow: 0 12px 30px rgba(124,58,237,.22);
-    }
-    .btn-detail:disabled{opacity:.55; box-shadow:none; cursor:not-allowed;}
-    .btn-detail:hover:not(:disabled){transform: translateY(-2px);}
-
-    /* Load more */
-    .loadmore-wrap{text-align:center; margin-top:1.0rem;}
-    .btn-loadmore{
-      border-radius:14px;
-      font-weight:900;
-      border:1px solid var(--border);
-      color:var(--text);
-      background: rgba(255,255,255,.03);
-      padding:.65rem 1.0rem;
-    }
-    .btn-loadmore:hover{background: rgba(6,182,212,.10);}
-
-    /* Modal */
-    .modal-content{
-      border:none;
-      border-radius: calc(var(--radius) + 6px);
-      background: var(--surface);
-      color: var(--text);
-      box-shadow: 0 30px 80px rgba(0,0,0,.55);
+      letter-spacing:-.01em;
+      line-height:1.25;
+      font-size: 1.02rem;
+      min-height: 2.5em;
+      display:-webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
       overflow:hidden;
     }
-    html[data-theme="light"] .modal-content{background: #fff}
-    .modal-header{
-      border:none;
-      background: linear-gradient(90deg, rgba(124,58,237,.95), rgba(6,182,212,.85));
-      color:#fff;
-      padding: 1.05rem 1.1rem;
-    }
-    .modal-body{padding: 1.0rem 1.1rem; max-height: 70vh; overflow:auto;}
-    .variant-card{
-      border:1px solid var(--border);
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.03);
-      padding: .9rem .9rem;
-      margin-bottom:.75rem;
-    }
-    html[data-theme="light"] .variant-card{background: rgba(255,255,255,.75)}
-    .variant-name{font-weight:1000; margin:0;}
-    .variant-sub{color:var(--muted); font-weight:700; font-size:.85rem;}
-    .variant-price{font-weight:1000; color: var(--neonC);}
-    .variant-old{color:var(--muted); text-decoration:line-through; font-weight:800; font-size:.85rem;}
-    .feat{list-style:none; padding-left:0; margin:.55rem 0 0;}
-    .feat li{display:flex; gap:.5rem; align-items:flex-start; color:var(--muted); font-weight:700; font-size:.86rem; margin-bottom:.25rem;}
-    .feat i{color: var(--neonC); margin-top:.12rem;}
-    .v-actions .btn{
-      border-radius: 14px;
-      font-weight:1000;
-      padding:.6rem .85rem;
-    }
-    .btn-cart{
-      border:1px solid rgba(124,58,237,.30);
-      background: rgba(124,58,237,.10);
-      color: var(--text);
-    }
-    .btn-cart:hover{background: rgba(124,58,237,.18);}
-    .btn-wa{
-      border:none;
-      background: linear-gradient(90deg,#16a34a,#22c55e);
-      color:#fff;
-    }
-    .btn-wa:hover{filter:saturate(1.05); transform: translateY(-1px);}
-
-    /* Offcanvas cart */
-    .offcanvas{
-      background: var(--surface);
-      color: var(--text);
-      border-left:1px solid var(--border);
-    }
-    html[data-theme="light"] .offcanvas{background:#fff}
-    .cart-item{
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.03);
-      border-radius: var(--radius);
-      padding: .75rem .75rem;
-      margin-bottom:.6rem;
-    }
-    html[data-theme="light"] .cart-item{background: rgba(255,255,255,.75)}
-    .qty-btn{
-      width:34px; height:34px;
-      display:inline-flex; align-items:center; justify-content:center;
-      border-radius: 12px;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.03);
-      color: var(--text);
-      font-weight:1000;
-    }
-    .qty-btn:hover{background: rgba(6,182,212,.10);}
-    .btn-clear{
-      border-radius:14px;
-      font-weight:1000;
-      border:1px solid rgba(239,68,68,.30);
-      background: rgba(239,68,68,.10);
-      color: var(--text);
-    }
-
-    /* Contact */
-    .contact-card{
-      border:1px solid var(--border);
-      border-radius: calc(var(--radius) + 6px);
-      background: rgba(255,255,255,.03);
-      box-shadow: var(--shadow);
-      padding: 1.0rem 1.0rem;
-    }
-    html[data-theme="light"] .contact-card{background: rgba(255,255,255,.75)}
-    .contact-link{
-      text-decoration:none;
-      color: var(--text);
-      display:flex;
-      gap:.85rem;
-      align-items:flex-start;
-      padding:.75rem .8rem;
-      border-radius: var(--radius);
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.02);
-    }
-    .contact-link:hover{background: rgba(34,197,94,.10); border-color: rgba(34,197,94,.25);}
-    .footer-mini{
-      margin-top: 1.05rem;
-      padding-top: .75rem;
-      border-top: 1px solid var(--border);
+    .pmeta{
       color: var(--muted);
-      font-weight:700;
-      font-size:.82rem;
-    }
-
-    /* Search overlay (mobile-ish) */
-    .search-overlay{
-      position:fixed;
-      top:var(--nav-h);
-      left:0; right:0;
-      z-index:1200;
-      transform: translateY(-110%);
-      opacity:0;
-      pointer-events:none;
-      transition: transform .22s ease, opacity .22s ease;
-      padding: .6rem 0;
-      background: rgba(5,8,22,.90);
-      backdrop-filter: blur(12px);
-      border-bottom:1px solid var(--border);
-    }
-    html[data-theme="light"] .search-overlay{background: rgba(255,255,255,.92)}
-    .search-overlay.open{transform: translateY(0); opacity:1; pointer-events:auto;}
-    .search-overlay-inner{
-      max-width: 920px;
-      margin: 0 auto;
-      padding: .55rem .75rem;
-      border-radius: 999px;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.04);
+      font-weight:850;
+      font-size:.86rem;
       display:flex;
-      gap:.6rem;
+      flex-wrap:wrap;
+      gap:.45rem;
       align-items:center;
     }
-    html[data-theme="light"] .search-overlay-inner{background: rgba(255,255,255,.75)}
-    .search-overlay-inner input{
-      border:none!important;
-      background:transparent!important;
-      padding:.25rem .2rem!important;
-      box-shadow:none!important;
+    .dot{width:4px;height:4px;border-radius:999px;background: rgba(231,234,243,.25); display:inline-block}
+
+    .pbody{padding: 0 1rem 1rem; margin-top:auto;}
+    .price-row{
+      border-top: 1px dashed rgba(255,255,255,.14);
+      padding-top:.75rem;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:.75rem;
     }
-    .close-search{
-      border:none;
-      background:transparent;
+    .pprice{
+      font-weight:1100;
+      font-size:1.12rem;
+      line-height:1.1;
+      letter-spacing:-.01em;
+      background: linear-gradient(135deg, rgba(34,211,238,1), rgba(124,58,237,1));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    .pold{
+      margin-top:.15rem;
+      font-weight:900;
+      font-size:.82rem;
+      color: rgba(231,234,243,.45);
+      text-decoration: line-through;
+    }
+    .pcta{
+      margin-top:.85rem;
+      display:flex;
+      gap:.6rem;
+    }
+    .btnx{
+      flex:1;
+      border-radius: 14px;
+      padding:.72rem .9rem;
+      font-weight:950;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.22);
       color: var(--text);
-      font-size:1.05rem;
-      padding:.25rem .35rem;
+      text-decoration:none;
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      gap:.45rem;
+      transition:.18s ease;
+      user-select:none;
+    }
+    .btnx:hover{transform: translateY(-1px); color:var(--text); box-shadow: 0 16px 34px rgba(0,0,0,.45)}
+    .btnx.primary{
+      border:0;
+      background: linear-gradient(135deg, rgba(124,58,237,.95), rgba(34,211,238,.85));
+    }
+    .btnx.wa{
+      border:0;
+      background: linear-gradient(135deg, rgba(52,211,153,.95), rgba(34,211,238,.75));
     }
 
-    /* Floating buttons */
-    .float-cart{
-      position:fixed; right:16px; bottom:16px;
-      z-index:900;
-      border:none;
-      border-radius:999px;
-      padding:.85rem 1.05rem;
-      font-weight:1000;
-      color:#fff;
-      background: linear-gradient(90deg,var(--neonA),var(--neonB));
-      box-shadow: 0 18px 48px rgba(0,0,0,.35);
-      display:flex; gap:.6rem; align-items:center;
-    }
-    .float-cart .count{
-      background:#fff;
-      color:#0f172a;
-      border-radius:999px;
-      padding:.1rem .55rem;
-      font-weight:1000;
-      min-width:28px;
+    /* states */
+    .state{
+      border-radius: 20px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      padding: 1.2rem;
       text-align:center;
+      color: var(--muted);
+      font-weight:850;
+      box-shadow: var(--shadow);
     }
-    .float-theme{
-      position:fixed; left:16px; bottom:16px;
-      z-index:900;
-      width:50px; height:50px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.04);
+    .spinner{
+      width:38px;height:38px;border-radius:999px;
+      border:4px solid rgba(255,255,255,.14);
+      border-top-color: rgba(34,211,238,.95);
+      margin: 0 auto .85rem;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* modal */
+    .modal-content{
+      border-radius: 20px;
+      border:1px solid rgba(255,255,255,.14);
+      background: linear-gradient(180deg, rgba(10,12,20,.96), rgba(10,12,20,.92));
       color: var(--text);
-      display:flex; align-items:center; justify-content:center;
-      box-shadow: 0 18px 48px rgba(0,0,0,.25);
+      box-shadow: 0 30px 90px rgba(0,0,0,.75);
     }
-    html[data-theme="light"] .float-theme{background: rgba(255,255,255,.75)}
+    .modal-header{
+      border-bottom:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(90deg, rgba(124,58,237,.25), rgba(34,211,238,.12));
+    }
+    .modal-title{font-weight:1000; letter-spacing:-.01em}
+    .modal-body{max-height: 70vh; overflow:auto}
+    .modal-footer{border-top:1px solid rgba(255,255,255,.10)}
+    .variant{
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      padding: .95rem;
+      margin-bottom: .85rem;
+    }
+    .vtop{display:flex; gap:.75rem; justify-content:space-between; align-items:flex-start}
+    .vname{margin:0; font-weight:1000; letter-spacing:-.01em}
+    .vdesc{margin:.35rem 0 .65rem; color: var(--muted); font-weight:850}
+    .vfoot{
+      border-top:1px dashed rgba(255,255,255,.12);
+      padding-top:.75rem;
+      display:flex; gap:.75rem; justify-content:space-between; align-items:center; flex-wrap:wrap;
+    }
+    .vprice{
+      font-weight:1100;
+      font-size:1.1rem;
+      background: linear-gradient(135deg, rgba(34,211,238,1), rgba(124,58,237,1));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    .vold{
+      display:block;
+      margin-top:.15rem;
+      font-weight:900;
+      font-size:.82rem;
+      color: rgba(231,234,243,.45);
+      text-decoration: line-through;
+    }
+    .vtag{
+      border-radius:999px;
+      padding:.28rem .6rem;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.22);
+      font-weight:950;
+      font-size:.78rem;
+      white-space:nowrap;
+    }
+
+    /* footer */
+    footer{
+      border-top:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      padding: 1.25rem 0 2rem;
+      color: rgba(231,234,243,.75);
+      font-weight:850;
+    }
+    .tiny{color: rgba(231,234,243,.55); font-size:.9rem; font-weight:800}
   </style>
 </head>
 
-<body>
-  <div class="stars"></div>
-
-  <div class="app">
-    <!-- NAV -->
-    <nav class="nav-glow" id="mainNavbar">
-      <div class="container">
-        <div class="d-flex align-items-center justify-content-between py-2">
-          <a class="brand" href="#top">D&D MULTIVERSE DIGITAL</a>
-
-          <div class="d-none d-lg-flex gap-1 align-items-center">
-            <a class="pill-link active" href="#produk" data-scroll>Produk</a>
-            <a class="pill-link" href="#cara-order" data-scroll>Cara Order</a>
-            <a class="pill-link" href="#keunggulan" data-scroll>Keunggulan</a>
-            <a class="pill-link" href="#testimoni" data-scroll>Testimoni</a>
-            <a class="pill-link" href="#faq" data-scroll>FAQ</a>
-            <a class="pill-link" href="#kontak" data-scroll>Kontak</a>
+<body class="stars">
+  <nav class="nav-glass" id="mainNavbar">
+    <div class="container">
+      <div class="d-flex align-items-center justify-content-between py-2">
+        <a class="brand" href="#">
+          <div class="brand-badge"><i class="fa-solid fa-infinity"></i></div>
+          <div>
+            <p class="brand-title mb-0">D&D MULTIVERSE DIGITAL</p>
+            <p class="brand-sub mb-0">Space Neon • Produk Digital • Reseller Price</p>
           </div>
+        </a>
 
-          <div class="d-flex align-items-center gap-2">
-            <button class="icon-btn" type="button" title="Cari" data-nav-search>
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-            <button class="icon-btn" type="button" title="Tema" id="navThemeBtn">
-              <i class="fa-solid fa-sun"></i>
-            </button>
-            <button class="icon-btn" type="button" title="Keranjang" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
-              <i class="fa-solid fa-bag-shopping"></i>
-              <span id="navCartCount" class="cart-badge">0</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Search Overlay -->
-    <div id="searchOverlay" class="search-overlay">
-      <div class="container">
-        <div class="search-overlay-inner">
-          <i class="fa-solid fa-magnifying-glass" style="color:var(--muted)"></i>
-          <input id="searchInputOverlay" class="form-control search-input" placeholder="Cari produk..." />
-          <button class="close-search" id="btnCloseSearch" aria-label="Tutup">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- HERO -->
-    <header id="top" class="hero">
-      <div class="container">
-        <div class="hero-card">
-          <div class="hero-inner">
-            <div class="hero-badge">
-              <i class="fa-solid fa-shield-halved"></i>
-              <span>Produk digital cepat • aman • support responsif</span>
-            </div>
-
-            <h1 class="hero-title">
-              Premium Digital, <span style="background:linear-gradient(90deg,var(--neonA),var(--neonB));-webkit-background-clip:text;background-clip:text;color:transparent;">Auto Makin Gacor</span>.
-            </h1>
-
-            <p class="hero-sub">
-              Pilih paket, checkout via WhatsApp, admin proses. Harga yang tampil sudah termasuk <b>markup reseller +Rp8.000</b>.
-            </p>
-
-            <div class="hero-actions">
-              <a class="btn btn-neon" href="#produk" data-scroll><i class="fa-solid fa-tags me-2"></i>Lihat Produk</a>
-              <a class="btn btn-ghost" id="btnChatHero" target="_blank"><i class="fa-brands fa-whatsapp me-2"></i>Chat Admin</a>
-            </div>
-
-            <div class="hero-mini">
-              <span class="mini-pill"><i class="fa-solid fa-bolt"></i>Proses cepat (jam kerja)</span>
-              <span class="mini-pill"><i class="fa-solid fa-arrows-rotate"></i>Garansi sesuai paket</span>
-              <span class="mini-pill"><i class="fa-solid fa-qrcode"></i>QRIS / Transfer / E-Wallet</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <!-- CARA ORDER -->
-    <section class="section" id="cara-order">
-      <div class="container">
-        <h2 class="section-title">Cara Order</h2>
-        <p class="section-subtitle">4 langkah singkat, beres tanpa ribet.</p>
-
-        <div class="steps-grid">
-          <div class="step-card">
-            <div class="step-num">1</div>
-            <div class="step-title">Pilih produk</div>
-            <p class="step-text">Cari paket yang cocok untuk kebutuhanmu.</p>
-          </div>
-          <div class="step-card">
-            <div class="step-num">2</div>
-            <div class="step-title">Cek detail varian</div>
-            <p class="step-text">Buka detail untuk lihat varian & benefit.</p>
-          </div>
-          <div class="step-card">
-            <div class="step-num">3</div>
-            <div class="step-title">Masuk keranjang</div>
-            <p class="step-text">Tambah item, atur qty, total otomatis.</p>
-          </div>
-          <div class="step-card">
-            <div class="step-num">4</div>
-            <div class="step-title">Checkout via WhatsApp</div>
-            <p class="step-text">Kirim rangkuman order ke admin, lanjut proses.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PRODUK -->
-    <section class="section" id="produk">
-      <div class="container">
-        <h2 class="section-title">Produk</h2>
-        <p class="section-subtitle">List di bawah otomatis dari Google Sheet. Cari nama produk atau varian.</p>
-
-        <div class="tools-row">
-          <div class="search-wrap">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input id="searchInput" class="search-input" placeholder="Contoh: Netflix / Spotify / Canva..." />
-          </div>
-        </div>
-
-        <div class="row g-3" id="produkList">
-          <div class="col-12">
-            <div class="text-center py-5" style="color:var(--muted); font-weight:900;">
-              <div class="spinner-border" role="status" aria-label="Loading"></div>
-              <div class="mt-3">Memuat produk...</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="loadmore-wrap">
-          <button id="btnLoadMore" class="btn btn-loadmore"><i class="fa-solid fa-rotate me-2"></i>Muat Lebih</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- KEUNGGULAN -->
-    <section class="section" id="keunggulan">
-      <div class="container">
-        <h2 class="section-title">Kenapa D&D MULTIVERSE DIGITAL?</h2>
-        <p class="section-subtitle">Bukan cuma tampilan neon doang—alurnya jelas, ordernya gampang.</p>
-
-        <div class="row g-3">
-          <div class="col-md-3 col-sm-6">
-            <div class="step-card h-100">
-              <div class="step-num"><i class="fa-solid fa-shield-heart"></i></div>
-              <div class="step-title">Aman & Rapi</div>
-              <p class="step-text">Order tercatat, detail paket jelas, minim drama.</p>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <div class="step-card h-100">
-              <div class="step-num"><i class="fa-solid fa-bolt"></i></div>
-              <div class="step-title">Cepat</div>
-              <p class="step-text">Tanya → bayar → proses. Gak pake kebanyakan basa-basi.</p>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <div class="step-card h-100">
-              <div class="step-num"><i class="fa-solid fa-arrows-rotate"></i></div>
-              <div class="step-title">Garansi</div>
-              <p class="step-text">Kalau ada kendala di masa garansi, dibantu sesuai ketentuan.</p>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <div class="step-card h-100">
-              <div class="step-num"><i class="fa-solid fa-headset"></i></div>
-              <div class="step-title">Admin Responsif</div>
-              <p class="step-text">Ngomong yang jelas, dijelasin sampe paham.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TESTIMONI -->
-    <section class="section" id="testimoni">
-      <div class="container">
-        <h2 class="section-title">Testimoni</h2>
-        <p class="section-subtitle">Contoh ringkas (nanti lu bisa ganti real testimoni).</p>
-
-        <div class="row g-3">
-          <div class="col-md-4">
-            <div class="step-card h-100">
-              <div class="d-flex justify-content-between align-items-center mb-2">
-                <div>
-                  <div class="step-title mb-0">R***</div>
-                  <div class="step-text">Langganan 3 bulan</div>
-                </div>
-                <div style="color:#f59e0b">
-                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
-                </div>
-              </div>
-              <p class="step-text">“Cepet banget, tinggal chat langsung dipandu sampe aktif.”</p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="step-card h-100">
-              <div class="d-flex justify-content-between align-items-center mb-2">
-                <div>
-                  <div class="step-title mb-0">S***</div>
-                  <div class="step-text">Paket desain</div>
-                </div>
-                <div style="color:#f59e0b">
-                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                </div>
-              </div>
-              <p class="step-text">“Adminnya enak, gak muter-muter. Harga juga oke.”</p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="step-card h-100">
-              <div class="d-flex justify-content-between align-items-center mb-2">
-                <div>
-                  <div class="step-title mb-0">A***</div>
-                  <div class="step-text">Streaming + musik</div>
-                </div>
-                <div style="color:#f59e0b">
-                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                </div>
-              </div>
-              <p class="step-text">“Perpanjang aman terus. Kalau ada kendala dibantu.”</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="text-center mt-3" style="color:var(--muted); font-weight:700; font-size:.82rem;">
-          *Testimoni di atas contoh template, lu bisa ganti sesuai kebutuhan.
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="section" id="faq">
-      <div class="container">
-        <h2 class="section-title">FAQ</h2>
-        <p class="section-subtitle">Yang sering ditanya sebelum order.</p>
-
-        <div class="row g-3">
-          <div class="col-lg-7">
-            <div class="accordion" id="faqAccordion">
-              <div class="accordion-item" style="border-radius:16px; overflow:hidden; border:1px solid var(--border); background:transparent;">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                    Berapa lama proses order?
-                  </button>
-                </h2>
-                <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                  <div class="accordion-body" style="color:var(--muted); font-weight:700;">
-                    Biasanya cepat di jam operasional. Kalau ramai/ada kendala, admin info estimasi.
-                  </div>
-                </div>
-              </div>
-
-              <div class="accordion-item mt-2" style="border-radius:16px; overflow:hidden; border:1px solid var(--border); background:transparent;">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-                    Kalau ada masalah di masa langganan?
-                  </button>
-                </h2>
-                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                  <div class="accordion-body" style="color:var(--muted); font-weight:700;">
-                    Chat admin + sertakan bukti order. Ditangani sesuai ketentuan garansi paket.
-                  </div>
-                </div>
-              </div>
-
-              <div class="accordion-item mt-2" style="border-radius:16px; overflow:hidden; border:1px solid var(--border); background:transparent;">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                    Metode pembayaran apa saja?
-                  </button>
-                </h2>
-                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                  <div class="accordion-body" style="color:var(--muted); font-weight:700;">
-                    QRIS / transfer / e-wallet (detail dikirim setelah checkout via WhatsApp).
-                  </div>
-                </div>
-              </div>
-
-              <div class="accordion-item mt-2" style="border-radius:16px; overflow:hidden; border:1px solid var(--border); background:transparent;">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
-                    Bisa multi device?
-                  </button>
-                </h2>
-                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                  <div class="accordion-body" style="color:var(--muted); font-weight:700;">
-                    Tergantung produk/varian. Di detail varian biasanya ada catatan, atau tanya admin dulu.
-                  </div>
-                </div>
-              </div>
-
-              <div class="accordion-item mt-2" style="border-radius:16px; overflow:hidden; border:1px solid var(--border); background:transparent;">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
-                    Harga di web sudah termasuk markup?
-                  </button>
-                </h2>
-                <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                  <div class="accordion-body" style="color:var(--muted); font-weight:700;">
-                    Iya. Harga tampil = harga modal dari sheet + Rp8.000 (semua produk).
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-5">
-            <div class="contact-card">
-              <div class="d-flex gap-2 align-items-center mb-2">
-                <span class="step-num" style="width:34px;height:34px;"><i class="fa-solid fa-circle-question"></i></span>
-                <div class="step-title mb-0">Masih bingung?</div>
-              </div>
-              <p class="step-text mb-3">Chat admin, jelasin kebutuhan lu. Nanti direkomendasiin paket yang paling pas.</p>
-              <a class="btn btn-wa w-100" id="btnAskFAQ" target="_blank">
-                <i class="fa-brands fa-whatsapp me-2"></i>Tanya Admin Sekarang
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- KONTAK + FOOTER -->
-    <section class="section" id="kontak">
-      <div class="container">
-        <h2 class="section-title">Kontak</h2>
-        <p class="section-subtitle">Satu jalur, biar cepat: WhatsApp admin.</p>
-
-        <div class="contact-card">
-          <div class="row g-3 align-items-center">
-            <div class="col-md-5">
-              <div class="hero-badge mb-2"><i class="fa-solid fa-building"></i><span>D&D MULTIVERSE DIGITAL</span></div>
-              <div class="step-title" style="font-size:1.2rem;">Hubungi Admin</div>
-              <div class="step-text">Tanya produk, cek harga, dan konfirmasi pembayaran.</div>
-              <div class="mt-2" style="color:var(--muted); font-weight:700; font-size:.88rem;">
-                Jam operasional: <b>08.00 – 23.00</b>
-              </div>
-            </div>
-            <div class="col-md-7">
-              <a class="contact-link" id="contactWA" target="_blank">
-                <div style="width:46px;height:46px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:rgba(34,197,94,.14);border:1px solid rgba(34,197,94,.25);">
-                  <i class="fa-brands fa-whatsapp" style="font-size:1.35rem;color:#22c55e;"></i>
-                </div>
-                <div>
-                  <div style="font-weight:1000;">WhatsApp Admin</div>
-                  <div class="small" style="color:var(--muted); font-weight:700;">Klik untuk chat. Format pesan sudah disiapkan.</div>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="footer-mini">
-            <div class="d-flex flex-wrap justify-content-between gap-2">
-              <span>© <span id="footerYear"></span> D&D MULTIVERSE DIGITAL. All rights reserved.</span>
-              <span>Crafted with ❤️ By Brandon Tan</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Floating -->
-    <button class="float-cart" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
-      <i class="fa-solid fa-bag-shopping"></i>
-      <span class="count" id="cartCount">0</span>
-    </button>
-    <button class="float-theme" id="floatThemeBtn" title="Toggle Theme">
-      <i class="fa-solid fa-sun"></i>
-    </button>
-
-    <!-- MODAL DETAIL -->
-    <div class="modal fade" id="produkModal" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-scrollable" style="max-width: 920px;">
-        <div class="modal-content" id="produkModalContent">
-          <div class="modal-header">
-            <div class="d-flex align-items-center gap-2">
-              <i class="fa-solid fa-circle-info"></i>
-              <h5 class="modal-title mb-0" id="produkModalTitle">Detail Produk</h5>
-            </div>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup" style="filter:brightness(0) invert(1);"></button>
-          </div>
-          <div class="modal-body" id="produkModalBody"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- OFFCANVAS CART -->
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCart" aria-labelledby="offcanvasCartLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasCartLabel"><i class="fa-solid fa-basket-shopping me-2"></i>Keranjang</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" style="filter:brightness(0) invert(1);"></button>
-      </div>
-      <div class="offcanvas-body d-flex flex-column">
-        <div id="cartItems" class="mb-3"></div>
-
-        <div class="d-flex justify-content-between align-items-center fw-bold fs-5">
-          <span>Total</span>
-          <span id="cartTotal">Rp0</span>
-        </div>
-
-        <div class="mt-3 d-grid gap-2">
-          <button class="btn btn-clear" id="btnClearCart"><i class="fa-solid fa-trash me-2"></i>Hapus Keranjang</button>
-          <a class="btn btn-wa" id="btnCheckoutWA" target="_blank">
-            <i class="fa-brands fa-whatsapp me-2"></i>Checkout via WhatsApp
+        <div class="d-flex align-items-center gap-2">
+          <a class="nav-btn" href="#produk"><i class="fa-solid fa-tags"></i> Produk</a>
+          <a class="nav-btn primary" id="btnChatTop" target="_blank" rel="noopener">
+            <i class="fa-brands fa-whatsapp"></i> WA Admin
           </a>
         </div>
       </div>
     </div>
+  </nav>
 
+  <section class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <div class="hero-inner">
+          <div class="pill">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Harga reseller + proses cepat (via WhatsApp)</span>
+          </div>
+
+          <h1>Semua Produk Digital Lu Kumpulin Jadi 1 Toko.</h1>
+          <p>
+            Cari produk → klik card → pilih varian → langsung pesan ke WA Admin.
+            <br/>Harga yang tampil sudah <b>markup +Rp8.000</b> (kecuali kalau sheet lu udah punya kolom harga_reseller).
+          </p>
+
+          <div class="hero-actions">
+            <a class="nav-btn primary" href="#produk"><i class="fa-solid fa-rocket"></i> Lihat Produk</a>
+            <a class="nav-btn" id="btnChatHero" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Chat Admin</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <div class="ico"><i class="fa-solid fa-bolt"></i></div>
+              <div>
+                <div class="k">Fast Flow</div>
+                <div class="v">Klik → pilih varian → WA</div>
+              </div>
+            </div>
+            <div class="stat">
+              <div class="ico"><i class="fa-solid fa-layer-group"></i></div>
+              <div>
+                <div class="k">Rapi & Simetris</div>
+                <div class="v">Grid konsisten semua device</div>
+              </div>
+            </div>
+            <div class="stat">
+              <div class="ico"><i class="fa-solid fa-image"></i></div>
+              <div>
+                <div class="k">Ada Foto</div>
+                <div class="v">Icon per produk (fallback auto)</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tools" id="toolsBar">
+    <div class="container">
+      <div class="tool-card">
+        <div class="row g-2 align-items-center">
+          <div class="col-md-7">
+            <div class="search-wrap">
+              <i class="fa-solid fa-magnifying-glass search-ico"></i>
+              <input id="searchInput" class="form-control control search-input" type="text"
+                placeholder="Cari: Netflix / Spotify / Canva / TikTok / Instagram / dll...">
+            </div>
+          </div>
+          <div class="col-md-5">
+            <select id="filterKategori" class="form-select control">
+              <option value="">Semua Kategori</option>
+            </select>
+          </div>
+        </div>
+        <div class="tiny mt-2">
+          Sumber data: Google Sheet lu. Kalau produk gak kebaca: pastiin share “Anyone with link = Viewer”.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="produk">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">All Products</h2>
+        <p class="section-sub">
+          Klik produk untuk buka varian. Harga tampil = <b>harga reseller</b> (kalau ada) atau <b>harga + markup</b>.
+        </p>
+      </div>
+
+      <div id="produkList">
+        <div class="state">
+          <div class="spinner"></div>
+          Memuat produk dari Google Sheet...
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <div>© <span id="yearNow"></span> D&D MULTIVERSE DIGITAL</div>
+        <div>Crafted with ❤️ By Brandon Tan</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal fade" id="groupModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable" style="max-width:760px;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="groupModalLabel"><i class="fa-solid fa-layer-group me-2"></i>Detail Produk</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Tutup"></button>
+        </div>
+        <div class="modal-body" id="groupModalBody"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
   <script>
     // =========================
-    // CONFIG — GANTI INI SAJA
+    // CONFIG (tinggal edit ini)
     // =========================
     const STORE_NAME = "D&D MULTIVERSE DIGITAL";
+    const WA_LOCAL   = "087809236556"; // format indo (0xxxx) OK
+    const WA_ADMIN   = normalizeWA(WA_LOCAL); // jadi 62xxxx
 
-    // WA admin lu: 087809236556 -> format internasional (Indonesia) = 6287809236556
-    const ADMIN_WA = "6287809236556";
+    const MARKUP_RP  = 8000;
 
-    // Markup reseller (ALL PRODUCT)
-    const MARKUP = 8000;
+    const SHEET_ID   = "10E8yNqPCGdlnmQKbVjqSS24_clFGdF6EBhALS5S1d4E";
+    const SHEET_NAME = "Produk"; // kalau tab lu beda, ganti: misal "Produk Web"
+    const SHEET_JSON_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(SHEET_NAME)}`;
 
-    // Google Sheet (WAJIB lu isi)
-    // - Pastikan Sheet "Publish to web" / share public untuk bisa dibaca
-    const SHEET_ID   = "PASTE_SHEET_ID_DI_SINI";
-    const SHEET_NAME = "Produk";
-
-    // Kolom yang dibaca (urutan kolom harus sama)
-    // 0 nama, 1 harga_modal, 2 ikon_url, 3 deskripsi (pakai ||), 4 kategori, 5 wa (boleh kosong), 6 harga_lama_modal, 7 stok, 8 kode, 9 group
-    // NOTE: Wa per-produk DISABLE (kita pakai 1 WA admin sesuai request lu)
-    // =========================
-
-    // ===== Helpers
-    const money = n => `Rp${(Number(n)||0).toLocaleString('id-ID')}`;
-    const toJual = modal => (Number(modal)||0) + MARKUP;
-
-    const CART_KEY = "ddmd_cart";
-    const WISH_KEY = "ddmd_wish";
-    const THEME_KEY = "ddmd_theme";
-
-    const getStorage = (k, fallback) => {
-      try { return JSON.parse(localStorage.getItem(k)) ?? fallback; } catch { return fallback; }
+    // Column mapping (berdasarkan format yang paling umum dari source lu)
+    // 0 nama | 1 harga | 2 ikon | 3 deskripsi (||) | 4 kategori | 5 wa | 6 harga_lama | 7 stok | 8 kode | 9 group | 10 harga_reseller (opsional)
+    const COL = {
+      nama: 0, harga: 1, ikon: 2, deskripsi: 3, kategori: 4, wa: 5,
+      hargaLama: 6, stok: 7, kode: 8, group: 9, hargaReseller: 10
     };
-    const setStorage = (k, v) => localStorage.setItem(k, JSON.stringify(v));
 
-    // ===== DOM
-    const navbar = document.getElementById("mainNavbar");
-    const produkListEl = document.getElementById("produkList");
-    const searchInput = document.getElementById("searchInput");
-    const searchOverlay = document.getElementById("searchOverlay");
-    const searchInputOverlay = document.getElementById("searchInputOverlay");
-    const btnLoadMore = document.getElementById("btnLoadMore");
+    // =========================
+    // STATE
+    // =========================
+    let rows = [];         // varian list
+    let groupIndex = {};   // groupName -> { items, kategori, ikon, hargaMin, hargaMax }
+    let groupOrder = [];   // urutan group sesuai sheet
+    let kategoriSet = new Set();
 
-    const navCartCount = document.getElementById("navCartCount");
-    const cartCount = document.getElementById("cartCount");
-    const cartItems = document.getElementById("cartItems");
-    const cartTotal = document.getElementById("cartTotal");
-    const btnCheckoutWA = document.getElementById("btnCheckoutWA");
-    const btnClearCart = document.getElementById("btnClearCart");
+    const produkListEl  = document.getElementById("produkList");
+    const searchInputEl = document.getElementById("searchInput");
+    const filterKatEl   = document.getElementById("filterKategori");
 
-    const btnChatHero = document.getElementById("btnChatHero");
-    const btnAskFAQ = document.getElementById("btnAskFAQ");
-    const contactWA = document.getElementById("contactWA");
+    const categoryIcons = {
+      "Langganan": "fa-bell",
+      "Streaming": "fa-tv",
+      "Penyimpanan": "fa-hard-drive",
+      "Software": "fa-puzzle-piece",
+      "Desain": "fa-palette",
+      "Produktivitas": "fa-list-check",
+      "AI Tools": "fa-robot",
+      "Keamanan": "fa-shield-halved",
+      "Game": "fa-gamepad",
+      "Voucher": "fa-gift",
+      "Instagram": "fa-brands fa-instagram",
+      "TikTok": "fa-brands fa-tiktok",
+      "Website": "fa-globe"
+    };
 
-    // ===== Links WA
-    function waLink(text){
-      return `https://wa.me/${encodeURIComponent(ADMIN_WA)}?text=${encodeURIComponent(text)}`;
+    // =========================
+    // HELPERS
+    // =========================
+    function normalizeWA(raw){
+      const s = String(raw || "").replace(/\D/g,"");
+      if (!s) return "62";
+      if (s.startsWith("62")) return s;
+      if (s.startsWith("0")) return "62" + s.slice(1);
+      return "62" + s;
     }
-    function initWALinks(){
-      const msg = `Halo admin ${STORE_NAME}, saya mau tanya dulu sebelum order.`;
-      btnChatHero.href = waLink(msg);
-      btnAskFAQ.href = waLink(msg);
-      contactWA.href = waLink(msg);
+
+    function money(n){
+      const v = Number(n || 0);
+      return "Rp" + v.toLocaleString("id-ID");
     }
 
-    // ===== Navbar height -> CSS var
-    function setNavOffset(){
-      const h = navbar ? navbar.offsetHeight : 72;
+    function escapeHtml(str){
+      return String(str ?? "")
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
+
+    function setNavHeightVar(){
+      const nav = document.getElementById("mainNavbar");
+      const h = nav ? nav.offsetHeight : 70;
       document.documentElement.style.setProperty("--nav-h", h + "px");
     }
-    window.addEventListener("resize", setNavOffset);
-    window.addEventListener("orientationchange", setNavOffset);
 
-    // ===== Theme
-    function setTheme(mode){
-      document.documentElement.setAttribute("data-theme", mode);
-      localStorage.setItem(THEME_KEY, mode);
-      const icon = (mode === "dark") ? "fa-sun" : "fa-moon";
-      document.getElementById("navThemeBtn").innerHTML = `<i class="fa-solid ${icon}"></i>`;
-      document.getElementById("floatThemeBtn").innerHTML = `<i class="fa-solid ${icon}"></i>`;
-    }
-    function toggleTheme(){
-      const cur = document.documentElement.getAttribute("data-theme") || "dark";
-      setTheme(cur === "dark" ? "light" : "dark");
+    function waUrl(text){
+      return `https://wa.me/${encodeURIComponent(WA_ADMIN)}?text=${encodeURIComponent(text)}`;
     }
 
-    document.getElementById("navThemeBtn").addEventListener("click", toggleTheme);
-    document.getElementById("floatThemeBtn").addEventListener("click", toggleTheme);
-
-    // ===== Smooth scroll
-    document.addEventListener("click", (e) => {
-      const a = e.target.closest('a[data-scroll][href^="#"]');
-      if(!a) return;
-      e.preventDefault();
-      const id = a.getAttribute("href");
-      const el = document.querySelector(id);
-      if(el) el.scrollIntoView({behavior:"smooth", block:"start"});
-    });
-
-    // ===== Search overlay
-    function openSearch(){
-      searchOverlay.classList.add("open");
-      setTimeout(()=> searchInputOverlay.focus(), 120);
-    }
-    function closeSearch(){
-      searchOverlay.classList.remove("open");
-      searchInputOverlay.blur();
-    }
-    document.querySelectorAll("[data-nav-search]").forEach(btn=>{
-      btn.addEventListener("click", ()=>{
-        // scroll to produk biar enak
-        const sec = document.getElementById("produk");
-        if(sec) sec.scrollIntoView({behavior:"smooth", block:"start"});
-        openSearch();
-      });
-    });
-    document.getElementById("btnCloseSearch").addEventListener("click", closeSearch);
-    document.addEventListener("keydown", (e)=>{ if(e.key === "Escape") closeSearch(); });
-
-    // mirror overlay input -> main input
-    searchInputOverlay.addEventListener("input", ()=>{
-      searchInput.value = searchInputOverlay.value;
-      onSearch();
-    });
-    searchInput.addEventListener("input", ()=>{
-      searchInputOverlay.value = searchInput.value;
-      onSearch();
-    });
-
-    // ===== Data from Sheet
-    const sheetUrl = () => `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(SHEET_NAME)}`;
-
-    let variants = [];   // all rows
-    let groups = [];     // grouped by group/name
-    let viewData = [];   // filtered
-    let page = 1;
-    const perPage = 12;
-
-    function showError(msg){
+    function showState(kind, msg, extra){
+      const icon =
+        kind === "loading" ? "" :
+        kind === "error"   ? `<i class="fa-solid fa-triangle-exclamation me-2"></i>` :
+                             `<i class="fa-solid fa-magnifying-glass me-2"></i>`;
+      const spinner = kind === "loading" ? `<div class="spinner"></div>` : "";
+      const extraHtml = extra ? `<div class="tiny mt-2">${extra}</div>` : "";
       produkListEl.innerHTML = `
-        <div class="col-12">
-          <div class="step-card text-center">
-            <div class="step-title mb-1"><i class="fa-solid fa-triangle-exclamation me-2"></i>Gagal memuat produk</div>
-            <div class="step-text">${msg}</div>
-            <div class="mt-2 small" style="color:var(--muted); font-weight:800;">
-              Pastikan <b>SHEET_ID</b> benar & Sheet bisa diakses publik.
-            </div>
-          </div>
-        </div>`;
-      btnLoadMore.style.display = "none";
+        <div class="state">
+          ${spinner}
+          <div style="font-weight:1000;color:rgba(231,234,243,.92)">${icon}${escapeHtml(msg)}</div>
+          ${extraHtml}
+        </div>
+      `;
     }
 
-    function buildGroups(){
-      const map = new Map();
-      variants.forEach(v=>{
-        const key = (v.group || v.nama || "").trim();
-        if(!key) return;
-        if(!map.has(key)){
-          map.set(key, {
-            key,
-            title: key,
-            kategori: v.kategori,
-            ikon: v.ikon,
-            variants: [],
-            minHarga: v.harga_jual,
-            maxHargaLama: v.harga_lama_jual,
-            available: Number(v.stok) > 0
-          });
+    // Build groups in sheet order (biar konsisten & nggak random)
+    function buildGroups(items){
+      const grouped = {};
+      const order = [];
+
+      items.forEach(it => {
+        const g = (it.group && String(it.group).trim()) ? String(it.group).trim() : String(it.nama || "").trim();
+        const groupName = g || "Tanpa Nama";
+
+        if (!grouped[groupName]){
+          grouped[groupName] = [];
+          order.push(groupName);
         }
-        const g = map.get(key);
-        g.variants.push(v);
-
-        // keep best icon/category if missing
-        if(!g.ikon && v.ikon) g.ikon = v.ikon;
-        if(!g.kategori && v.kategori) g.kategori = v.kategori;
-
-        if((v.harga_jual||0) < (g.minHarga||0)) g.minHarga = v.harga_jual||0;
-        if((v.harga_lama_jual||0) > (g.maxHargaLama||0)) g.maxHargaLama = v.harga_lama_jual||0;
-        if(Number(v.stok) > 0) g.available = true;
+        grouped[groupName].push(it);
       });
-      groups = Array.from(map.values());
+
+      const idx = {};
+      order.forEach(groupName => {
+        const list = grouped[groupName];
+        const kategori = list[0]?.kategori || "Umum";
+        const ikon = list[0]?.ikon || "";
+        const hargaMin = Math.min(...list.map(x => Number(x.harga_display || 0)));
+        const hargaMax = Math.max(...list.map(x => Number(x.harga_display || 0)));
+        idx[groupName] = { items: list, kategori, ikon, hargaMin, hargaMax };
+      });
+
+      return { idx, order };
     }
 
-    function applyFilter(){
-      const q = (searchInput.value||"").toLowerCase().trim();
-      if(!q){
-        viewData = [...groups];
-      }else{
-        viewData = groups.filter(g=>{
-          const inTitle = (g.title||"").toLowerCase().includes(q);
-          const inVar = g.variants.some(v => (v.nama||"").toLowerCase().includes(q));
-          const inCat = (g.kategori||"").toLowerCase().includes(q);
-          return inTitle || inVar || inCat;
-        });
-      }
-      page = 1;
+    function getFiltered(){
+      const q = (searchInputEl.value || "").toLowerCase().trim();
+      const kat = (filterKatEl.value || "");
+
+      return rows.filter(r => {
+        const matchQ =
+          !q ||
+          (r.nama || "").toLowerCase().includes(q) ||
+          (r.group || "").toLowerCase().includes(q) ||
+          (r.kategori || "").toLowerCase().includes(q) ||
+          (r.deskripsiText || "").toLowerCase().includes(q);
+
+        const matchKat = !kat || (r.kategori || "") === kat;
+        return matchQ && matchKat;
+      });
     }
 
-    function renderProducts(append=false){
-      const start = (page-1)*perPage;
-      const slice = viewData.slice(start, start+perPage);
-
-      if(!append) produkListEl.innerHTML = "";
-
-      if(slice.length === 0 && !append){
-        produkListEl.innerHTML = `
-          <div class="col-12">
-            <div class="step-card text-center">
-              <div class="step-title mb-1"><i class="fa-solid fa-magnifying-glass me-2"></i>Produk tidak ditemukan</div>
-              <div class="step-text">Coba kata kunci lain.</div>
-            </div>
-          </div>`;
-        btnLoadMore.style.display = "none";
+    // =========================
+    // RENDER
+    // =========================
+    function render(){
+      const items = getFiltered();
+      if (!items.length){
+        showState("empty", "Produk tidak ditemukan", "Coba ganti keyword atau kategori lain.");
         return;
       }
 
-      slice.forEach((g, i)=>{
-        const idx = start + i;
-        const hasDisc = (g.maxHargaLama||0) > (g.minHarga||0);
-        const stokOK = !!g.available;
-        const wishlist = getStorage(WISH_KEY, []);
-        const wished = wishlist.includes(g.key);
+      const built = buildGroups(items);
+      groupIndex = built.idx;
+      groupOrder = built.order;
 
-        const col = document.createElement("div");
-        col.className = "col-lg-3 col-md-4 col-sm-6 col-6";
-        col.innerHTML = `
-          <div class="product-card" data-detail="${idx}">
-            <div class="top-glow"></div>
-            <button class="wish-btn ${wished ? "active" : ""}" data-wish="${encodeURIComponent(g.key)}" onclick="event.stopPropagation()" title="Favorit">
-              <i class="fa-solid fa-heart"></i>
-            </button>
-            <div class="cat-badge">
-              <i class="fa-solid fa-layer-group me-1"></i>${g.kategori || "Produk"}
-            </div>
+      let html = `<div class="grid">`;
 
-            <div class="prod-media">
-              <img class="prod-img" src="${g.ikon || ""}" alt="${g.title || ""}"
-                onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAiIGhlaWdodD0iODAiIHJ4PSIyMCIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMC4wOCIgc3Ryb2tlPSIjOTRhM2I4IiBzdHJva2Utb3BhY2l0eT0iMC4yIi8+PHBhdGggZD0iTTIwIDQ4bDEyLTEyIDEwIDEwIDE4LTE4IiBmaWxsPSJub25lIiBzdHJva2U9IiM5NGEzYjgiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBvcGFjaXR5PSIwLjY1Ii8+PC9zdmc+';">
-            </div>
+      groupOrder.forEach((gName) => {
+        const g = groupIndex[gName];
+        const catIcon = categoryIcons[g.kategori] || "fa-box";
+        const count = g.items.length;
 
-            <div class="prod-body">
-              <p class="prod-title">${g.title || ""}</p>
-              <div>
-                <div class="price-main">Mulai ${money(g.minHarga)}</div>
-                ${hasDisc ? `<div class="price-old">${money(g.maxHargaLama)}</div>` : ``}
+        const priceText = (g.hargaMin === g.hargaMax)
+          ? money(g.hargaMin)
+          : `${money(g.hargaMin)} — ${money(g.hargaMax)}`;
+
+        const safeName = gName.replace(/'/g, "\\'");
+
+        html += `
+          <div class="grid-item">
+            <div class="pcard" onclick="openGroup('${safeName}')">
+              <div class="phead">
+                <div class="plogo">
+                  <img src="${escapeHtml(g.ikon)}" alt="${escapeHtml(gName)}"
+                       onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIHZpZXdCb3g9IjAgMCA3MiA3MiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIHJ4PSIyMCIgZmlsbD0iIzBhMGIxMiIvPjxyZWN0IHg9IjgiIHk9IjgiIHdpZHRoPSI1NiIgaGVpZ2h0PSI1NiIgcng9IjE4IiBmaWxsPSIjMTExODI3IiBzdHJva2U9IiMyMzM0NTAiLz48cGF0aCBkPSJNMjQgNDJsMTItMjQgMTIgMjQiIHN0cm9rZT0iIzIyZDNlZSIgc3Ryb2tlLXdpZHRoPSI0IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48cGF0aCBkPSJNMjQgNDJoMjQiIHN0cm9rZT0iIzdhM2FlZCIgc3Ryb2tlLXdpZHRoPSI0IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48L3N2Zz4=';">
+                </div>
+                <div style="flex:1">
+                  <div class="pchip">
+                    <i class="fa-solid ${catIcon}"></i>
+                    <span>${escapeHtml(g.kategori || "Umum")}</span>
+                    <span style="opacity:.5">•</span>
+                    <span>${count} varian</span>
+                  </div>
+                  <div class="ptitle">${escapeHtml(gName)}</div>
+                  <div class="pmeta">
+                    <span><i class="fa-solid fa-bolt" style="color:rgba(34,211,238,.95)"></i> Ready</span>
+                    <span class="dot"></span>
+                    <span>Click untuk detail</span>
+                  </div>
+                </div>
               </div>
 
-              <div class="meta-row">
-                <span class="chip ${stokOK ? "ok":"no"}">${stokOK ? "✓ Tersedia" : "✕ Habis"}</span>
-                <span class="chip">${g.variants.length} varian</span>
-              </div>
+              <div class="pbody">
+                <div class="price-row">
+                  <div>
+                    <div class="pprice">${priceText}</div>
+                    <div class="tiny">Harga reseller (markup aktif)</div>
+                  </div>
+                </div>
 
-              <button class="btn-detail" ${stokOK ? "" : "disabled"} type="button" data-detail="${idx}">
-                <i class="fa-solid fa-circle-info me-2"></i>Detail
-              </button>
-            </div>
-          </div>
-        `;
-        produkListEl.appendChild(col);
-      });
-
-      btnLoadMore.style.display =
-        (viewData.length > (start + slice.length)) ? "inline-block" : "none";
-    }
-
-    function onSearch(){
-      applyFilter();
-      renderProducts(false);
-    }
-
-    btnLoadMore.addEventListener("click", ()=>{
-      page += 1;
-      renderProducts(true);
-    });
-
-    // ===== Modal detail
-    const modalEl = document.getElementById("produkModal");
-    const bsModal = new bootstrap.Modal(modalEl);
-    const modalTitle = document.getElementById("produkModalTitle");
-    const modalBody = document.getElementById("produkModalBody");
-
-    function showDetail(index){
-      const g = viewData[index];
-      if(!g) return;
-
-      modalTitle.textContent = g.title || "Detail Produk";
-
-      const variantsHTML = g.variants.map((v, i)=>{
-        const stokOK = Number(v.stok) > 0;
-        const fitur = (v.deskripsi || []).map(t => `
-          <li><i class="fa-solid fa-circle-check"></i><span>${t}</span></li>
-        `).join("");
-
-        const textWA = `Halo admin ${STORE_NAME}, saya ingin pesan:\n- ${v.nama}\nHarga: ${money(v.harga_jual)}\n\nTerima kasih.`;
-
-        return `
-          <div class="variant-card">
-            <div class="d-flex justify-content-between align-items-start gap-2">
-              <div>
-                <p class="variant-name">${v.nama}</p>
-                <div class="variant-sub">Varian ${i+1}${v.kode ? ` • Kode: <b>${v.kode}</b>` : ""}</div>
-              </div>
-              <div class="text-end">
-                <div class="variant-price">${money(v.harga_jual)}</div>
-                ${(v.harga_lama_jual && v.harga_lama_jual > v.harga_jual) ? `<div class="variant-old">${money(v.harga_lama_jual)}</div>` : ""}
-                <div class="mt-1">
-                  <span class="chip ${stokOK ? "ok":"no"}">${stokOK ? "Tersedia":"Habis"}</span>
+                <div class="pcta">
+                  <div class="btnx primary" onclick="openGroup('${safeName}'); event.stopPropagation();">
+                    <i class="fa-solid fa-circle-info"></i> Detail
+                  </div>
+                  <a class="btnx wa" href="${waUrl(`Halo admin, saya mau tanya produk: ${gName}`)}"
+                     target="_blank" rel="noopener" onclick="event.stopPropagation();">
+                    <i class="fa-brands fa-whatsapp"></i> WA
+                  </a>
                 </div>
               </div>
             </div>
+          </div>
+        `;
+      });
 
-            ${fitur ? `<ul class="feat">${fitur}</ul>` : ""}
+      html += `</div>`;
+      produkListEl.innerHTML = html;
+    }
 
-            <div class="v-actions d-flex gap-2 flex-wrap mt-3">
-              <button class="btn btn-cart btn-sm ${stokOK ? "" : "disabled"}" data-add="${encodeURIComponent(v.nama)}" ${stokOK ? "" : "disabled"}>
-                <i class="fa-solid fa-cart-plus me-1"></i>Keranjang
-              </button>
-              <a class="btn btn-wa btn-sm ${stokOK ? "" : "disabled"}" ${stokOK ? "" : "aria-disabled='true' onclick='return false;'"}
-                 href="${waLink(textWA)}" target="_blank">
-                <i class="fa-brands fa-whatsapp me-1"></i>Pesan varian ini
+    // =========================
+    // MODAL
+    // =========================
+    function openGroup(groupName){
+      const g = groupIndex[groupName];
+      if (!g) return;
+
+      const items = g.items; // urutan sesuai sheet
+      const catIcon = categoryIcons[g.kategori] || "fa-box";
+
+      let body = `
+        <div class="mb-3" style="border-radius:18px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);padding:1rem;">
+          <div class="d-flex align-items-center gap-3">
+            <div class="plogo" style="width:62px;height:62px;">
+              <img src="${escapeHtml(g.ikon)}" alt="${escapeHtml(groupName)}"
+                   onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIHZpZXdCb3g9IjAgMCA3MiA3MiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIHJ4PSIyMCIgZmlsbD0iIzBhMGIxMiIvPjxyZWN0IHg9IjgiIHk9IjgiIHdpZHRoPSI1NiIgaGVpZ2h0PSI1NiIgcng9IjE4IiBmaWxsPSIjMTExODI3IiBzdHJva2U9IiMyMzM0NTAiLz48cGF0aCBkPSJNMjQgNDJsMTItMjQgMTIgMjQiIHN0cm9rZT0iIzIyZDNlZSIgc3Ryb2tlLXdpZHRoPSI0IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48cGF0aCBkPSJNMjQgNDJoMjQiIHN0cm9rZT0iIzdhM2FlZCIgc3Ryb2tlLXdpZHRoPSI0IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48L3N2Zz4=';">
+            </div>
+            <div style="flex:1">
+              <div class="pchip mb-2" style="display:inline-flex">
+                <i class="fa-solid ${catIcon}"></i>
+                <span>${escapeHtml(g.kategori || "Umum")}</span>
+                <span style="opacity:.5">•</span>
+                <span>${items.length} varian</span>
+              </div>
+              <div style="font-weight:1000;font-size:1.15rem;letter-spacing:-.01em">${escapeHtml(groupName)}</div>
+              <div class="tiny">Pilih varian → klik Pesan → langsung ke WhatsApp Admin</div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      items.forEach((it, i) => {
+        const desc = (it.deskripsi && it.deskripsi.length)
+          ? it.deskripsi.slice(0, 6).map(d => `• ${escapeHtml(d)}`).join("<br>")
+          : `<span class="tiny">Deskripsi belum diisi</span>`;
+
+        const displayHarga = Number(it.harga_display || 0);
+        const oldHarga = Number(it.harga_old || it.harga || 0);
+
+        const resellerTag = (it.harga_reseller !== null && it.harga_reseller !== undefined && it.harga_reseller !== "")
+          ? `<span class="vtag"><i class="fa-solid fa-star me-1" style="color:var(--warn)"></i>Reseller</span>`
+          : `<span class="vtag"><i class="fa-solid fa-plus me-1" style="color:rgba(34,211,238,.95)"></i>Markup +${money(MARKUP_RP)}</span>`;
+
+        const waTarget = normalizeWA(it.wa || WA_ADMIN);
+        const pesan = `Halo admin, saya ingin pesan: ${it.nama} (${money(displayHarga)}).`;
+        const link = `https://wa.me/${encodeURIComponent(waTarget)}?text=${encodeURIComponent(pesan)}`;
+
+        body += `
+          <div class="variant">
+            <div class="vtop">
+              <div>
+                <p class="vname">${escapeHtml(it.nama || groupName)}</p>
+                <div class="vdesc">${desc}</div>
+              </div>
+              ${resellerTag}
+            </div>
+
+            <div class="vfoot">
+              <div>
+                <div class="vprice">${money(displayHarga)}</div>
+                ${oldHarga && oldHarga !== displayHarga ? `<span class="vold">${money(oldHarga)}</span>` : ``}
+              </div>
+              <a class="btnx wa" href="${link}" target="_blank" rel="noopener" style="flex:0 0 auto;">
+                <i class="fa-brands fa-whatsapp"></i> Pesan
               </a>
             </div>
           </div>
         `;
-      }).join("");
+      });
 
-      modalBody.innerHTML = `
-        <div class="d-flex align-items-center gap-3 mb-3">
-          <img src="${g.ikon || ""}" alt="${g.title || ""}"
-               style="width:78px;height:78px;border-radius:20px;border:1px solid var(--border);object-fit:cover;background:rgba(255,255,255,.05)"
-               onerror="this.style.display='none'">
-          <div>
-            <div style="font-weight:1000;font-size:1.05rem;">${g.title || ""}</div>
-            <div style="color:var(--muted); font-weight:800; font-size:.9rem;">
-              Kategori: <b>${g.kategori || "Produk"}</b> • ${g.variants.length} varian • Harga mulai <b>${money(g.minHarga)}</b>
-            </div>
-            <div style="color:var(--muted); font-weight:800; font-size:.82rem; margin-top:.2rem;">
-              *Harga tampil sudah termasuk markup reseller <b>+Rp${MARKUP.toLocaleString('id-ID')}</b>.
-            </div>
-          </div>
-        </div>
+      document.getElementById("groupModalLabel").innerHTML =
+        `<i class="fa-solid fa-layer-group me-2"></i> ${escapeHtml(groupName)}`;
+      document.getElementById("groupModalBody").innerHTML = body;
 
-        <hr style="border-color:var(--border); opacity:1;">
-
-        ${variantsHTML || `<div class="step-text">Varian belum tersedia.</div>`}
-      `;
-
-      bsModal.show();
+      new bootstrap.Modal(document.getElementById("groupModal")).show();
     }
 
-    // swipe close modal on mobile
-    (function enableModalSwipeClose(){
-      const content = document.getElementById("produkModalContent");
-      let startY = null;
-      content.addEventListener("touchstart", e => { startY = e.touches[0].clientY; }, {passive:true});
-      content.addEventListener("touchmove", e => {
-        if(startY === null) return;
-        const dy = e.touches[0].clientY - startY;
-        if(dy > 80){ startY = null; bsModal.hide(); }
-      }, {passive:true});
-      content.addEventListener("touchend", ()=>{ startY = null; }, {passive:true});
-    })();
+    // expose for onclick
+    window.openGroup = openGroup;
 
-    // ===== Cart
-    function getCart(){ return getStorage(CART_KEY, []); }
-    function setCart(c){ setStorage(CART_KEY, c); updateCartUI(); }
-
-    function addToCart(name, qty=1){
-      const item = variants.find(v => v.nama === name);
-      if(!item || !(Number(item.stok) > 0)) return;
-
-      const cart = getCart();
-      const ex = cart.find(ci => ci.nama === name);
-      if(ex) ex.qty += qty;
-      else cart.push({ nama: item.nama, harga: item.harga_jual, qty });
-
-      setCart(cart);
-    }
-
-    function removeFromCart(name){ setCart(getCart().filter(ci => ci.nama !== name)); }
-
-    function changeQty(name, delta){
-      const cart = getCart();
-      const it = cart.find(ci => ci.nama === name);
-      if(!it) return;
-      it.qty = Math.max(1, (it.qty||1) + delta);
-      setCart(cart);
-    }
-
-    function clearCart(){ setCart([]); }
-
-    function updateCartUI(){
-      const cart = getCart();
-      const totalQty = cart.reduce((a,b)=> a + (b.qty||1), 0);
-
-      navCartCount.textContent = totalQty;
-      cartCount.textContent = totalQty;
-
-      if(cart.length === 0){
-        cartItems.innerHTML = `
-          <div class="text-center py-4" style="color:var(--muted); font-weight:900;">
-            <i class="fa-regular fa-face-frown" style="font-size:1.8rem; opacity:.75"></i>
-            <div class="mt-2">Keranjang kosong</div>
-          </div>
-        `;
-        cartTotal.textContent = money(0);
-        btnCheckoutWA.href = "#";
-        return;
-      }
-
-      let total = 0;
-      cartItems.innerHTML = cart.map(ci=>{
-        const sub = (ci.harga||0) * (ci.qty||1);
-        total += sub;
-
-        return `
-          <div class="cart-item">
-            <div class="d-flex justify-content-between align-items-start gap-2">
-              <div>
-                <div style="font-weight:1000;">${ci.nama}</div>
-                <div style="color:var(--muted); font-weight:800; font-size:.85rem;">
-                  ${money(ci.harga)} × ${ci.qty} = <b>${money(sub)}</b>
-                </div>
-              </div>
-              <button class="qty-btn" data-remove="${encodeURIComponent(ci.nama)}" title="Hapus">
-                <i class="fa-solid fa-trash"></i>
-              </button>
-            </div>
-
-            <div class="d-flex gap-2 align-items-center mt-2">
-              <button class="qty-btn" data-minus="${encodeURIComponent(ci.nama)}">-</button>
-              <div style="min-width:36px;text-align:center;font-weight:1000;">${ci.qty}</div>
-              <button class="qty-btn" data-plus="${encodeURIComponent(ci.nama)}">+</button>
-            </div>
-          </div>
-        `;
-      }).join("");
-
-      cartTotal.textContent = money(total);
-
-      const lines = cart.map(ci => `• ${ci.nama} x${ci.qty} = ${money(ci.harga * ci.qty)}`).join("\n");
-      const text = `Halo admin ${STORE_NAME}, saya mau checkout:\n${lines}\n\nTotal: ${money(total)}\n\nTerima kasih.`;
-      btnCheckoutWA.href = waLink(text);
-    }
-
-    cartItems.addEventListener("click", (e)=>{
-      const minus = e.target.closest("[data-minus]");
-      const plus  = e.target.closest("[data-plus]");
-      const rem   = e.target.closest("[data-remove]");
-      if(minus) changeQty(decodeURIComponent(minus.dataset.minus), -1);
-      if(plus)  changeQty(decodeURIComponent(plus.dataset.plus), +1);
-      if(rem)   removeFromCart(decodeURIComponent(rem.dataset.remove));
-    });
-
-    btnClearCart.addEventListener("click", clearCart);
-
-    // ===== Wishlist
-    function toggleWish(key){
-      const list = getStorage(WISH_KEY, []);
-      const i = list.indexOf(key);
-      if(i > -1) list.splice(i,1);
-      else list.push(key);
-      setStorage(WISH_KEY, list);
-    }
-
-    // ===== Click handlers: detail / add / wish
-    produkListEl.addEventListener("click", (e)=>{
-      const d = e.target.closest("[data-detail]");
-      const w = e.target.closest("[data-wish]");
-      if(w){
-        const key = decodeURIComponent(w.dataset.wish);
-        toggleWish(key);
-        w.classList.toggle("active");
-        return;
-      }
-      if(d){
-        showDetail(Number(d.dataset.detail));
-        return;
-      }
-    });
-
-    modalBody.addEventListener("click", (e)=>{
-      const a = e.target.closest("[data-add]");
-      if(!a) return;
-      addToCart(decodeURIComponent(a.dataset.add), 1);
-      // open cart
-      new bootstrap.Offcanvas("#offcanvasCart").show();
-    });
-
-    // ===== Load from sheet
+    // =========================
+    // LOAD SHEET
+    // =========================
     async function loadSheet(){
-      if(!SHEET_ID || SHEET_ID === "PASTE_SHEET_ID_DI_SINI"){
-        showError("SHEET_ID belum diisi. Isi dulu di bagian CONFIG pada script.");
-        return;
-      }
+      showState("loading", "Memuat produk...", "Kalau error: cek nama tab & share sheet viewer.");
       try{
-        const res = await fetch(sheetUrl(), {cache:"no-store"});
+        const res  = await fetch(SHEET_JSON_URL, { cache: "no-store" });
         const text = await res.text();
         const json = JSON.parse(text.substring(47, text.length - 2));
-        const rows = json.table.rows || [];
+        const rawRows = json.table.rows || [];
 
-        variants = rows.map((r, idx)=>{
+        rows = rawRows.map((r, idx) => {
           const c = r.c || [];
-          const nama = (c[0]?.v ?? "").toString().trim();
-          const harga_modal = Number(c[1]?.v ?? 0) || 0;
-          const ikon = (c[2]?.v ?? "").toString().trim();
-          const deskripsi = (c[3]?.v ?? "").toString().split("||").map(s=>s.trim()).filter(Boolean);
-          const kategori = (c[4]?.v ?? "").toString().trim();
-          const harga_lama_modal = Number(c[6]?.v ?? 0) || 0;
-          const stok = Number(c[7]?.v ?? 0) || 0;
-          const kode = (c[8]?.v ?? "").toString().trim();
-          const group = (c[9]?.v ?? "").toString().trim();
+          const nama = c[COL.nama]?.v ?? "";
+          if (!String(nama).trim()) return null;
 
-          const harga_jual = toJual(harga_modal);
-          const harga_lama_jual = harga_lama_modal ? toJual(harga_lama_modal) : 0;
+          const harga = Number(c[COL.harga]?.v ?? 0) || 0;
+          const ikon  = c[COL.ikon]?.v ?? "";
+          const deskripsiStr = (c[COL.deskripsi]?.v ?? "").toString();
+          const deskripsi = deskripsiStr.split("||").map(s => s.trim()).filter(Boolean);
+          const kategori = c[COL.kategori]?.v ?? "Umum";
+          const wa = c[COL.wa]?.v ?? WA_ADMIN;
+          const group = c[COL.group]?.v ?? "";
 
-          return { id: idx, nama, ikon, deskripsi, kategori, stok, kode, group, harga_modal, harga_jual, harga_lama_modal, harga_lama_jual };
-        }).filter(v => v.nama);
+          const hargaLama = Number(c[COL.hargaLama]?.v ?? 0) || 0;
 
-        buildGroups();
-        applyFilter();
-        renderProducts(false);
+          const hargaResRaw = c[COL.hargaReseller]?.v;
+          const harga_reseller = (hargaResRaw === undefined || hargaResRaw === null || hargaResRaw === "")
+            ? null
+            : (Number(hargaResRaw) || null);
+
+          // display price rule:
+          // - kalau ada harga_reseller -> pake itu
+          // - kalau enggak -> harga + markup
+          const harga_display = (harga_reseller !== null && !isNaN(harga_reseller))
+            ? harga_reseller
+            : (harga + MARKUP_RP);
+
+          kategoriSet.add(kategori);
+
+          return {
+            idx,
+            nama: String(nama),
+            harga,
+            harga_old: hargaLama || harga,
+            harga_reseller,
+            harga_display,
+            ikon: String(ikon),
+            deskripsi,
+            deskripsiText: deskripsi.join(" "),
+            kategori: String(kategori),
+            wa: String(wa),
+            group: String(group)
+          };
+        }).filter(Boolean);
+
+        if (!rows.length){
+          showState("error", "Sheet kebaca tapi kosong", "Isi minimal kolom Nama & Harga di tab Produk.");
+          return;
+        }
+
+        // build category dropdown
+        const cats = Array.from(kategoriSet).sort((a,b)=>a.localeCompare(b));
+        filterKatEl.innerHTML = `<option value="">Semua Kategori</option>` + cats.map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join("");
+
+        render();
       }catch(err){
         console.error(err);
-        showError("Cek akses Sheet (public), nama tab, dan struktur kolom.");
+        showState(
+          "error",
+          "Gagal memuat produk dari Google Sheet",
+          `Cek: (1) Nama tab = "${SHEET_NAME}" (2) Share = Viewer publik (3) Link gviz bisa diakses.<br><span class="tiny">${escapeHtml(String(err))}</span>`
+        );
       }
     }
 
-    // ===== Active nav highlight (simple)
-    function markActive(){
-      const links = document.querySelectorAll(".pill-link");
-      const y = window.scrollY + (navbar?.offsetHeight || 72) + 30;
-      const ids = ["produk","cara-order","keunggulan","testimoni","faq","kontak"];
-      let active = "produk";
-      for(const id of ids){
-        const el = document.getElementById(id);
-        if(el && el.offsetTop <= y) active = id;
-      }
-      links.forEach(a=>{
-        const href = a.getAttribute("href") || "";
-        a.classList.toggle("active", href === "#" + active);
-      });
+    // =========================
+    // INIT
+    // =========================
+    document.getElementById("yearNow").textContent = new Date().getFullYear();
+
+    function bindWAButtons(){
+      const link = waUrl("Halo admin, saya mau tanya produk di D&D Multiverse Digital.");
+      document.getElementById("btnChatTop").href = link;
+      document.getElementById("btnChatHero").href = link;
     }
-    window.addEventListener("scroll", markActive, {passive:true});
 
-    // ===== Init
-    document.addEventListener("DOMContentLoaded", ()=>{
-      setNavOffset();
-      initWALinks();
+    window.addEventListener("resize", setNavHeightVar);
+    window.addEventListener("orientationchange", setNavHeightVar);
 
-      // year
-      document.getElementById("footerYear").textContent = new Date().getFullYear();
+    searchInputEl.addEventListener("input", () => render());
+    filterKatEl.addEventListener("change", () => render());
 
-      // theme
-      const saved = localStorage.getItem(THEME_KEY) || "dark";
-      setTheme(saved);
-
-      // cart
-      updateCartUI();
-
-      // load
+    document.addEventListener("DOMContentLoaded", () => {
+      setNavHeightVar();
+      bindWAButtons();
       loadSheet();
-      markActive();
     });
   </script>
 </body>
