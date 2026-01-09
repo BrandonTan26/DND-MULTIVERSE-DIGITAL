@@ -2190,27 +2190,27 @@
       navCount.textContent = initCart.reduce((a,b)=>a+(b.qty||1),0);
     })();
 
-    // ======== Welcome popup: first visit only (FIX KONDISI) ========
-    (function initWelcomePopup(){
-      const KEY = "dnd_welcome_v1";
-      const el  = document.getElementById("welcomeModal");
-      const btn = document.getElementById("welcomeGotIt");
-      if(!el) return;
+    // ======== Welcome popup: ALWAYS SHOW (TIAP REFRESH) ========
+(function initWelcomePopup(){
+  const el = document.getElementById("welcomeModal");
+  const btn = document.getElementById("welcomeGotIt");
+  if(!el) return;
 
-      try{
-        const already = localStorage.getItem(KEY);
-        if(already) return;
+  const m = new bootstrap.Modal(el, {
+    backdrop: "static",
+    keyboard: false
+  });
 
-        const m = new bootstrap.Modal(el, { backdrop: "static", keyboard: true });
-        window.addEventListener("load", ()=> setTimeout(()=> m.show(), 450));
+  window.addEventListener("load", () => {
+    setTimeout(() => m.show(), 300);
+  });
 
-        const markDone = ()=> localStorage.setItem(KEY, "1");
-        el.addEventListener("hidden.bs.modal", markDone);
-        if(btn) btn.addEventListener("click", markDone);
-      }catch(e){
-        console.warn("welcome popup skipped:", e);
-      }
-    })();
+  if(btn){
+    btn.addEventListener("click", () => {
+      m.hide();
+    });
+  }
+})();
 
     document.addEventListener('DOMContentLoaded', ()=>{
       setNavOffset();
