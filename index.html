@@ -936,10 +936,17 @@
 .product-icon{
   z-index: 1;
         }
-    /* ===== NEON KHUSUS tombol LIHAT VARIAN (a / button) ===== */
-.product-card a.btn.btn-outline,
-.product-card button.btn.btn-outline,
-.product-card .btn.btn-outline{
+    /* FORCE: tombol yang ada tulisan "Lihat Varian" (mau class apapun) */
+.product-card a:has(.fa-circle-info),
+.product-card button:has(.fa-circle-info),
+.product-card a,
+.product-card button{
+  /* kosongin dulu biar ga ngerusak tombol lain */
+}
+
+/* Target paling aman: tombol yang ada icon info + teks Lihat Varian */
+.product-card a:has(i.fa-circle-info),
+.product-card button:has(i.fa-circle-info){
   position: relative !important;
   overflow: hidden !important;
   border: 2px solid #22d3ee !important;
@@ -952,27 +959,16 @@
   animation: neonGlow2 1.4s ease-in-out infinite !important;
 }
 
-.product-card a.btn.btn-outline::after,
-.product-card button.btn.btn-outline::after,
-.product-card .btn.btn-outline::after{
-  content: "" !important;
-  position: absolute !important;
-  inset: -3px !important;
+.product-card a:has(i.fa-circle-info)::after,
+.product-card button:has(i.fa-circle-info)::after{
+  content:"" !important;
+  position:absolute !important;
+  inset:-3px !important;
   border-radius: inherit !important;
   background: radial-gradient(circle at 30% 30%, rgba(34,211,238,.85), transparent 60%) !important;
-  filter: blur(12px) !important;
-  opacity: .6 !important;
-  pointer-events: none !important;
-}
-
-@keyframes neonGlow2{
-  0%,100%{
-    filter: brightness(1);
-    box-shadow: 0 0 10px rgba(34,211,238,.55), 0 0 22px rgba(56,189,248,.35), inset 0 0 12px rgba(34,211,238,.22);
-  }
-  50%{
-    filter: brightness(1.35);
-    box-shadow: 0 0 18px rgba(34,211,238,.95), 0 0 40px rgba(56,189,248,.75), inset 0 0 18px rgba(34,211,238,.35);
+  filter: blur(10px) !important;
+  opacity:.6 !important;
+  pointer-events:none !important;
 }
     
   </style>
