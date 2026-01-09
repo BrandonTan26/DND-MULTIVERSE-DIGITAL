@@ -936,39 +936,72 @@
 .product-icon{
   z-index: 1;
         }
-    /* PAKSA: tombol "Lihat Varian" (biasanya ada di product-actions) */
-.product-actions .btn.btn-outline{
+    /* NEON FULL BLOCK - tombol LIHAT VARIAN */
+.btn-variant{
+  width: 100% !important;
+  display: inline-flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: .55rem !important;
+
   position: relative !important;
   overflow: hidden !important;
-  border: 2px solid #22d3ee !important;
+
+  border-radius: 18px !important;
+  border: 2px solid rgba(34,211,238,.95) !important;
+
+  /* ini yang bikin "ngeblok" */
   background: linear-gradient(135deg,
     rgba(34,211,238,.95),
     rgba(56,189,248,.95)
   ) !important;
+
   color: #062a2e !important;
   font-weight: 900 !important;
+
   box-shadow:
-    0 10px 28px rgba(34,211,238,.35),
-    0 0 0 2px rgba(34,211,238,.22) inset !important;
+    0 14px 40px rgba(34,211,238,.35),
+    0 0 0 2px rgba(34,211,238,.20) inset !important;
+
+  animation: variantPulse 1.6s ease-in-out infinite !important;
 }
 
-.product-actions .btn.btn-outline::before{
-  content: "";
-  position: absolute;
-  top: -40%;
-  left: -30%;
-  width: 60%;
-  height: 180%;
+/* kilau jalan */
+.btn-variant::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  background: radial-gradient(circle at 30% 30%,
+    rgba(255,255,255,.55),
+    transparent 55%
+  );
+  opacity:.45;
+  filter: blur(10px);
+  pointer-events:none;
+}
+
+/* sweep */
+.btn-variant::after{
+  content:"";
+  position:absolute;
+  top:-40%;
+  left:-60%;
+  width:60%;
+  height:200%;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent);
   transform: rotate(20deg);
-  animation: neonSweep 1.8s linear infinite;
-  pointer-events: none;
+  animation: variantSweep 1.8s linear infinite;
+  pointer-events:none;
 }
 
-@keyframes neonSweep{
-  0%{ transform: translateX(-140%) rotate(20deg); opacity:.3; }
+@keyframes variantPulse{
+  0%,100%{ transform: translateY(0); filter: brightness(1); }
+  50%{ transform: translateY(-1px); filter: brightness(1.08); }
+}
+@keyframes variantSweep{
+  0%{ transform: translateX(-140%) rotate(20deg); opacity:.25; }
   50%{ opacity:.65; }
-  100%{ transform: translateX(260%) rotate(20deg); opacity:.3; }
+  100%{ transform: translateX(280%) rotate(20deg); opacity:.25; }
 }
     
   </style>
