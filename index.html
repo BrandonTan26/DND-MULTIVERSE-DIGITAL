@@ -1,12 +1,13 @@
 <!doctype html>
 <html lang="id" data-theme="light" style="--nav-h: 95px;">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>D&amp;D Multiverse Digital - Price List</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
 
   <style>
     :root{
@@ -245,6 +246,8 @@
       transition:.3s;
       border:1px solid rgba(148,163,184,.5);
       cursor:default;
+      z-index:1;
+      position:relative;
     }
     html[data-theme="light"] .product-icon{
       background:#ffffff;
@@ -289,7 +292,9 @@
 
     .category-badge{
       position:absolute;
-      top:1rem; right:1rem;
+      top:-.25rem;
+      right:1rem;
+      z-index:5;
       background:var(--gradient-primary);
       color:#0f172a;
       padding:.25rem .5rem;
@@ -302,15 +307,25 @@
       cursor:default;
     }
 
-    .badge-stock{
+    .wishlist-btn{
       position:absolute;
-      bottom:1rem; right:1rem;
-      border-radius:8px;
-      padding:.15rem .5rem;
-      font-size:.75rem;
+      top:.6rem; left:.6rem;
+      background:rgba(15,23,42,.9);
+      border:1px solid rgba(148,163,184,.6);
+      border-radius:999px;
+      width:38px;height:38px;
+      display:flex;align-items:center;justify-content:center;
+      cursor:pointer;z-index:6;
     }
+    html[data-theme="light"] .wishlist-btn{
+      background:#ffffff;
+      border-color:#e2e8f0;
+    }
+    .wishlist-btn i{color:#9ca3af;}
+    .wishlist-btn.active i{color:#fb7185;}
 
     .product-actions{gap:.5rem;justify-content:center}
+
     .icon-btn{
       width:42px;height:42px;
       display:inline-flex;align-items:center;justify-content:center;
@@ -342,34 +357,6 @@
     }
     .btn-detail-wide i{font-size:1.05rem}
 
-    .btn-add.icon-btn{
-      border-color:#a855f7;
-      background:rgba(88,28,135,.8);
-      color:#e9d5ff;
-    }
-    html[data-theme="light"] .btn-add.icon-btn{
-      background:#eef2ff;
-      border-color:#c7d2fe;
-      color:#3730a3;
-    }
-
-    .wishlist-btn{
-      position:absolute;
-      top:.6rem; left:.6rem;
-      background:rgba(15,23,42,.9);
-      border:1px solid rgba(148,163,184,.6);
-      border-radius:999px;
-      width:38px;height:38px;
-      display:flex;align-items:center;justify-content:center;
-      cursor:pointer;z-index:2;
-    }
-    html[data-theme="light"] .wishlist-btn{
-      background:#ffffff;
-      border-color:#e2e8f0;
-    }
-    .wishlist-btn i{color:#9ca3af;}
-    .wishlist-btn.active i{color:#fb7185;}
-
     .modal-content{
       border-radius:var(--border-radius);
       border:none;
@@ -388,7 +375,9 @@
       padding:1.1rem;
     }
     .btn-close{filter:brightness(0) invert(1)}
+    html[data-theme="light"] .btn-close{filter:none}
     .modal-body{padding:1rem;color:var(--text-main);}
+    html[data-theme="light"] .modal-body{color:#0f172a;}
     .modal-footer{
       padding:1rem;
       border-top:1px solid rgba(148,163,184,.35);
@@ -403,8 +392,6 @@
       background:linear-gradient(135deg,rgba(129,140,248,.16),rgba(34,197,235,.14));
     }
 
-    .modal-product-icon{ width:80px;height:80px; }
-
     .modal-category-pill{
       background:linear-gradient(135deg,#22c1c3,#f97316);
       color:#0f172a;
@@ -415,21 +402,6 @@
       box-shadow:0 8px 20px rgba(34,211,238,.7);
     }
 
-    .modal-product-title{ font-weight:800; font-size:1.05rem; }
-    .modal-product-subtitle{ font-size:.9rem; color:var(--muted-color); }
-
-    .modal-product-prices .modal-price-main{
-      font-size:1.1rem;
-      font-weight:800;
-      color:#22c55e;
-    }
-    .modal-product-prices .modal-price-old{
-      font-size:.9rem;
-      text-decoration:line-through;
-      color:#6b7280;
-    }
-
-    .modal-variant-list{margin-top:.35rem;}
     .variant-card{
       border-radius:14px;
       padding:.7rem .8rem;
@@ -444,25 +416,6 @@
       background:#f9fafb;
       border-color:#e5e7eb;
       box-shadow:0 8px 22px rgba(148,163,184,.45);
-    }
-
-    .variant-card-title{font-size:.95rem;}
-    .variant-card-label{font-size:.78rem;}
-    .variant-card-price{font-size:.95rem;color:#22c55e;}
-    .variant-card-price-old{font-size:.78rem;text-decoration:line-through;color:#9ca3af;}
-
-    .variant-features{ margin:0 0 .4rem 0; padding:0; }
-    .variant-feature-item{
-      display:flex;
-      align-items:flex-start;
-      gap:.35rem;
-      font-size:.85rem;
-      margin-bottom:.15rem;
-    }
-    .variant-feature-icon{
-      margin-top:.10rem;
-      font-size:.8rem;
-      color:#22c55e;
     }
 
     .fade-in{animation:fadeIn .6s ease-out forwards}
@@ -526,9 +479,7 @@
         background:var(--gradient-primary);
         color:#0f172a;
       }
-      .btn-close{ filter:brightness(0) invert(1); }
     }
-
     @media (max-width:576px){
       #produk-list .col-6{flex:0 0 50%;max-width:50%}
     }
@@ -789,10 +740,12 @@
       background:radial-gradient(circle at top,#020617 0%,#020617 55%);
       border-top:1px solid rgba(148,163,184,.35);
     }
+    /* FIX: LIGHT MODE kontak jangan gelap */
     html[data-theme="light"] .contact-section{
-      background:#020617;
+      background:#ffffff;
       border-color:#e5e7eb;
     }
+
     .contact-pill{
       display:inline-flex;align-items:center;gap:.4rem;
       padding:.25rem .7rem;
@@ -813,11 +766,14 @@
       text-decoration:none;
       color:var(--text-main);
     }
+    html[data-theme="light"] .contact-link{ color:#0f172a; }
     .contact-link i{font-size:1.1rem;}
     .contact-link:hover{ text-decoration:none; opacity:.9; }
 
     .contact-section .text-muted,
-    .contact-section .small.text-muted { color:#cbd5e1 !important; }
+    .contact-section .small.text-muted { color:#64748b !important; }
+    html[data-theme="dark"] .contact-section .text-muted,
+    html[data-theme="dark"] .contact-section .small.text-muted { color:#cbd5e1 !important; }
 
     .footer-mini{
       border-top:1px solid rgba(148,163,184,.4);
@@ -867,6 +823,7 @@
       box-shadow:none;
       color:var(--text-main);
     }
+    html[data-theme="light"] .search-overlay .search-input{ color:#0f172a; }
     .search-overlay .search-input:focus{ outline:none; box-shadow:none; }
     .search-overlay .close-search i{font-size:1.1rem;}
     @media (max-width:576px){
@@ -921,139 +878,97 @@
     html[data-theme="dark"] .welcome-cta{
       box-shadow: 0 18px 45px rgba(0,0,0,.75);
     }
-    /* FIX: badge kategori ketiban logo */
-.category-badge{
-  position: absolute;
-  top: -.25rem;
-  right: 1rem;
-  z-index: 5;
-}
 
-.wishlist-btn{
-  z-index: 6;
-}
-
-.product-icon{
-  z-index: 1;
-        }
     /* ===============================
-   FORCE: Tombol "Detail / Lihat Varian" jadi NEON + kebaca di LIGHT
-   Tempel paling bawah <style> (sebelum </style>)
-================================ */
+      FORCE: Tombol "Lihat Varian" jadi NEON + kebaca di LIGHT (FIXED)
+    ================================ */
+    .product-card button[data-detail]{
+      position: relative !important;
+      overflow: hidden !important;
+      width: 100% !important;
 
-/* Target tombol yang punya data-detail (paling aman, karena itu tombol buka modal) */
-.product-card button[data-detail]{
-  position: relative !important;
-  overflow: hidden !important;
-  width: 100% !important;
-  height: auto !important;
+      border: 2px solid rgba(34,211,238,.95) !important;
+      color: #061018 !important;
+      background: rgba(34,211,238,.18) !important;
 
-  /* bikin tombol jelas di light & dark */
-  border: 2px solid rgba(34,211,238,.95) !important;
-  color: #061018 !important;
-  background: rgba(34,211,238,.18) !important;
+      font-weight: 800 !important;
+      letter-spacing: .2px !important;
 
-  font-weight: 800 !important;
-  letter-spacing: .2px !important;
+      box-shadow:
+        0 0 0 2px rgba(34,211,238,.10),
+        0 0 14px rgba(34,211,238,.65),
+        0 0 34px rgba(56,189,248,.45) !important;
 
-  box-shadow:
-    0 0 0 2px rgba(34,211,238,.10),
-    0 0 14px rgba(34,211,238,.65),
-    0 0 34px rgba(56,189,248,.45) !important;
+      animation: neonGlowVar 1.25s ease-in-out infinite !important;
+      z-index: 1 !important;
+    }
+    html[data-theme="dark"] .product-card button[data-detail]{
+      color: #eaffff !important;
+      background: rgba(34,211,238,.14) !important;
+    }
+    .product-card button[data-detail]::before{
+      content:"" !important;
+      position:absolute !important;
+      inset:-6px !important;
+      background:
+        radial-gradient(circle at 25% 25%, rgba(34,211,238,.85), transparent 55%),
+        radial-gradient(circle at 70% 70%, rgba(56,189,248,.55), transparent 60%) !important;
+      filter: blur(14px) !important;
+      opacity: .75 !important;
+      pointer-events:none !important;
+      z-index: 0 !important;
+    }
+    .product-card button[data-detail] > *{
+      position: relative !important;
+      z-index: 2 !important;
+    }
+    .product-card button[data-detail]:hover:not(:disabled){
+      transform: translateY(-2px) !important;
+      box-shadow:
+        0 0 18px rgba(34,211,238,.85),
+        0 0 44px rgba(56,189,248,.65) !important;
+    }
+    .product-card button[data-detail]:disabled{
+      opacity: .55 !important;
+      filter: grayscale(.2) !important;
+      animation: none !important;
+      box-shadow: none !important;
+    }
 
-  animation: neonGlowVar 1.25s ease-in-out infinite !important;
-}
+    /* ✅ FIX UTAMA: keyframes ditutup bener */
+    @keyframes neonGlowVar{
+      0%,100% { filter: drop-shadow(0 0 0 rgba(34,211,238,.0)); }
+      50%     { filter: drop-shadow(0 0 10px rgba(34,211,238,.55)); }
+    }
 
-/* Mode DARK: teksnya jadi terang */
-html[data-theme="dark"] .product-card button[data-detail]{
-  color: #eaffff !important;
-  background: rgba(34,211,238,.14) !important;
-}
-
-/* efek glow full (bukan pinggir doang) */
-.product-card button[data-detail]::before{
-  content:"" !important;
-  position:absolute !important;
-  inset:-6px !important;
-  background:
-    radial-gradient(circle at 25% 25%, rgba(34,211,238,.85), transparent 55%),
-    radial-gradient(circle at 70% 70%, rgba(56,189,248,.55), transparent 60%) !important;
-  filter: blur(14px) !important;
-  opacity: .75 !important;
-  pointer-events:none !important;
-}
-
-/* biar teks & icon tetap di atas glow */
-.product-card button[data-detail] > *{
-  position: relative !important;
-  z-index: 2 !important;
-}
-
-/* hover/klik terasa */
-.product-card button[data-detail]:hover:not(:disabled){
-  transform: translateY(-2px) !important;
-  box-shadow:
-    0 0 18px rgba(34,211,238,.85),
-    0 0 44px rgba(56,189,248,.65) !important;
-}
-
-/* disabled tetep kelihatan tapi redup */
-.product-card button[data-detail]:disabled{
-  opacity: .55 !important;
-  filter: grayscale(.2) !important;
-  animation: none !important;
-  box-shadow: none !important;
-}
-
-/* animasi neon */
-@keyframes neonGlowVar{
-  0%,100% { filter: drop-shadow(0 0 0 rgba(34,211,238,.0)); }
-  50%     { filter: drop-shadow(0 0 10px rgba(34,211,238,.55)); 
-  }
-  /* FIX: paksa teks & icon tombol data-detail keliatan dan nyala */
-.product-card button[data-detail],
-.product-card button[data-detail] *{
-  opacity: 1 !important;
-  visibility: visible !important;
-  -webkit-text-fill-color: currentColor !important;
-  mix-blend-mode: normal !important;
-}
-
-/* pastiin icon & text warnanya terang */
-.product-card button[data-detail] i,
-.product-card button[data-detail] span{
-  color: #eaffff !important;
-  text-shadow:
-    0 0 8px rgba(34,211,238,.85),
-    0 0 18px rgba(56,189,248,.55) !important;
-}
-
-/* light mode: teks tetap gelap tapi glowing */
-html[data-theme="light"] .product-card button[data-detail] i,
-html[data-theme="light"] .product-card button[data-detail] span{
-  color: #061018 !important;
-  text-shadow:
-    0 0 10px rgba(34,211,238,.55),
-    0 0 22px rgba(56,189,248,.35) !important;
-}
-
-/* glow layer jangan nutupin konten */
-.product-card button[data-detail]::before,
-.product-card button[data-detail]::after{
-  z-index: 0 !important;
-}
-.product-card button[data-detail]{
-  z-index: 1 !important;
-}
-.product-card button[data-detail] > *{
-  z-index: 2 !important;
-}
-  
+    /* paksa teks & icon tombol keliatan */
+    .product-card button[data-detail],
+    .product-card button[data-detail] *{
+      opacity: 1 !important;
+      visibility: visible !important;
+      -webkit-text-fill-color: currentColor !important;
+      mix-blend-mode: normal !important;
+    }
+    .product-card button[data-detail] i,
+    .product-card button[data-detail] span{
+      color: #eaffff !important;
+      text-shadow:
+        0 0 8px rgba(34,211,238,.85),
+        0 0 18px rgba(56,189,248,.55) !important;
+    }
+    html[data-theme="light"] .product-card button[data-detail] i,
+    html[data-theme="light"] .product-card button[data-detail] span{
+      color: #061018 !important;
+      text-shadow:
+        0 0 10px rgba(34,211,238,.55),
+        0 0 22px rgba(56,189,248,.35) !important;
+    }
   </style>
 </head>
 
 <body class="loaded">
   <div class="container-fluid">
+
     <nav class="navbar navbar-expand-lg nav-glass" id="mainNavbar">
       <div class="container">
         <a class="navbar-brand" href="index.html">D&amp;D Multiverse Digital</a>
@@ -1100,7 +1015,7 @@ html[data-theme="light"] .product-card button[data-detail] span{
             </div>
 
             <h1 class="hero-title">
-              Layanan Digital Premium<br class="d-none d-md-block"> dalam Satu Portal Resmi.
+              Layanan Digital Premium<br class="d-none d-md-block" /> dalam Satu Portal Resmi.
             </h1>
 
             <p class="hero-subtitle">
@@ -1168,7 +1083,7 @@ html[data-theme="light"] .product-card button[data-detail] span{
       <div class="container">
         <div class="search-overlay-inner">
           <i class="fas fa-search overlay-icon"></i>
-          <input type="text" id="searchInput" class="form-control search-input" placeholder="Cari produk atau aplikasi yang Anda butuhkan...">
+          <input type="text" id="searchInput" class="form-control search-input" placeholder="Cari produk atau aplikasi yang Anda butuhkan..." />
           <button class="btn btn-link text-decoration-none close-search" id="btnCloseSearch" aria-label="Tutup">
             <i class="fa-solid fa-xmark"></i>
           </button>
@@ -1177,6 +1092,7 @@ html[data-theme="light"] .product-card button[data-detail] span{
     </div>
 
     <main id="produk">
+
       <section class="steps-section" id="cara-order">
         <div class="container">
           <h2 class="section-title">Cara Order di D&amp;D Multiverse Digital</h2>
@@ -1234,7 +1150,6 @@ html[data-theme="light"] .product-card button[data-detail] span{
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </section>
@@ -1401,6 +1316,7 @@ html[data-theme="light"] .product-card button[data-detail] span{
           <div class="row g-4 mt-2">
             <div class="col-md-7">
               <div class="accordion faq-accordion" id="faqAccordion">
+
                 <div class="accordion-item">
                   <h2 class="accordion-header" id="faqOneHeading">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqOne">
@@ -1537,6 +1453,7 @@ html[data-theme="light"] .product-card button[data-detail] span{
           </div>
         </div>
       </section>
+
     </main>
   </div>
 
@@ -1618,9 +1535,9 @@ html[data-theme="light"] .product-card button[data-detail] span{
 
         <div class="modal-body">
           <div style="font-size:.95rem; line-height:1.6;">
-            Semua layanan digital premium ada di satu tempat.<br>
-            Netflix, YouTube Premium, Spotify, Canva Pro, CapCut, dan lainnya siap digunakan.<br><br>
-            Pilih produk → tambah ke keranjang → checkout via WhatsApp.<br>
+            Semua layanan digital premium ada di satu tempat.<br />
+            Netflix, YouTube Premium, Spotify, Canva Pro, CapCut, dan lainnya siap digunakan.<br /><br />
+            Pilih produk → tambah ke keranjang → checkout via WhatsApp.<br />
             Proses cepat, sistem rapi, admin responsif.
           </div>
 
@@ -1644,6 +1561,7 @@ html[data-theme="light"] .product-card button[data-detail] span{
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
+    // keep CSS var --nav-h akurat
     const navbar = document.getElementById('mainNavbar');
     function refreshNavH(){
       const h = navbar ? navbar.offsetHeight : 64;
@@ -1657,7 +1575,7 @@ html[data-theme="light"] .product-card button[data-detail] span{
   </script>
 
   <script>
-    // ======== SHEET (FIX: pakai sheet lu) ========
+    // ======== SHEET ========
     const SHEET_ID   = "10E8yNqPCGdlnmQKbVjqSS24_clFGdF6EBhALS5S1d4E";
     const DEFAULT_WA = "6287809236556";
 
@@ -1706,16 +1624,6 @@ html[data-theme="light"] .product-card button[data-detail] span{
     const money = n => `Rp${(Number(n)||0).toLocaleString('id-ID')}`;
     const getStorage = (k,f)=>{try{return JSON.parse(localStorage.getItem(k))??f;}catch{return f;}};
     const setStorage = (k,v)=>localStorage.setItem(k,JSON.stringify(v));
-
-    function setNavOffset(){
-      const nav = document.getElementById('mainNavbar');
-      if(!nav) return;
-      const h = nav.offsetHeight || 64;
-      document.documentElement.style.setProperty('--nav-h', h + 'px');
-    }
-    window.addEventListener('resize', setNavOffset);
-    document.addEventListener('shown.bs.collapse', setNavOffset);
-    document.addEventListener('hidden.bs.collapse', setNavOffset);
 
     function showLoading(){
       produkList.innerHTML =
@@ -1871,11 +1779,10 @@ html[data-theme="light"] .product-card button[data-detail] span{
     const bsModal   = new bootstrap.Modal(modalEl);
     const modalAddCart = document.getElementById('modalAddCart');
     const modalBody = document.getElementById('modalBody');
-    let currentDetailIdx = null;
 
     function showDetailByGlobalIndex(globalIdx){
       const group = viewData[globalIdx];
-      currentDetailIdx = globalIdx;
+      if(!group) return;
 
       const catIconClass = categoryIconsFA[group.kategori] || "fa-box";
       const primaryVariant =
@@ -1892,15 +1799,15 @@ html[data-theme="light"] .product-card button[data-detail] span{
 
         return `
           <div class="variant-card mb-3">
-            <div class="variant-card-header d-flex justify-content-between align-items-start mb-2">
+            <div class="d-flex justify-content-between align-items-start mb-2">
               <div>
-                <div class="variant-card-title fw-semibold">${v.nama}</div>
-                <div class="variant-card-label small text-muted">Varian ${i+1}</div>
+                <div class="fw-semibold">${v.nama}</div>
+                <div class="small text-muted">Varian ${i+1}</div>
               </div>
               <div class="text-end">
-                <div class="variant-card-price fw-bold">${money(v.harga)}</div>
+                <div class="fw-bold" style="color:#22c55e">${money(v.harga)}</div>
                 ${(v.harga_lama && v.harga_lama>v.harga)
-                  ? `<div class="variant-card-price-old small">${money(v.harga_lama)}</div>`
+                  ? `<div class="small text-muted text-decoration-line-through">${money(v.harga_lama)}</div>`
                   : ""
                 }
                 <div class="mt-1">
@@ -1911,7 +1818,7 @@ html[data-theme="light"] .product-card button[data-detail] span{
               </div>
             </div>
 
-            ${fitur ? `<ul class="variant-features list-unstyled mb-2">${fitur}</ul>` : ""}
+            ${fitur ? `<ul class="list-unstyled mb-2">${fitur}</ul>` : ""}
 
             <div class="d-flex gap-2 flex-wrap">
               <button class="btn btn-sm btn-outline-primary"
@@ -1934,7 +1841,7 @@ html[data-theme="light"] .product-card button[data-detail] span{
         <div class="modal-product-main mb-3">
           <div class="row align-items-center g-3">
             <div class="col-md-4 text-center mb-2 mb-md-0">
-              <div class="product-icon modal-product-icon mx-auto">
+              <div class="product-icon mx-auto" style="width:80px;height:80px;">
                 <img src="${group.ikon || ''}" alt="${group.title || ''}"
                     style="width:60px;height:60px;"
                     onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHJ4PSIxMiIgZmlsbD0iIzIwMTgzMCIgc3Ryb2tlPSIjNjQ3NDhiIiBzdHJva2Utd2lkdGg9IjEiLz48L3N2Zz4='">
@@ -1945,15 +1852,15 @@ html[data-theme="light"] .product-card button[data-detail] span{
               </span>
             </div>
             <div class="col-md-8">
-              <h5 class="modal-product-title mb-1">${group.title || ''}</h5>
-              <p class="modal-product-subtitle mb-2">
+              <h5 class="fw-bold mb-1">${group.title || ''}</h5>
+              <p class="mb-2" style="color:var(--muted-color);">
                 Tersedia <strong>${group.variants.length} varian</strong> dengan harga mulai
                 <strong>${money(group.minHarga)}</strong>.
               </p>
-              <div class="modal-product-prices d-flex align-items-baseline gap-2">
-                <span class="modal-price-main">${money(group.minHarga)}</span>
+              <div class="d-flex align-items-baseline gap-2">
+                <span class="fw-bold" style="color:#22c55e">${money(group.minHarga)}</span>
                 ${(group.maxHargaLama && group.maxHargaLama>group.minHarga)
-                  ? `<span class="modal-price-old">${money(group.maxHargaLama)}</span>`
+                  ? `<span class="text-muted text-decoration-line-through">${money(group.maxHargaLama)}</span>`
                   : ""
                 }
               </div>
@@ -1961,7 +1868,7 @@ html[data-theme="light"] .product-card button[data-detail] span{
           </div>
         </div>
 
-        <hr class="my-3">
+        <hr class="my-3" />
 
         <div class="modal-variant-list">
           ${variantsHTML}
@@ -1985,8 +1892,12 @@ html[data-theme="light"] .product-card button[data-detail] span{
       bsModal.show();
     }
 
+    // swipe close modal (mobile)
     (function enableModalSwipeClose(){
-      const content=document.getElementById('produkModalContent'); let startY=null;
+      const content=document.getElementById('produkModalContent');
+      let startY=null;
+      if(!content) return;
+
       content.addEventListener('touchstart',e=>{startY=e.touches[0].clientY;},{passive:true});
       content.addEventListener('touchmove',e=>{
         if(startY===null)return;
@@ -2025,7 +1936,7 @@ html[data-theme="light"] .product-card button[data-detail] span{
 
         const rows = json.table.rows || [];
 
-        // mapping kolom sheet lu:
+        // mapping kolom sheet:
         // 0 nama | 1 harga | 2 ikon | 3 deskripsi | 4 kategori | 5 wa | 6 harga_lama | 7 stok | 8 kode | 9 group | 10 harga_reseller
         produkVariants = rows.map((r,idx)=>{
           const c = r.c || [];
@@ -2095,9 +2006,7 @@ html[data-theme="light"] .product-card button[data-detail] span{
       else{cart.push({nama:item.nama,harga:item.harga,wa:item.wa||DEFAULT_WA,qty});}
       setCart(cart);
     }
-    function removeFromCart(name){
-      setCart(getCart().filter(ci=>ci.nama!==name));
-    }
+    function removeFromCart(name){ setCart(getCart().filter(ci=>ci.nama!==name)); }
     function changeQty(name,delta){
       const cart=getCart();
       const it=cart.find(ci=>ci.nama===name);
@@ -2105,7 +2014,7 @@ html[data-theme="light"] .product-card button[data-detail] span{
       it.qty=Math.max(1,(it.qty||1)+delta);
       setCart(cart);
     }
-    function clearCart(){setCart([]);}
+    function clearCart(){ setCart([]); }
 
     function updateCartUI(){
       const cart = getCart();
@@ -2171,17 +2080,14 @@ html[data-theme="light"] .product-card button[data-detail] span{
       renderProduk(false);
     });
 
-    // klik tombol detail / add / wish, selain itu klik kartu => WA
+    // klik tombol detail / wish, selain itu klik kartu => WA
     produkList.addEventListener("click",e=>{
-      const t = e.target.closest("[data-detail],[data-add],[data-wish]");
+      const t = e.target.closest("[data-detail],[data-wish]");
       if(t){
         e.stopPropagation();
 
         if(t.dataset.detail!==undefined){
           showDetailByGlobalIndex(Number(t.dataset.detail));
-          return;
-        }else if(t.dataset.add){
-          addToCart(decodeURIComponent(t.dataset.add),1);
           return;
         }else if(t.dataset.wish){
           toggleWishlist(decodeURIComponent(t.dataset.wish));
@@ -2221,25 +2127,33 @@ html[data-theme="light"] .product-card button[data-detail] span{
       new bootstrap.Offcanvas('#offcanvasCart').show();
     });
 
+    // Theme init
     (function initTheme(){
       const saved = localStorage.getItem("dnd_theme") || "dark";
       document.documentElement.setAttribute("data-theme",saved);
-      const darkBtn = document.getElementById("floatingDarkBtn");
+
+      const floatingBtn = document.getElementById("floatingDarkBtn");
+      const navBtn = document.getElementById("navDarkBtn");
+
       const setIcon = ()=>{
-        darkBtn.innerHTML =
-          `<i class="fa-solid ${document.documentElement.getAttribute('data-theme')==='dark'?'fa-sun':'fa-moon'}"></i>`;
+        const iconHTML = `<i class="fa-solid ${document.documentElement.getAttribute('data-theme')==='dark'?'fa-sun':'fa-moon'}"></i>`;
+        if(floatingBtn) floatingBtn.innerHTML = iconHTML;
+        if(navBtn) navBtn.innerHTML = iconHTML;
       };
       setIcon();
-      darkBtn.addEventListener("click",()=>{
+
+      function toggleMode(){
         const mode = document.documentElement.getAttribute("data-theme")==="dark" ? "light" : "dark";
         document.documentElement.setAttribute("data-theme",mode);
         localStorage.setItem("dnd_theme",mode);
         setIcon();
-        const navBtn=document.getElementById('navDarkBtn');
-        if(navBtn){ navBtn.innerHTML = darkBtn.innerHTML; }
-      });
+      }
+
+      if(floatingBtn) floatingBtn.addEventListener("click",toggleMode);
+      if(navBtn) navBtn.addEventListener("click",toggleMode);
     })();
 
+    // Navbar Search overlay
     (function initNavbarSearch(){
       const searchBtns   = document.querySelectorAll('[data-nav-search]');
       const searchOverlay= document.getElementById('searchOverlay');
@@ -2250,35 +2164,27 @@ html[data-theme="light"] .product-card button[data-detail] span{
       function openSearch(){
         searchOverlay.classList.add('open');
         const produkSection = document.getElementById('listProduk');
-        if (produkSection) {
-          produkSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        if (produkSection) produkSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         setTimeout(() => searchInput.focus(), 120);
       }
-
       function closeSearch(){
         searchOverlay.classList.remove('open');
         searchInput.blur();
       }
-
       function toggleSearch(){
         if (searchOverlay.classList.contains('open')) closeSearch();
         else openSearch();
       }
 
-      searchBtns.forEach(btn => {
-        btn.addEventListener('click', toggleSearch);
-      });
-
-      if (btnCloseSearch) {
-        btnCloseSearch.addEventListener('click', closeSearch);
-      }
+      searchBtns.forEach(btn => btn.addEventListener('click', toggleSearch));
+      if (btnCloseSearch) btnCloseSearch.addEventListener('click', closeSearch);
 
       document.addEventListener('keydown', (e)=>{
         if(e.key === 'Escape') closeSearch();
       });
     })();
 
+    // smooth scroll + auto close navbar collapse
     document.addEventListener('click',(e)=>{
       const a=e.target.closest('a[data-scroll][href^="#"]');
       if(!a) return;
@@ -2290,24 +2196,7 @@ html[data-theme="light"] .product-card button[data-detail] span{
       if(coll && coll.classList.contains('show')) new bootstrap.Collapse(coll).hide();
     });
 
-    (function hookNavbarDark(){
-      const btn = document.getElementById('navDarkBtn');
-      if(!btn) return;
-      const setIcon=()=>{
-        btn.innerHTML =
-          `<i class="fa-solid ${document.documentElement.getAttribute('data-theme')==='dark'?'fa-sun':'fa-moon'}"></i>`;
-      };
-      setIcon();
-      btn.addEventListener('click', ()=>{
-        const mode=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
-        document.documentElement.setAttribute('data-theme',mode);
-        localStorage.setItem('dnd_theme',mode);
-        setIcon();
-        const floatingBtn = document.getElementById('floatingDarkBtn');
-        if(floatingBtn) floatingBtn.innerHTML = btn.innerHTML;
-      });
-    })();
-
+    // sync nav cart
     (function syncCartCountToNav(){
       const navCount = document.getElementById('navCartCount');
       if(!navCount) return;
@@ -2318,37 +2207,32 @@ html[data-theme="light"] .product-card button[data-detail] span{
       navCount.textContent = initCart.reduce((a,b)=>a+(b.qty||1),0);
     })();
 
-    // ======== Welcome popup: ALWAYS SHOW (TIAP REFRESH) ========
-(function initWelcomePopup(){
-  const el = document.getElementById("welcomeModal");
-  const btn = document.getElementById("welcomeGotIt");
-  if(!el) return;
+    // Welcome popup: ALWAYS SHOW tiap refresh
+    (function initWelcomePopup(){
+      const el = document.getElementById("welcomeModal");
+      const btn = document.getElementById("welcomeGotIt");
+      if(!el) return;
 
-  const m = new bootstrap.Modal(el, {
-    backdrop: "static",
-    keyboard: false
-  });
+      const m = new bootstrap.Modal(el, {
+        backdrop: "static",
+        keyboard: false
+      });
 
-  window.addEventListener("load", () => {
-    setTimeout(() => m.show(), 300);
-  });
+      window.addEventListener("load", () => {
+        setTimeout(() => m.show(), 300);
+      });
 
-  if(btn){
-    btn.addEventListener("click", () => {
-      m.hide();
-    });
-  }
-})();
+      if(btn){
+        btn.addEventListener("click", () => m.hide());
+      }
+    })();
 
     document.addEventListener('DOMContentLoaded', ()=>{
-      setNavOffset();
       loadProdukFromSheet();
       updateCartUI();
       const fy = document.getElementById('footerYear');
       if(fy){ fy.textContent = new Date().getFullYear(); }
     });
-
-    window.addEventListener('load',()=>document.body.classList.add('loaded'));
   </script>
 </body>
 </html>
