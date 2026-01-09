@@ -936,91 +936,43 @@
 .product-icon{
   z-index: 1;
         }
-    /* ===== NEON BUTTON - LIHAT VARIAN (FORCE) ===== */
-.product-card a.btn,
-.product-card button.btn{
+    /* ===== NEON KHUSUS tombol LIHAT VARIAN (a / button) ===== */
+.product-card a.btn.btn-outline,
+.product-card button.btn.btn-outline,
+.product-card .btn.btn-outline{
   position: relative !important;
   overflow: hidden !important;
-}
-
-.product-card a.btn.btn-outline,
-.product-card button.btn.btn-outline{
-  border: 1px solid #22d3ee !important;
-  color: #22d3ee !important;
-  background: rgba(34,211,238,.08) !important;
+  border: 2px solid #22d3ee !important;
+  color: #eaffff !important;
+  background: rgba(34,211,238,.14) !important;
   box-shadow:
-    0 0 10px rgba(34,211,238,.55),
-    0 0 24px rgba(56,189,248,.35),
-    inset 0 0 10px rgba(34,211,238,.25) !important;
-  animation: neonGlow 1.6s ease-in-out infinite !important;
-  transition: transform .2s ease, box-shadow .2s ease !important;
+    0 0 12px rgba(34,211,238,.75),
+    0 0 28px rgba(56,189,248,.55),
+    inset 0 0 14px rgba(34,211,238,.28) !important;
+  animation: neonGlow2 1.4s ease-in-out infinite !important;
 }
 
 .product-card a.btn.btn-outline::after,
-.product-card button.btn.btn-outline::after{
+.product-card button.btn.btn-outline::after,
+.product-card .btn.btn-outline::after{
   content: "" !important;
   position: absolute !important;
-  inset: -2px !important;
+  inset: -3px !important;
   border-radius: inherit !important;
-  background: radial-gradient(circle at 30% 30%, rgba(34,211,238,.55), transparent 60%) !important;
-  filter: blur(8px) !important;
-  opacity: .55 !important;
+  background: radial-gradient(circle at 30% 30%, rgba(34,211,238,.85), transparent 60%) !important;
+  filter: blur(12px) !important;
+  opacity: .6 !important;
   pointer-events: none !important;
 }
 
-.product-card a.btn.btn-outline:active,
-.product-card button.btn.btn-outline:active{
-  transform: scale(.98) !important;
-}
-
-@keyframes neonGlow{
-  0%,100%{ filter: brightness(1); box-shadow: 0 0 10px rgba(34,211,238,.45), 0 0 22px rgba(56,189,248,.25), inset 0 0 10px rgba(34,211,238,.2); }
-  50%{ filter: brightness(1.25); box-shadow: 0 0 16px rgba(34,211,238,.75), 0 0 34px rgba(56,189,248,.55), inset 0 0 14px rgba(34,211,238,.35); }
-  }
-    /* ===== FORCE NEON: tombol utama "Lihat Varian" (yang gede) ===== */
-/* target tombol gede di bawah (biasanya ada di area action card) */
-.product-actions .btn:not(.icon-btn):not(.wishlist-btn):not(.nav-icon-btn),
-.product-card .btn:not(.icon-btn):not(.wishlist-btn):not(.nav-icon-btn){
-  position: relative !important;
-  overflow: hidden !important;
-  border: 1px solid #22d3ee !important;
-  color: #e9feff !important;
-  background: rgba(34,211,238,.10) !important;
-  box-shadow:
-    0 0 10px rgba(34,211,238,.55),
-    0 0 26px rgba(56,189,248,.35),
-    inset 0 0 10px rgba(34,211,238,.25) !important;
-  animation: neonGlow 1.6s ease-in-out infinite !important;
-  transition: transform .2s ease, box-shadow .2s ease, background .2s ease !important;
-}
-
-/* efek glow layer */
-.product-actions .btn:not(.icon-btn):not(.wishlist-btn):not(.nav-icon-btn)::after,
-.product-card .btn:not(.icon-btn):not(.wishlist-btn):not(.nav-icon-btn)::after{
-  content: "" !important;
-  position: absolute !important;
-  inset: -2px !important;
-  border-radius: inherit !important;
-  background: radial-gradient(circle at 30% 30%, rgba(34,211,238,.65), transparent 60%) !important;
-  filter: blur(10px) !important;
-  opacity: .55 !important;
-  pointer-events: none !important;
-}
-
-.product-actions .btn:not(.icon-btn):not(.wishlist-btn):not(.nav-icon-btn):active,
-.product-card .btn:not(.icon-btn):not(.wishlist-btn):not(.nav-icon-btn):active{
-  transform: scale(.98) !important;
-}
-
-@keyframes neonGlow{
+@keyframes neonGlow2{
   0%,100%{
     filter: brightness(1);
-    box-shadow: 0 0 10px rgba(34,211,238,.45), 0 0 22px rgba(56,189,248,.25), inset 0 0 10px rgba(34,211,238,.2);
+    box-shadow: 0 0 10px rgba(34,211,238,.55), 0 0 22px rgba(56,189,248,.35), inset 0 0 12px rgba(34,211,238,.22);
   }
   50%{
-    filter: brightness(1.25);
-    box-shadow: 0 0 16px rgba(34,211,238,.75), 0 0 34px rgba(56,189,248,.55), inset 0 0 14px rgba(34,211,238,.35);
-  }
+    filter: brightness(1.35);
+    box-shadow: 0 0 18px rgba(34,211,238,.95), 0 0 40px rgba(56,189,248,.75), inset 0 0 18px rgba(34,211,238,.35);
 }
     
   </style>
