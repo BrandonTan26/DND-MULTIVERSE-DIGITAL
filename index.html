@@ -936,51 +936,46 @@
 .product-icon{
   z-index: 1;
         }
-    /* NEON BUTTON - LIHAT VARIAN */
-.product-card .btn-outline{
-  position: relative;
-  border: 1px solid #22d3ee;
-  color: #22d3ee;
-  background: rgba(34,211,238,.08);
-  box-shadow:
-    0 0 8px rgba(34,211,238,.6),
-    inset 0 0 8px rgba(34,211,238,.35);
-  transition: all .25s ease;
+    /* ===== NEON BUTTON - LIHAT VARIAN (FORCE) ===== */
+.product-card a.btn,
+.product-card button.btn{
+  position: relative !important;
+  overflow: hidden !important;
 }
 
-.product-card .btn-outline:hover{
-  color: #0f172a;
-  background: linear-gradient(135deg,#22d3ee,#38bdf8);
+.product-card a.btn.btn-outline,
+.product-card button.btn.btn-outline{
+  border: 1px solid #22d3ee !important;
+  color: #22d3ee !important;
+  background: rgba(34,211,238,.08) !important;
   box-shadow:
-    0 0 14px rgba(34,211,238,.9),
-    0 0 28px rgba(56,189,248,.7);
-  transform: translateY(-1px) scale(1.02);
+    0 0 10px rgba(34,211,238,.55),
+    0 0 24px rgba(56,189,248,.35),
+    inset 0 0 10px rgba(34,211,238,.25) !important;
+  animation: neonGlow 1.6s ease-in-out infinite !important;
+  transition: transform .2s ease, box-shadow .2s ease !important;
 }
 
-.product-card .btn-outline::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:inherit;
-  overflow:hidden;
-  box-shadow: 0 0 18px rgba(34,211,238,.55), 0 0 30px rgba(56,189,248,.35);
-  animation: neonPulse 2.4s ease-in-out infinite;
-  pointer-events:none;
+.product-card a.btn.btn-outline::after,
+.product-card button.btn.btn-outline::after{
+  content: "" !important;
+  position: absolute !important;
+  inset: -2px !important;
+  border-radius: inherit !important;
+  background: radial-gradient(circle at 30% 30%, rgba(34,211,238,.55), transparent 60%) !important;
+  filter: blur(8px) !important;
+  opacity: .55 !important;
+  pointer-events: none !important;
 }
-.product-card .btn-outline:active,
-.product-card .btn-outline:focus,
-.product-card .btn-outline:focus-visible{
-  color:#0f172a;
-  background: linear-gradient(135deg,#22d3ee,#38bdf8);
-  box-shadow:
-    0 0 14px rgba(34,211,238,.9),
-    0 0 28px rgba(56,189,248,.7);
-  transform: translateY(-1px) scale(1.02);
-  outline: none;
+
+.product-card a.btn.btn-outline:active,
+.product-card button.btn.btn-outline:active{
+  transform: scale(.98) !important;
 }
-@keyframes neonPulse{
-  0%,100%{opacity:.35}
-  50%{opacity:.7}
+
+@keyframes neonGlow{
+  0%,100%{ filter: brightness(1); box-shadow: 0 0 10px rgba(34,211,238,.45), 0 0 22px rgba(56,189,248,.25), inset 0 0 10px rgba(34,211,238,.2); }
+  50%{ filter: brightness(1.25); box-shadow: 0 0 16px rgba(34,211,238,.75), 0 0 34px rgba(56,189,248,.55), inset 0 0 14px rgba(34,211,238,.35); }
   }
     
   </style>
