@@ -936,34 +936,119 @@
 .product-icon{
   z-index: 1;
         }
-    /* TEMBAK TOMBOL "Lihat Varian" BERDASARKAN IKON INFO (tanpa :has) */
-.product-card a i.fa-circle-info,
-.product-card button i.fa-circle-info{
-  display:none !important; /* biar ga ganggu layout */
+    /* ===============================
+   FORCE: Tombol "Detail / Lihat Varian" jadi NEON + kebaca di LIGHT
+   Tempel paling bawah <style> (sebelum </style>)
+================================ */
+
+/* Target tombol yang punya data-detail (paling aman, karena itu tombol buka modal) */
+.product-card button[data-detail]{
+  position: relative !important;
+  overflow: hidden !important;
+  width: 100% !important;
+  height: auto !important;
+
+  /* bikin tombol jelas di light & dark */
+  border: 2px solid rgba(34,211,238,.95) !important;
+  color: #061018 !important;
+  background: rgba(34,211,238,.18) !important;
+
+  font-weight: 800 !important;
+  letter-spacing: .2px !important;
+
+  box-shadow:
+    0 0 0 2px rgba(34,211,238,.10),
+    0 0 14px rgba(34,211,238,.65),
+    0 0 34px rgba(56,189,248,.45) !important;
+
+  animation: neonGlowVar 1.25s ease-in-out infinite !important;
 }
 
-/* style tombolnya (anchor/button) yang punya icon info di dalamnya */
-.product-card a.btn,
-.product-card button.btn{
-  /* default jangan diubah semua */
+/* Mode DARK: teksnya jadi terang */
+html[data-theme="dark"] .product-card button[data-detail]{
+  color: #eaffff !important;
+  background: rgba(34,211,238,.14) !important;
 }
 
-/* target tombol yg biasanya dipake buat "lihat varian": btn-outline di dalam product-card */
-.product-card .btn.btn-outline{
-  width:100% !important;
-  display:flex !important;
-  justify-content:center !important;
-  align-items:center !important;
-  gap:.55rem !important;
-
-  border:2px solid rgba(34,211,238,.95) !important;
-  background: linear-gradient(135deg, rgba(34,211,238,.95), rgba(56,189,248,.95)) !important;
-  color:#062a2e !important;
-  font-weight:900 !important;
-
-  box-shadow: 0 14px 40px rgba(34,211,238,.35) !important;
+/* efek glow full (bukan pinggir doang) */
+.product-card button[data-detail]::before{
+  content:"" !important;
+  position:absolute !important;
+  inset:-6px !important;
+  background:
+    radial-gradient(circle at 25% 25%, rgba(34,211,238,.85), transparent 55%),
+    radial-gradient(circle at 70% 70%, rgba(56,189,248,.55), transparent 60%) !important;
+  filter: blur(14px) !important;
+  opacity: .75 !important;
+  pointer-events:none !important;
 }
-    
+
+/* biar teks & icon tetap di atas glow */
+.product-card button[data-detail] > *{
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+/* hover/klik terasa */
+.product-card button[data-detail]:hover:not(:disabled){
+  transform: translateY(-2px) !important;
+  box-shadow:
+    0 0 18px rgba(34,211,238,.85),
+    0 0 44px rgba(56,189,248,.65) !important;
+}
+
+/* disabled tetep kelihatan tapi redup */
+.product-card button[data-detail]:disabled{
+  opacity: .55 !important;
+  filter: grayscale(.2) !important;
+  animation: none !important;
+  box-shadow: none !important;
+}
+
+/* animasi neon */
+@keyframes neonGlowVar{
+  0%,100% { filter: drop-shadow(0 0 0 rgba(34,211,238,.0)); }
+  50%     { filter: drop-shadow(0 0 10px rgba(34,211,238,.55)); 
+  }
+  /* FIX: paksa teks & icon tombol data-detail keliatan dan nyala */
+.product-card button[data-detail],
+.product-card button[data-detail] *{
+  opacity: 1 !important;
+  visibility: visible !important;
+  -webkit-text-fill-color: currentColor !important;
+  mix-blend-mode: normal !important;
+}
+
+/* pastiin icon & text warnanya terang */
+.product-card button[data-detail] i,
+.product-card button[data-detail] span{
+  color: #eaffff !important;
+  text-shadow:
+    0 0 8px rgba(34,211,238,.85),
+    0 0 18px rgba(56,189,248,.55) !important;
+}
+
+/* light mode: teks tetap gelap tapi glowing */
+html[data-theme="light"] .product-card button[data-detail] i,
+html[data-theme="light"] .product-card button[data-detail] span{
+  color: #061018 !important;
+  text-shadow:
+    0 0 10px rgba(34,211,238,.55),
+    0 0 22px rgba(56,189,248,.35) !important;
+}
+
+/* glow layer jangan nutupin konten */
+.product-card button[data-detail]::before,
+.product-card button[data-detail]::after{
+  z-index: 0 !important;
+}
+.product-card button[data-detail]{
+  z-index: 1 !important;
+}
+.product-card button[data-detail] > *{
+  z-index: 2 !important;
+}
+  
   </style>
 </head>
 
