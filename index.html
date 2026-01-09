@@ -936,28 +936,23 @@
 .product-icon{
   z-index: 1;
         }
-    /* NEON BLOK - tombol LIHAT VARIAN (biar kelihatan di light mode juga) */
-.product-card a.btn.btn-outline,
-.product-card button.btn.btn-outline,
-.product-card .btn.btn-outline{
+    /* PAKSA: tombol "Lihat Varian" (biasanya ada di product-actions) */
+.product-actions .btn.btn-outline{
   position: relative !important;
   overflow: hidden !important;
   border: 2px solid #22d3ee !important;
-  color: #062a2e !important;                 /* teks gelap biar kebaca di light */
   background: linear-gradient(135deg,
     rgba(34,211,238,.95),
     rgba(56,189,248,.95)
-  ) !important;                               /* BLOK NYALA */
+  ) !important;
+  color: #062a2e !important;
+  font-weight: 900 !important;
   box-shadow:
     0 10px 28px rgba(34,211,238,.35),
     0 0 0 2px rgba(34,211,238,.22) inset !important;
-  font-weight: 900 !important;
 }
 
-/* efek shimmer biar “nyala hidup” */
-.product-card a.btn.btn-outline::before,
-.product-card button.btn.btn-outline::before,
-.product-card .btn.btn-outline::before{
+.product-actions .btn.btn-outline::before{
   content: "";
   position: absolute;
   top: -40%;
@@ -974,12 +969,6 @@
   0%{ transform: translateX(-140%) rotate(20deg); opacity:.3; }
   50%{ opacity:.65; }
   100%{ transform: translateX(260%) rotate(20deg); opacity:.3; }
-}
-
-/* pas dipencet */
-.product-card a.btn.btn-outline:active,
-.product-card button.btn.btn-outline:active{
-  transform: scale(.98) !important;
 }
     
   </style>
