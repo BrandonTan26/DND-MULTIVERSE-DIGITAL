@@ -977,6 +977,51 @@
   0%,100%{ filter: brightness(1); box-shadow: 0 0 10px rgba(34,211,238,.45), 0 0 22px rgba(56,189,248,.25), inset 0 0 10px rgba(34,211,238,.2); }
   50%{ filter: brightness(1.25); box-shadow: 0 0 16px rgba(34,211,238,.75), 0 0 34px rgba(56,189,248,.55), inset 0 0 14px rgba(34,211,238,.35); }
   }
+    /* ===== FORCE NEON: tombol utama "Lihat Varian" (yang gede) ===== */
+/* target tombol gede di bawah (biasanya ada di area action card) */
+.product-actions .btn:not(.icon-btn):not(.wishlist-btn):not(.nav-icon-btn),
+.product-card .btn:not(.icon-btn):not(.wishlist-btn):not(.nav-icon-btn){
+  position: relative !important;
+  overflow: hidden !important;
+  border: 1px solid #22d3ee !important;
+  color: #e9feff !important;
+  background: rgba(34,211,238,.10) !important;
+  box-shadow:
+    0 0 10px rgba(34,211,238,.55),
+    0 0 26px rgba(56,189,248,.35),
+    inset 0 0 10px rgba(34,211,238,.25) !important;
+  animation: neonGlow 1.6s ease-in-out infinite !important;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease !important;
+}
+
+/* efek glow layer */
+.product-actions .btn:not(.icon-btn):not(.wishlist-btn):not(.nav-icon-btn)::after,
+.product-card .btn:not(.icon-btn):not(.wishlist-btn):not(.nav-icon-btn)::after{
+  content: "" !important;
+  position: absolute !important;
+  inset: -2px !important;
+  border-radius: inherit !important;
+  background: radial-gradient(circle at 30% 30%, rgba(34,211,238,.65), transparent 60%) !important;
+  filter: blur(10px) !important;
+  opacity: .55 !important;
+  pointer-events: none !important;
+}
+
+.product-actions .btn:not(.icon-btn):not(.wishlist-btn):not(.nav-icon-btn):active,
+.product-card .btn:not(.icon-btn):not(.wishlist-btn):not(.nav-icon-btn):active{
+  transform: scale(.98) !important;
+}
+
+@keyframes neonGlow{
+  0%,100%{
+    filter: brightness(1);
+    box-shadow: 0 0 10px rgba(34,211,238,.45), 0 0 22px rgba(56,189,248,.25), inset 0 0 10px rgba(34,211,238,.2);
+  }
+  50%{
+    filter: brightness(1.25);
+    box-shadow: 0 0 16px rgba(34,211,238,.75), 0 0 34px rgba(56,189,248,.55), inset 0 0 14px rgba(34,211,238,.35);
+  }
+}
     
   </style>
 </head>
